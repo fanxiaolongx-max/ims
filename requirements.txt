@@ -1,0 +1,38 @@
+# IMS SIP Server Requirements
+# 
+# 本项目仅使用 Python 标准库，无需安装外部依赖
+# Python 版本要求：3.7+
+#
+# 标准库模块（无需安装）:
+# - asyncio: 异步 I/O 框架
+# - logging: 日志系统
+# - socket: UDP 网络通信
+# - re: 正则表达式
+# - time: 时间处理
+# - hashlib: MD5 摘要认证
+# - dataclasses: 数据类
+# - typing: 类型注解
+# - datetime: 日期时间
+# - pathlib: 路径处理
+# - random: 随机数生成
+# - string: 字符串工具
+# - sys: 系统工具
+# - os: 操作系统接口
+
+# 如果需要开发工具，可以安装以下可选依赖：
+
+# 代码格式化和检查（可选）
+# black>=23.0.0
+# flake8>=6.0.0
+# mypy>=1.0.0
+
+# 测试工具（可选）
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0
+
+# 抓包分析（可选，需要单独安装 Wireshark）
+# pyshark>=0.6.0
+
+# SIP 客户端库（可选，用于测试）
+# pjsua>=2.13.0
+
