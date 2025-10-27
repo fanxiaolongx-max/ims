@@ -33,4 +33,14 @@ class _UDPProtocol(asyncio.DatagramProtocol):
             self.handler(data, addr, self.transport)
 
     def error_received(self, exc):
-        log.error(f"UDP server error: {exc}")
+        # UDP 发送错误（目标不可达等）
+        # errno 65: No route to host (macOS/BSD)
+        # errno 113: No route to host (Linux)  
+        # errno 101: Network is unreachable
+        if hasattr(exc, 'errno') and exc.errno in (65, 113, 101):
+            # 目标主机不可达是常见的网络状况（客户端下线、断网等）
+            # 使用 WARNING 而不是 ERROR，因为这不是服务器错误
+            log.warning(f"UDP: Target unreachable - {exc}")
+        else:
+            # 其他 UDP 错误
+            log.error(f"UDP server error: {exc}")

@@ -1,0 +1,11 @@
+{
+    "FORCE_LOCAL_ADDR": false,
+    "USERS": {
+        "1001": "1234",
+        "1002": "1234",
+        "1003": "1234",
+        "1004": "1234"
+    },
+    "LOG_LEVEL": "DEBUG",
+    "CDR_MERGE_MODE": true
+}

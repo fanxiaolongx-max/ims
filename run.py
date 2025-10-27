@@ -7,12 +7,21 @@ from sipcore.utils import gen_tag, sip_date
 from sipcore.auth import make_401, check_digest
 from sipcore.logger import init_logging
 from sipcore.timers import create_timers
+from sipcore.cdr import init_cdr, get_cdr
 
 # 初始化日志系统
 log = init_logging(level="DEBUG", log_file="ims-sip-server.log")
 
+# 初始化配置管理器
+from config_manager import init_config_manager
+config_mgr = init_config_manager("config.json")
+
+# 初始化 CDR 系统
+cdr = init_cdr(base_dir="CDR")
+log.info("[CDR] CDR system initialized")
+
 # ====== 配置区 ======
-SERVER_IP = "192.168.137.1"
+SERVER_IP = "192.168.8.126"
 SERVER_PORT = 5060
 SERVER_URI = f"sip:{SERVER_IP}:{SERVER_PORT};lr"   # 用于Record-Route
 ALLOW = "INVITE, ACK, CANCEL, BYE, OPTIONS, PRACK, UPDATE, REFER, NOTIFY, SUBSCRIBE, MESSAGE, REGISTER"
@@ -26,7 +35,7 @@ LOCAL_NETWORKS = [
     SERVER_IP,            # 服务器地址
 ]
 # 如果需要支持局域网，可以添加：
-LOCAL_NETWORKS.extend(["192.168.137.0/24"])
+LOCAL_NETWORKS.extend(["192.168.8.0/16"])
 
 # FORCE_LOCAL_ADDR: 强制使用本地地址（仅用于单机测试）
 # 设置为 False 时，支持真实的多机网络环境
@@ -252,6 +261,8 @@ def handle_register(msg: SIPMessage, addr, transport):
         resp = make_401(msg)
         transport.sendto(resp.to_bytes(), addr)
         log.tx(addr, resp.start_line, extra="Auth failed")
+        # CDR: 401 是正常的 SIP 认证挑战流程，不记录为失败
+        # 只有当客户端多次尝试后仍失败，或返回其他错误码时才记录失败
         return
 
     aor = _aor_from_to(msg.get("to"))
@@ -295,6 +306,36 @@ def handle_register(msg: SIPMessage, addr, transport):
         resp.add_header("contact", f"<{b['contact']}>")
     transport.sendto(resp.to_bytes(), addr)
     log.tx(addr, resp.start_line, extra=f"bindings={len(lst)}")
+    
+    # CDR: 记录注册/注销事件
+    if binds and binds[0]["expires"] == 0:
+        # 注销
+        cdr.record_unregister(
+            caller_uri=aor,
+            caller_addr=addr,
+            contact=binds[0]["contact"],
+            call_id=msg.get("call-id") or "",
+            user_agent=msg.get("user-agent") or "",
+            cseq=msg.get("cseq") or ""
+        )
+    else:
+        # 注册成功
+        contact = lst[0]["contact"] if lst else ""
+        expires = binds[0]["expires"] if binds else 3600
+        cdr.record_register(
+            caller_uri=aor,
+            caller_addr=addr,
+            contact=contact,
+            expires=expires,
+            success=True,
+            status_code=200,
+            status_text="OK",
+            call_id=msg.get("call-id") or "",
+            user_agent=msg.get("user-agent") or "",
+            cseq=msg.get("cseq") or "",
+            server_ip=SERVER_IP,
+            server_port=SERVER_PORT
+        )
 
 def _forward_request(msg: SIPMessage, addr, transport):
     """
@@ -680,14 +721,91 @@ def _forward_request(msg: SIPMessage, addr, transport):
             # 记录对话信息：主叫和被叫地址
             if method == "INVITE":
                 DIALOGS[call_id] = (addr, (host, port))
+                # CDR: 记录呼叫开始
+                cdr.record_call_start(
+                    call_id=call_id,
+                    caller_uri=msg.get("from") or "",
+                    callee_uri=msg.get("to") or "",
+                    caller_addr=addr,
+                    callee_ip=host,
+                    callee_port=port,
+                    user_agent=msg.get("user-agent") or "",
+                    cseq=msg.get("cseq") or "",
+                    server_ip=SERVER_IP,
+                    server_port=SERVER_PORT
+                )
+            elif method == "BYE":
+                # CDR: 记录呼叫结束（只在第一次收到 BYE 时记录，避免重传导致重复）
+                # 通过检查 DIALOGS 是否存在来判断是否是第一次
+                if call_id in DIALOGS:
+                    cdr.record_call_end(
+                        call_id=call_id,
+                        termination_reason="Normal",
+                        cseq=msg.get("cseq") or ""
+                    )
+            elif method == "CANCEL":
+                # CDR: 记录呼叫取消（只在第一次收到时记录）
+                if call_id in DIALOGS:
+                    cdr.record_call_cancel(
+                        call_id=call_id,
+                        cseq=msg.get("cseq") or ""
+                    )
+            elif method == "MESSAGE":
+                # CDR: 记录短信（MESSAGE 一般不会重传，但为了统一性也加上检查）
+                # 使用 CSeq 作为唯一性标识，防止重复记录
+                message_id = f"{call_id}-{msg.get('cseq') or ''}"
+                # MESSAGE 请求不在 DIALOGS 中，所以直接记录（CDR 层面会防重复）
+                cdr.record_message(
+                    call_id=message_id,  # 使用 call_id+cseq 作为唯一标识
+                    caller_uri=msg.get("from") or "",
+                    callee_uri=msg.get("to") or "",
+                    caller_addr=addr,
+                    message_body=msg.body.decode('utf-8', errors='ignore') if msg.body else "",
+                    user_agent=msg.get("user-agent") or "",
+                    cseq=msg.get("cseq") or "",
+                    server_ip=SERVER_IP,
+                    server_port=SERVER_PORT
+                )
         # ACK 也需要记录地址（虽然不需要响应，但保留追踪）
         elif call_id and method == "ACK":
             PENDING_REQUESTS[call_id] = addr  # 记录请求发送者地址
             
+    except OSError as e:
+        # 网络错误：目标主机不可达
+        # errno 65: No route to host (macOS/BSD)
+        # errno 113: No route to host (Linux)
+        # errno 101: Network is unreachable
+        if e.errno in (65, 113, 101):
+            log.warning(f"[NETWORK] Target unreachable {host}:{port} - {e}")
+            # 根据方法类型返回适当的错误响应
+            if method in ("INVITE", "MESSAGE", "REFER", "NOTIFY", "SUBSCRIBE"):
+                # 对于需要响应的请求，返回 480 Temporarily Unavailable
+                resp = _make_response(msg, 480, "Temporarily Unavailable")
+                transport.sendto(resp.to_bytes(), addr)
+                log.tx(addr, resp.start_line, extra=f"target unreachable")
+            elif method == "BYE":
+                # BYE 失败，返回 408 Request Timeout
+                resp = _make_response(msg, 408, "Request Timeout")
+                transport.sendto(resp.to_bytes(), addr)
+                log.tx(addr, resp.start_line, extra=f"target unreachable")
+                
+                # 清理 DIALOGS，防止重传 BYE 时重复记录 CDR
+                if call_id and call_id in DIALOGS:
+                    del DIALOGS[call_id]
+                    log.debug(f"[DIALOG-CLEANUP] Cleaned up unreachable call: {call_id}")
+            # ACK 和 CANCEL 不需要响应
+        else:
+            # 其他网络错误
+            log.error(f"[NETWORK] Send failed to {host}:{port} - {e}")
+            resp = _make_response(msg, 503, "Service Unavailable")
+            transport.sendto(resp.to_bytes(), addr)
+            log.tx(addr, resp.start_line, extra=f"network error")
     except Exception as e:
+        # 其他异常
+        log.error(f"[ERROR] Forward failed: {e}")
         resp = _make_response(msg, 502, "Bad Gateway")
         transport.sendto(resp.to_bytes(), addr)
-        log.tx(addr, resp.start_line, extra=f"send err: {e}")
+        log.tx(addr, resp.start_line, extra=f"forward error")
 
 def _forward_response(resp: SIPMessage, addr, transport):
     """
@@ -819,7 +937,11 @@ def _forward_response(resp: SIPMessage, addr, transport):
         # 清理追踪记录
         # 注意：2xx 响应(200)不立即清理 DIALOGS，因为还需要等 ACK
         # 只清理失败响应(486, 487等)
+        # CDR: 只在第一次清理时记录（避免重传导致重复记录）
+        need_cleanup = False
         if status_code in ("486", "487", "488", "600", "603", "604"):
+            if call_id in DIALOGS:
+                need_cleanup = True  # 第一次收到最终响应
             if call_id in PENDING_REQUESTS:
                 del PENDING_REQUESTS[call_id]
             if call_id in DIALOGS:
@@ -829,6 +951,44 @@ def _forward_response(resp: SIPMessage, addr, transport):
             if call_id in INVITE_BRANCHES:
                 del INVITE_BRANCHES[call_id]
                 log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE branch: {call_id}")
+        
+        # CDR: 记录呼叫应答和呼叫失败（只在第一次收到响应时记录，避免重传导致重复）
+        if is_invite_response:
+            if status_code == "200":
+                # CDR: 记录呼叫应答
+                cdr.record_call_answer(
+                    call_id=call_id,
+                    callee_addr=addr,
+                    status_code=200,
+                    status_text="OK"
+                )
+            elif need_cleanup:
+                # CDR: 记录呼叫失败（仅在第一次清理时记录）
+                status_text = resp.start_line.split(maxsplit=2)[2] if len(resp.start_line.split(maxsplit=2)) > 2 else "Failed"
+                cdr.record_call_fail(
+                    call_id=call_id,
+                    status_code=int(status_code),
+                    status_text=status_text,
+                    reason=f"{status_code} {status_text}"
+                )
+            elif status_code.startswith(('4', '5', '6')) and status_code not in ("100", "180", "183", "486", "487", "488", "600", "603", "604"):
+                # CDR: 记录其他失败响应（如 480, 404 等）
+                # 只有当 call_id 还在 DIALOGS 中时才记录（第一次）
+                if call_id in DIALOGS:
+                    status_text = resp.start_line.split(maxsplit=2)[2] if len(resp.start_line.split(maxsplit=2)) > 2 else "Error"
+                    cdr.record_call_fail(
+                        call_id=call_id,
+                        status_code=int(status_code),
+                        status_text=status_text,
+                        reason=f"{status_code} {status_text}"
+                    )
+                    # 立即清理，避免重复记录
+                    if call_id in PENDING_REQUESTS:
+                        del PENDING_REQUESTS[call_id]
+                    if call_id in DIALOGS:
+                        del DIALOGS[call_id]
+                    if call_id in INVITE_BRANCHES:
+                        del INVITE_BRANCHES[call_id]
         elif status_code == "200":
             # 200 OK：保留 DIALOGS，等待 ACK 到达
             # PENDING_REQUESTS 和 INVITE_BRANCHES 可以清理（响应已发送，不再需要 CANCEL）
@@ -883,6 +1043,15 @@ def on_datagram(data: bytes, addr, transport):
                 })
                 transport.sendto(resp.to_bytes(), addr)
                 log.tx(addr, resp.start_line)
+                # CDR: 记录 OPTIONS 请求（心跳/能力查询）
+                cdr.record_options(
+                    caller_uri=msg.get("from") or "",
+                    callee_uri=msg.get("to") or "",
+                    caller_addr=addr,
+                    call_id=call_id or "",
+                    user_agent=msg.get("user-agent") or "",
+                    cseq=msg.get("cseq") or ""
+                )
             elif method == "REGISTER":
                 handle_register(msg, addr, transport)
             elif method in ("INVITE", "BYE", "CANCEL", "PRACK", "UPDATE", "REFER", "NOTIFY", "SUBSCRIBE", "MESSAGE", "ACK"):
@@ -899,6 +1068,13 @@ def on_datagram(data: bytes, addr, transport):
         log.error(f"parse/send failed: {e}")
 
 async def main():
+    # 启动 Web 配置界面
+    try:
+        from web_config import init_web_interface
+        init_web_interface()
+    except Exception as e:
+        log.warning(f"Web interface failed to start: {e}")
+    
     # 创建 UDP 服务器
     udp = UDPServer((SERVER_IP, SERVER_PORT), on_datagram)
     await udp.start()

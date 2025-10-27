@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置编辑测试 - IMS SIP 服务器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .config-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .config-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .config-label {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 1.1em;
+        }
+        
+        .config-value {
+            font-family: monospace;
+            color: #4b5563;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .config-desc {
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .btn-cancel {
+            background: #e5e7eb;
+            color: #4b5563;
+            margin-right: 10px;
+        }
+        
+        .btn-cancel:hover {
+            background: #d1d5db;
+        }
+        
+        .edit-form {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 2px solid #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: monospace;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .badge-editable {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-readonly {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 配置编辑测试</h1>
+            <p>测试动态配置修改功能</p>
+        </div>
+        
+        <div id="alert" class="alert"></div>
+        
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">可编辑的配置项</h2>
+            <div id="config-list"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://127.0.0.1:8080';
+        let currentConfig = {};
+        let editableConfigs = {};
+        
+        // 加载配置
+        async function loadConfig() {
+            try {
+                const [configRes, editableRes] = await Promise.all([
+                    fetch(`${API_BASE}/api/config`),
+                    fetch(`${API_BASE}/api/config/editable`)
+                ]);
+                
+                currentConfig = await configRes.json();
+                editableConfigs = await editableRes.json();
+                
+                renderConfigList();
+            } catch (error) {
+                showAlert('加载配置失败: ' + error.message, 'error');
+            }
+        }
+        
+        // 渲染配置列表
+        function renderConfigList() {
+            const container = document.getElementById('config-list');
+            container.innerHTML = '';
+            
+            for (const [key, def] of Object.entries(editableConfigs)) {
+                const currentValue = currentConfig[key];
+                const item = createConfigItem(key, currentValue, def);
+                container.appendChild(item);
+            }
+        }
+        
+        // 创建配置项
+        function createConfigItem(key, value, def) {
+            const div = document.createElement('div');
+            div.className = 'config-item';
+            div.innerHTML = `
+                <div class="config-header">
+                    <div>
+                        <span class="config-label">${key}</span>
+                        <span class="badge badge-editable">可编辑</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="showEditForm('${key}')">
+                        ✏️ 编辑
+                    </button>
+                </div>
+                <div class="config-desc">${def.description}</div>
+                <div class="config-value" id="value-${key}">
+                    ${formatValue(value)}
+                </div>
+                <div class="edit-form" id="edit-${key}">
+                    ${createEditForm(key, value, def)}
+                </div>
+            `;
+            return div;
+        }
+        
+        // 格式化显示值
+        function formatValue(value) {
+            if (typeof value === 'object') {
+                return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
+            }
+            return String(value);
+        }
+        
+        // 创建编辑表单
+        function createEditForm(key, value, def) {
+            let input = '';
+            
+            if (def.type === 'bool') {
+                input = `
+                    <select id="input-${key}" class="form-control">
+                        <option value="true" ${value === true ? 'selected' : ''}>启用 (true)</option>
+                        <option value="false" ${value === false ? 'selected' : ''}>禁用 (false)</option>
+                    </select>
+                `;
+            } else if (def.type === 'dict' || def.type === 'list') {
+                input = `
+                    <textarea id="input-${key}" placeholder="JSON 格式">${JSON.stringify(value, null, 2)}</textarea>
+                    <small style="color: #6b7280;">请输入有效的 JSON 格式</small>
+                `;
+            } else if (def.options) {
+                input = `
+                    <select id="input-${key}">
+                        ${def.options.map(opt => 
+                            `<option value="${opt}" ${value === opt ? 'selected' : ''}>${opt}</option>`
+                        ).join('')}
+                    </select>
+                `;
+            } else {
+                input = `<input type="text" id="input-${key}" value="${value}">`;
+            }
+            
+            return `
+                <div class="form-group">
+                    <label>新值：</label>
+                    ${input}
+                </div>
+                <div style="text-align: right;">
+                    <button class="btn btn-cancel" onclick="hideEditForm('${key}')">取消</button>
+                    <button class="btn btn-success" onclick="saveConfig('${key}', '${def.type}')">
+                        💾 保存
+                    </button>
+                </div>
+            `;
+        }
+        
+        // 显示编辑表单
+        function showEditForm(key) {
+            document.getElementById(`edit-${key}`).style.display = 'block';
+        }
+        
+        // 隐藏编辑表单
+        function hideEditForm(key) {
+            document.getElementById(`edit-${key}`).style.display = 'none';
+        }
+        
+        // 保存配置
+        async function saveConfig(key, type) {
+            try {
+                const inputElem = document.getElementById(`input-${key}`);
+                let value = inputElem.value;
+                
+                // 类型转换
+                if (type === 'bool') {
+                    value = value === 'true';
+                } else if (type === 'int') {
+                    value = parseInt(value);
+                } else if (type === 'dict' || type === 'list') {
+                    value = JSON.parse(value);
+                }
+                
+                // 发送更新请求
+                const response = await fetch(`${API_BASE}/api/config/update`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ key, value })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAlert('✅ ' + result.message, 'success');
+                    currentConfig[key] = value;
+                    document.getElementById(`value-${key}`).innerHTML = formatValue(value);
+                    hideEditForm(key);
+                } else {
+                    showAlert('❌ ' + result.message, 'error');
+                }
+            } catch (error) {
+                showAlert('保存失败: ' + error.message, 'error');
+            }
+        }
+        
+        // 显示提示
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+        
+        // 页面加载时获取配置
+        loadConfig();
+    </script>
+</body>
+</html>
+
