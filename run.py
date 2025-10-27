@@ -10,11 +10,11 @@ from sipcore.timers import create_timers
 from sipcore.cdr import init_cdr, get_cdr
 
 # 初始化日志系统
-log = init_logging(level="DEBUG", log_file="ims-sip-server.log")
+log = init_logging(level="DEBUG", log_file="logs/ims-sip-server.log")
 
 # 初始化配置管理器
-from config_manager import init_config_manager
-config_mgr = init_config_manager("config.json")
+from config.config_manager import init_config_manager
+config_mgr = init_config_manager("config/config.json")
 
 # 初始化 CDR 系统
 cdr = init_cdr(base_dir="CDR")
@@ -1070,7 +1070,7 @@ def on_datagram(data: bytes, addr, transport):
 async def main():
     # 启动 Web 配置界面
     try:
-        from web_config import init_web_interface
+        from web.web_config import init_web_interface
         init_web_interface()
     except Exception as e:
         log.warning(f"Web interface failed to start: {e}")

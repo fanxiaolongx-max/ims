@@ -5702,3 +5702,361 @@
 2025-10-27 21:50:46 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
 2025-10-27 21:50:46 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
 2025-10-27 21:50:46 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:51:14 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:51:14 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:51:14 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:51:14 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:51:14 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:51:14 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:51:41 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:51:41 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:51:41 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:52:08 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:52:08 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:52:08 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:52:08 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:52:08 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:52:08 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:52:35 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:52:35 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:52:35 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:53:02 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:53:02 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:53:02 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:53:02 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:53:02 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:53:02 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:53:29 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:53:29 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:53:29 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:53:56 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:53:56 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:53:56 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:53:56 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:53:56 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:53:56 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:54:23 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:54:23 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:54:23 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:54:50 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:54:51 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:54:51 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:54:51 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:54:51 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:54:51 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:55:17 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:55:17 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:55:17 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:55:45 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:55:45 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:55:45 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:55:45 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:55:45 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:55:45 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:56:11 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:56:11 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:56:11 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:56:39 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:56:39 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:56:39 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:56:39 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:56:39 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:56:39 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:57:10 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:57:10 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:57:10 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:57:33 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:57:33 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:57:33 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:57:33 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:57:33 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:57:33 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:58:19 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:58:19 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:58:19 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:58:27 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:58:27 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:58:27 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:58:27 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:58:27 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:58:27 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:59:21 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 21:59:21 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:59:21 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:59:21 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:59:21 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:59:21 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 21:59:26 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 21:59:26 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 21:59:26 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:00:15 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:00:15 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:00:15 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:00:15 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:00:15 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:00:15 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:00:28 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:00:28 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:00:28 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:01:09 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:01:09 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:01:09 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:01:09 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:01:09 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:01:09 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:01:28 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:01:28 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:01:28 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:02:03 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:02:03 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:02:03 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:02:03 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:02:03 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:02:03 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:02:31 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:02:31 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:02:31 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:02:58 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:02:58 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:02:58 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:02:58 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:02:58 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:02:58 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:03:33 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:03:33 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:03:33 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:03:52 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qhsA5vWWTaqqgwBHLnqmLw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:03:52 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 6LQMhjxViCSi7VOjrgQQwg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:03:52 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:03:52 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:04:34 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bhz8SBz__1kF0ANOyAivJw.. | To tag: NO | Via: 1 hops
+2025-10-27 22:04:34 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:04:34 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:08:38 [[32mINFO[0m] [CDR] CDR system initialized
+2025-10-27 22:08:38 [[32mINFO[0m] UDP server listening on ('192.168.8.126', 5060)
+2025-10-27 22:08:38 [[32mINFO[0m] [TIMERS] Started all SIP timers
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:38 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:38 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:38 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:38 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:38 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:08:40 [[32mINFO[0m] [CDR] CDR system initialized
+2025-10-27 22:08:55 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:55 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:55 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-27 22:08:55 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:08:55 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:08:55 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:09:32 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:09:32 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:09:32 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:09:32 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:09:32 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:09:32 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:09:49 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:09:49 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:09:49 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:10:27 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:10:27 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:10:27 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:10:27 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:10:27 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:10:27 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:10:41 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> INVITE sip:1003@192.168.8.126;transport=UDP SIP/2.0 | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:10:41 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> INVITE sip:1003@192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:10:41 [[36mDEBUG[0m] [INVITE-INITIAL] AOR: sip:1003@192.168.8.126 | To: <sip:1003@192.168.8.126>
+2025-10-27 22:10:41 [[36mDEBUG[0m] [INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1003@192.168.8.126
+2025-10-27 22:10:41 [[36mDEBUG[0m] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-27 22:10:41 [[36mDEBUG[0m] [INVITE] Saved branch: z9hG4bK-eGIJwLxSXX for Call-ID: VEMCu5WTMp4zvP2ExzBFfg..
+2025-10-27 22:10:41 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1003@192.168.8.129:57446;rinstance=3a7003bae3089143 -> ('192.168.8.129', 57446)
+2025-10-27 22:10:41 [[36mDEBUG[0m] [INVITE] Using registered contact: sip:1003@192.168.8.129:57446;rinstance=3a7003bae3089143;transport=UDP -> 192.168.8.129:57446
+2025-10-27 22:10:41 [[36mDEBUG[0m] [FWD-DETAIL] Method: INVITE | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Target: 192.168.8.129:57446 | Via hops: 2 | Route: 0
+2025-10-27 22:10:41 [[32mINFO[0m] [FWD] INVITE -> 192.168.8.129:57446 R-URI=sip:1003@192.168.8.129:57446;rinstance=3a7003bae3089143
+2025-10-27 22:10:42 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> SIP/2.0 100 Trying | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Via: 2 hops
+2025-10-27 22:10:42 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> SIP/2.0 100 Trying
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:41303;branch=z9hG4bK-524287-1---ca7e6af704fba5f4;rport
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:41303
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: VEMCu5WTMp4zvP2ExzBFfg.., Original sender: ('192.168.8.120', 41303), Via解析: 192.168.8.120:41303
+2025-10-27 22:10:42 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.120', 41303), callee=('192.168.8.129', 57446), status=100
+2025-10-27 22:10:42 [[32mINFO[0m] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:41303 
+2025-10-27 22:10:42 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> SIP/2.0 180 Ringing | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Via: 2 hops
+2025-10-27 22:10:42 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> SIP/2.0 180 Ringing
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:41303;branch=z9hG4bK-524287-1---ca7e6af704fba5f4;rport
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:41303
+2025-10-27 22:10:42 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: VEMCu5WTMp4zvP2ExzBFfg.., Original sender: ('192.168.8.120', 41303), Via解析: 192.168.8.120:41303
+2025-10-27 22:10:42 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.120', 41303), callee=('192.168.8.129', 57446), status=180
+2025-10-27 22:10:42 [[32mINFO[0m] [FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.120:41303 
+2025-10-27 22:10:44 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:10:44 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:10:44 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:10:48 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> SIP/2.0 200 OK | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Via: 2 hops
+2025-10-27 22:10:48 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> SIP/2.0 200 OK
+2025-10-27 22:10:48 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:41303;branch=z9hG4bK-524287-1---ca7e6af704fba5f4;rport
+2025-10-27 22:10:48 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:41303
+2025-10-27 22:10:48 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: VEMCu5WTMp4zvP2ExzBFfg.., Original sender: ('192.168.8.120', 41303), Via解析: 192.168.8.120:41303
+2025-10-27 22:10:48 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.120', 41303), callee=('192.168.8.129', 57446), status=200
+2025-10-27 22:10:48 [[36mDEBUG[0m] Final INVITE response 200 to caller: ('192.168.8.120', 41303) (overriding Via route)
+2025-10-27 22:10:48 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:41303 
+2025-10-27 22:10:48 [[31mERROR[0m] forward resp failed: sipcore.cdr.CDRWriter._update_or_create_record() got multiple values for keyword argument 'status_code'
+2025-10-27 22:10:48 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> ACK sip:1003@192.168.8.129:57446 SIP/2.0 | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | To tag: YES | Via: 1 hops
+2025-10-27 22:10:48 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> ACK sip:1003@192.168.8.129:57446 SIP/2.0
+2025-10-27 22:10:48 [[36mDEBUG[0m] [REQ-TRACK] Call-ID VEMCu5WTMp4zvP2ExzBFfg.. is in DIALOGS, treating as in-dialog ACK request
+2025-10-27 22:10:48 [[36mDEBUG[0m] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-27 22:10:48 [[36mDEBUG[0m] [ACK-RECEIVED] ACK for Call-ID VEMCu5WTMp4zvP2ExzBFfg.., dialog confirmed
+2025-10-27 22:10:48 [[36mDEBUG[0m] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-27 22:10:48 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1003@192.168.8.129:57446 -> ('192.168.8.129', 57446)
+2025-10-27 22:10:48 [[36mDEBUG[0m] [FWD-DETAIL] Method: ACK | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Target: 192.168.8.129:57446 | Via hops: 1 | Route: 0
+2025-10-27 22:10:48 [[32mINFO[0m] [FWD] ACK -> 192.168.8.129:57446 R-URI=sip:1003@192.168.8.129:57446
+2025-10-27 22:10:51 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> BYE sip:1002@192.168.8.120:41303;transport=UDP SIP/2.0 | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | To tag: YES | Via: 1 hops
+2025-10-27 22:10:51 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> BYE sip:1002@192.168.8.120:41303;transport=UDP SIP/2.0
+2025-10-27 22:10:51 [[36mDEBUG[0m] [REQ-TRACK] Call-ID VEMCu5WTMp4zvP2ExzBFfg.. is in DIALOGS, treating as in-dialog BYE request
+2025-10-27 22:10:51 [[36mDEBUG[0m] BYE R-URI corrected: sip:1002@192.168.8.120:41303;transport=UDP -> sip:1002@192.168.8.120:41303
+2025-10-27 22:10:51 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:41303 -> ('192.168.8.120', 41303)
+2025-10-27 22:10:51 [[36mDEBUG[0m] [BYE] Using registered contact: sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44;transport=UDP -> 192.168.8.120:41303
+2025-10-27 22:10:51 [[36mDEBUG[0m] [FWD-DETAIL] Method: BYE | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Target: 192.168.8.120:41303 | Via hops: 2 | Route: 0
+2025-10-27 22:10:51 [[32mINFO[0m] [FWD] BYE -> 192.168.8.120:41303 R-URI=sip:1002@192.168.8.120:41303
+2025-10-27 22:10:51 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> SIP/2.0 200 OK | Call-ID: VEMCu5WTMp4zvP2ExzBFfg.. | Via: 2 hops
+2025-10-27 22:10:51 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> SIP/2.0 200 OK
+2025-10-27 22:10:51 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:57446;branch=z9hG4bK-524287-1---576f368188f108d8;rport
+2025-10-27 22:10:51 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:57446
+2025-10-27 22:10:51 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: VEMCu5WTMp4zvP2ExzBFfg.., Original sender: ('192.168.8.129', 57446), Via解析: 192.168.8.129:57446
+2025-10-27 22:10:51 [[36mDEBUG[0m] [DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:57446
+2025-10-27 22:10:51 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:57446 
+2025-10-27 22:10:51 [[36mDEBUG[0m] [BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: VEMCu5WTMp4zvP2ExzBFfg..
+2025-10-27 22:10:51 [[36mDEBUG[0m] [DIALOG-KEEP] Keeping dialog for ACK: VEMCu5WTMp4zvP2ExzBFfg..
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> INVITE sip:1002@192.168.8.126;transport=UDP SIP/2.0 | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | To tag: NO | Via: 1 hops
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> INVITE sip:1002@192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:10:54 [[36mDEBUG[0m] [INVITE-INITIAL] AOR: sip:1002@192.168.8.126 | To: <sip:1002@192.168.8.126>
+2025-10-27 22:10:54 [[36mDEBUG[0m] [INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1002@192.168.8.126
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-27 22:10:54 [[36mDEBUG[0m] [INVITE] Saved branch: z9hG4bK-nXXVHr2Dch for Call-ID: yfbLMhsgl83nfZVpd5Z4MQ..
+2025-10-27 22:10:54 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44 -> ('192.168.8.120', 41303)
+2025-10-27 22:10:54 [[36mDEBUG[0m] [INVITE] Using registered contact: sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44;transport=UDP -> 192.168.8.120:41303
+2025-10-27 22:10:54 [[36mDEBUG[0m] [FWD-DETAIL] Method: INVITE | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Target: 192.168.8.120:41303 | Via hops: 2 | Route: 0
+2025-10-27 22:10:54 [[32mINFO[0m] [FWD] INVITE -> 192.168.8.120:41303 R-URI=sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> SIP/2.0 100 Trying | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Via: 2 hops
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> SIP/2.0 100 Trying
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:57446;branch=z9hG4bK-524287-1---87f5a233364f2008;rport
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:57446
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.., Original sender: ('192.168.8.129', 57446), Via解析: 192.168.8.129:57446
+2025-10-27 22:10:54 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 57446), callee=('192.168.8.120', 41303), status=100
+2025-10-27 22:10:54 [[32mINFO[0m] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.129:57446 
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> SIP/2.0 180 Ringing | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Via: 2 hops
+2025-10-27 22:10:54 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> SIP/2.0 180 Ringing
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:57446;branch=z9hG4bK-524287-1---87f5a233364f2008;rport
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:57446
+2025-10-27 22:10:54 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.., Original sender: ('192.168.8.129', 57446), Via解析: 192.168.8.129:57446
+2025-10-27 22:10:54 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 57446), callee=('192.168.8.120', 41303), status=180
+2025-10-27 22:10:54 [[32mINFO[0m] [FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:57446 
+2025-10-27 22:10:57 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> SIP/2.0 200 OK | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Via: 2 hops
+2025-10-27 22:10:57 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> SIP/2.0 200 OK
+2025-10-27 22:10:57 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:57446;branch=z9hG4bK-524287-1---87f5a233364f2008;rport
+2025-10-27 22:10:57 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:57446
+2025-10-27 22:10:57 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.., Original sender: ('192.168.8.129', 57446), Via解析: 192.168.8.129:57446
+2025-10-27 22:10:57 [[36mDEBUG[0m] [DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 57446), callee=('192.168.8.120', 41303), status=200
+2025-10-27 22:10:57 [[36mDEBUG[0m] Final INVITE response 200 to caller: ('192.168.8.129', 57446) (overriding Via route)
+2025-10-27 22:10:57 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:57446 
+2025-10-27 22:10:57 [[31mERROR[0m] forward resp failed: sipcore.cdr.CDRWriter._update_or_create_record() got multiple values for keyword argument 'status_code'
+2025-10-27 22:10:57 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> ACK sip:1002@192.168.8.120:41303 SIP/2.0 | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | To tag: YES | Via: 1 hops
+2025-10-27 22:10:57 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> ACK sip:1002@192.168.8.120:41303 SIP/2.0
+2025-10-27 22:10:57 [[36mDEBUG[0m] [REQ-TRACK] Call-ID yfbLMhsgl83nfZVpd5Z4MQ.. is in DIALOGS, treating as in-dialog ACK request
+2025-10-27 22:10:57 [[36mDEBUG[0m] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-27 22:10:57 [[36mDEBUG[0m] [ACK-RECEIVED] ACK for Call-ID yfbLMhsgl83nfZVpd5Z4MQ.., dialog confirmed
+2025-10-27 22:10:57 [[36mDEBUG[0m] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-27 22:10:57 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:41303 -> ('192.168.8.120', 41303)
+2025-10-27 22:10:57 [[36mDEBUG[0m] [FWD-DETAIL] Method: ACK | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Target: 192.168.8.120:41303 | Via hops: 1 | Route: 0
+2025-10-27 22:10:57 [[32mINFO[0m] [FWD] ACK -> 192.168.8.120:41303 R-URI=sip:1002@192.168.8.120:41303
+2025-10-27 22:11:00 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> BYE sip:1001@192.168.8.129:57446;transport=UDP SIP/2.0 | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | To tag: YES | Via: 1 hops
+2025-10-27 22:11:00 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> BYE sip:1001@192.168.8.129:57446;transport=UDP SIP/2.0
+2025-10-27 22:11:00 [[36mDEBUG[0m] [REQ-TRACK] Call-ID yfbLMhsgl83nfZVpd5Z4MQ.. is in DIALOGS, treating as in-dialog BYE request
+2025-10-27 22:11:00 [[36mDEBUG[0m] BYE R-URI corrected: sip:1001@192.168.8.129:57446;transport=UDP -> sip:1001@192.168.8.129:57446
+2025-10-27 22:11:00 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1001@192.168.8.129:57446 -> ('192.168.8.129', 57446)
+2025-10-27 22:11:00 [[36mDEBUG[0m] [BYE] Using registered contact: sip:1001@192.168.8.129:57446;rinstance=98c5cdaa7b54d028;transport=UDP -> 192.168.8.129:57446
+2025-10-27 22:11:00 [[36mDEBUG[0m] [FWD-DETAIL] Method: BYE | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Target: 192.168.8.129:57446 | Via hops: 2 | Route: 0
+2025-10-27 22:11:00 [[32mINFO[0m] [FWD] BYE -> 192.168.8.129:57446 R-URI=sip:1001@192.168.8.129:57446
+2025-10-27 22:11:00 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> SIP/2.0 200 OK | Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.. | Via: 2 hops
+2025-10-27 22:11:00 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> SIP/2.0 200 OK
+2025-10-27 22:11:00 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:41303;branch=z9hG4bK-524287-1---78fb2257578c92f7;rport
+2025-10-27 22:11:00 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:41303
+2025-10-27 22:11:00 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: yfbLMhsgl83nfZVpd5Z4MQ.., Original sender: ('192.168.8.120', 41303), Via解析: 192.168.8.120:41303
+2025-10-27 22:11:00 [[36mDEBUG[0m] [DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.120:41303
+2025-10-27 22:11:00 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:41303 
+2025-10-27 22:11:00 [[36mDEBUG[0m] [BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: yfbLMhsgl83nfZVpd5Z4MQ..
+2025-10-27 22:11:00 [[36mDEBUG[0m] [DIALOG-KEEP] Keeping dialog for ACK: yfbLMhsgl83nfZVpd5Z4MQ..
+2025-10-27 22:11:04 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:04 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:04 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:11:04 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:04 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:04 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:11:29 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> MESSAGE sip:1002@192.168.8.126;transport=UDP SIP/2.0 | Call-ID: YdJ9jfMuXBTZY71m6YR7nQ.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:29 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> MESSAGE sip:1002@192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:29 [[36mDEBUG[0m] [MESSAGE-INITIAL] AOR: sip:1002@192.168.8.126 | To: <sip:1002@192.168.8.126;transport=UDP>
+2025-10-27 22:11:29 [[36mDEBUG[0m] [MESSAGE-INITIAL] Found 1 valid bindings for AOR: sip:1002@192.168.8.126
+2025-10-27 22:11:29 [[36mDEBUG[0m] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-27 22:11:29 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44 -> ('192.168.8.120', 41303)
+2025-10-27 22:11:29 [[36mDEBUG[0m] [MESSAGE] Using registered contact: sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44;transport=UDP -> 192.168.8.120:41303
+2025-10-27 22:11:29 [[36mDEBUG[0m] [FWD-DETAIL] Method: MESSAGE | Call-ID: YdJ9jfMuXBTZY71m6YR7nQ.. | Target: 192.168.8.120:41303 | Via hops: 2 | Route: 0
+2025-10-27 22:11:29 [[32mINFO[0m] [FWD] MESSAGE -> 192.168.8.120:41303 R-URI=sip:1002@192.168.8.120:41303;rinstance=324a19994245ec44
+2025-10-27 22:11:30 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> SIP/2.0 200 OK | Call-ID: YdJ9jfMuXBTZY71m6YR7nQ.. | Via: 2 hops
+2025-10-27 22:11:30 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> SIP/2.0 200 OK
+2025-10-27 22:11:30 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:57446;branch=z9hG4bK-524287-1---a03933c727146cda;rport
+2025-10-27 22:11:30 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:57446
+2025-10-27 22:11:30 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: YdJ9jfMuXBTZY71m6YR7nQ.., Original sender: ('192.168.8.129', 57446), Via解析: 192.168.8.129:57446
+2025-10-27 22:11:30 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:57446 
+2025-10-27 22:11:30 [[36mDEBUG[0m] [DIALOG-KEEP] Keeping dialog for ACK: YdJ9jfMuXBTZY71m6YR7nQ..
+2025-10-27 22:11:38 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:38 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:38 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:11:39 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> MESSAGE sip:1001@192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Boq0_VpCO6G65jK4LIH41w.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:39 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> MESSAGE sip:1001@192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:39 [[36mDEBUG[0m] [MESSAGE-INITIAL] AOR: sip:1001@192.168.8.126 | To: <sip:1001@192.168.8.126;transport=UDP>
+2025-10-27 22:11:39 [[36mDEBUG[0m] [MESSAGE-INITIAL] Found 1 valid bindings for AOR: sip:1001@192.168.8.126
+2025-10-27 22:11:39 [[36mDEBUG[0m] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-27 22:11:39 [[36mDEBUG[0m] [ROUTE] Using Request-URI: sip:1001@192.168.8.129:57446;rinstance=98c5cdaa7b54d028 -> ('192.168.8.129', 57446)
+2025-10-27 22:11:39 [[36mDEBUG[0m] [MESSAGE] Using registered contact: sip:1001@192.168.8.129:57446;rinstance=98c5cdaa7b54d028;transport=UDP -> 192.168.8.129:57446
+2025-10-27 22:11:39 [[36mDEBUG[0m] [FWD-DETAIL] Method: MESSAGE | Call-ID: Boq0_VpCO6G65jK4LIH41w.. | Target: 192.168.8.129:57446 | Via hops: 2 | Route: 0
+2025-10-27 22:11:39 [[32mINFO[0m] [FWD] MESSAGE -> 192.168.8.129:57446 R-URI=sip:1001@192.168.8.129:57446;rinstance=98c5cdaa7b54d028
+2025-10-27 22:11:39 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> SIP/2.0 200 OK | Call-ID: Boq0_VpCO6G65jK4LIH41w.. | Via: 2 hops
+2025-10-27 22:11:39 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> SIP/2.0 200 OK
+2025-10-27 22:11:39 [[36mDEBUG[0m] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:41303;branch=z9hG4bK-524287-1---0ccc8f93c88b1484;rport
+2025-10-27 22:11:39 [[36mDEBUG[0m] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:41303
+2025-10-27 22:11:39 [[36mDEBUG[0m] [RESP-ROUTE] Call-ID: Boq0_VpCO6G65jK4LIH41w.., Original sender: ('192.168.8.120', 41303), Via解析: 192.168.8.120:41303
+2025-10-27 22:11:39 [[32mINFO[0m] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:41303 
+2025-10-27 22:11:39 [[36mDEBUG[0m] [DIALOG-KEEP] Keeping dialog for ACK: Boq0_VpCO6G65jK4LIH41w..
+2025-10-27 22:11:58 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:58 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:58 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:11:58 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:11:58 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:11:58 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:12:32 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:12:32 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:12:32 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:12:52 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:12:52 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:12:52 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:12:52 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:12:52 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:12:52 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:13:26 [[32mINFO[0m] [RX] ('192.168.8.120', 41303) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Q0_H9JQbAxgI3dreJCIKPA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:13:26 [[32mINFO[0m] [RX] 192.168.8.120:41303 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:13:26 [[32mINFO[0m] [TX] 192.168.8.120:41303 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:13:46 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 9ESfPrXEnPrPh_tLvclRUg.. | To tag: NO | Via: 1 hops
+2025-10-27 22:13:46 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:13:46 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)
+2025-10-27 22:13:46 [[32mINFO[0m] [RX] ('192.168.8.129', 57446) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: bAvTazMUt0RaBgaToeJHbA.. | To tag: NO | Via: 1 hops
+2025-10-27 22:13:46 [[32mINFO[0m] [RX] 192.168.8.129:57446 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-27 22:13:46 [[32mINFO[0m] [TX] 192.168.8.129:57446 <- SIP/2.0 200 OK (bindings=1)

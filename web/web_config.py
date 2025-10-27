@@ -474,7 +474,7 @@ class ConfigHandler(BaseHTTPRequestHandler):
                 data = json.loads(post_data.decode('utf-8'))
                 
                 # 导入配置管理器
-                from config_manager import apply_config_change
+                from config.config_manager import apply_config_change
                 
                 key = data.get('key')
                 value = data.get('value')
@@ -568,7 +568,7 @@ class ConfigHandler(BaseHTTPRequestHandler):
         elif self.path == '/api/config/editable':
             # 返回可编辑的配置项定义
             try:
-                from config_manager import get_editable_configs
+                from config.config_manager import get_editable_configs
                 
                 editable = get_editable_configs()
                 
