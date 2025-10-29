@@ -1617,6 +1617,33 @@
             'CLR REG': [
                 { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
             ],
+            // 呼叫管理命令
+            'DSP CALL': [
+                { name: 'CALLID', label: 'Call-ID', required: false, placeholder: '留空查询所有活跃呼叫，填写则查询指定呼叫' }
+            ],
+            'RMV CALL': [
+                { name: 'CALLID', label: 'Call-ID', required: true, placeholder: '要挂断的呼叫 Call-ID' },
+                { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
+            ],
+            'CLR CALL': [
+                { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
+            ],
+            // 性能监控命令
+            'DSP PERF': [
+                { name: 'TYPE', label: '监控类型', required: false, type: 'select', options: ['ALL', 'CPU', 'MEM', 'NET', 'MSG'], placeholder: '默认显示所有性能指标' }
+            ],
+            // 配置管理命令
+            'DSP CFG': [
+                { name: 'KEY', label: '配置项', required: false, placeholder: '留空查询所有配置，或输入配置项名称（如: LOG.LEVEL）' },
+                { name: 'CATEGORY', label: '配置分类', required: false, placeholder: '留空查询所有分类，或输入分类名称' }
+            ],
+            'SET CFG': [
+                { name: 'KEY', label: '配置项', required: false, type: 'select', options: ['LOG.LEVEL'], placeholder: '选择要修改的配置项' },
+                { name: 'VALUE', label: '新值', required: true, type: 'select', options: ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], placeholder: '选择新的日志级别' }
+            ],
+            'EXP CFG': [
+                // 无需参数
+            ],
             // CDR 管理命令
             'DSP CDR': [
                 { name: 'DATE', label: '日期', required: false, placeholder: '格式: YYYY-MM-DD 或 TODAY，留空为今天' },

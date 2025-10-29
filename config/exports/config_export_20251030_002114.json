@@ -1,0 +1,155 @@
+{
+  "export_time": "2025-10-30 00:21:14",
+  "export_by": "MML Interface",
+  "config_version": "1.0",
+  "categories": {
+    "SIP 核心": [
+      {
+        "key": "SIP.SERVER_IP",
+        "value": "192.168.8.126",
+        "description": "SIP 服务器 IP 地址",
+        "type": "string",
+        "editable": false,
+        "note": "修改需重启服务"
+      },
+      {
+        "key": "SIP.SERVER_PORT",
+        "value": "5060",
+        "description": "SIP 服务器端口",
+        "type": "int",
+        "editable": false,
+        "note": "修改需重启服务"
+      },
+      {
+        "key": "SIP.SERVER_URI",
+        "value": "N/A",
+        "description": "SIP 服务器 URI（用于 Record-Route）",
+        "type": "string",
+        "editable": false,
+        "note": "自动生成，不可修改"
+      },
+      {
+        "key": "SIP.ALLOW",
+        "value": "INVITE, ACK, CANCEL, BYE, OPTIONS, REGISTER, ...",
+        "description": "SIP 允许的方法列表",
+        "type": "string",
+        "editable": false,
+        "note": "固定值，不可修改"
+      },
+      {
+        "key": "SIP.FORCE_LOCAL_ADDR",
+        "value": "False",
+        "description": "强制使用本地地址（单机测试模式）",
+        "type": "bool",
+        "editable": false,
+        "note": "修改需重启服务"
+      }
+    ],
+    "日志": [
+      {
+        "key": "LOG.LEVEL",
+        "value": "DEBUG",
+        "description": "日志级别",
+        "type": "select",
+        "editable": true,
+        "note": "可通过 MML 动态修改"
+      },
+      {
+        "key": "LOG.FILE",
+        "value": "logs/{date}/ims-sip-server.log",
+        "description": "日志文件路径（按日期分文件夹）",
+        "type": "string",
+        "editable": false,
+        "note": "固定路径，不可修改"
+      },
+      {
+        "key": "LOG.MAX_ENTRIES",
+        "value": "1000",
+        "description": "MML 页面最大日志条数",
+        "type": "int",
+        "editable": false,
+        "note": "前端固定值"
+      }
+    ],
+    "CDR": [
+      {
+        "key": "CDR.BASE_DIR",
+        "value": "CDR",
+        "description": "CDR 数据存储目录",
+        "type": "string",
+        "editable": false,
+        "note": "固定目录，不可修改"
+      },
+      {
+        "key": "CDR.FILE_FORMAT",
+        "value": "CDR/{date}/cdr_{date}.csv",
+        "description": "CDR 文件格式（按日期分文件夹）",
+        "type": "string",
+        "editable": false,
+        "note": "固定格式，不可修改"
+      }
+    ],
+    "用户管理": [
+      {
+        "key": "USER.DATA_FILE",
+        "value": "data/users.json",
+        "description": "用户数据存储文件",
+        "type": "string",
+        "editable": false,
+        "note": "固定文件，不可修改"
+      }
+    ],
+    "MML": [
+      {
+        "key": "MML.HTTP_PORT",
+        "value": "8888",
+        "description": "MML HTTP 服务端口",
+        "type": "int",
+        "editable": false,
+        "note": "修改需重启服务"
+      },
+      {
+        "key": "MML.WEBSOCKET_PORT",
+        "value": "8889",
+        "description": "MML WebSocket 端口（日志推送）",
+        "type": "int",
+        "editable": false,
+        "note": "修改需重启服务"
+      },
+      {
+        "key": "MML.MAX_HISTORY",
+        "value": "100",
+        "description": "MML 命令历史最大条数",
+        "type": "int",
+        "editable": false,
+        "note": "前端固定值"
+      }
+    ],
+    "会话统计": [
+      {
+        "key": "SESSION.ACTIVE_CALLS",
+        "value": "0",
+        "description": "当前活跃呼叫数",
+        "type": "int",
+        "editable": false,
+        "note": "实时统计，只读"
+      },
+      {
+        "key": "SESSION.REGISTRATIONS",
+        "value": "1",
+        "description": "当前注册 AOR 数",
+        "type": "int",
+        "editable": false,
+        "note": "实时统计，只读"
+      },
+      {
+        "key": "SESSION.PENDING_REQUESTS",
+        "value": "0",
+        "description": "待处理请求数",
+        "type": "int",
+        "editable": false,
+        "note": "实时统计，只读"
+      }
+    ]
+  }
+}

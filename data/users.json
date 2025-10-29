@@ -73,5 +73,16 @@
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:30:22.106782",
     "update_time": "2025-10-29T15:25:36.367631"
+  },
+  "1008": {
+    "username": "1008",
+    "password": "1234",
+    "display_name": "用户1008",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-30T00:15:17.637736",
+    "update_time": "2025-10-30T00:15:17.637749"
   }
 }

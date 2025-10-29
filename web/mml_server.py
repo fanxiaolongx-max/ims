@@ -77,9 +77,9 @@ class MMLCommandTree:
                 "commands": {
                     "查询活跃呼叫": "DSP CALL ACTIVE",
                     "查询呼叫统计": "DSP CALL STAT",
-                    "查询指定呼叫": "DSP CALL CALLID={call_id}",
-                    "强制挂断": "RMV CALL CALLID={call_id} CONFIRM=YES",
-                    "清除所有呼叫": "CLR CALL ALL CONFIRM=YES"
+                    "查询指定呼叫": "DSP CALL",
+                    "强制挂断": "RMV CALL",
+                    "清除所有呼叫": "CLR CALL"
                 }
             },
             "CDR 管理": {
@@ -95,21 +95,20 @@ class MMLCommandTree:
             "配置管理": {
                 "icon": "🔧",
                 "commands": {
-                    "查询所有配置": "DSP CFG ALL",
-                    "查询指定配置": "DSP CFG KEY={key}",
-                    "修改配置": "SET CFG KEY={key} VALUE={value}",
-                    "重置配置": "RST CFG KEY={key} CONFIRM=YES",
-                    "保存配置": "SAVE CFG"
+                    "查询所有配置": "DSP CFG",
+                    "查询指定配置": "DSP CFG",
+                    "修改日志级别": "SET CFG",
+                    "导出配置": "EXP CFG"
                 }
             },
             "性能监控": {
                 "icon": "📈",
                 "commands": {
-                    "查询性能指标": "DSP PERF ALL",
-                    "查询 CPU 使用": "DSP PERF CPU",
-                    "查询内存使用": "DSP PERF MEM",
-                    "查询网络流量": "DSP PERF NET",
-                    "查询消息统计": "DSP PERF MSG"
+                    "查询性能指标": "DSP PERF TYPE=ALL",
+                    "查询 CPU 使用": "DSP PERF TYPE=CPU",
+                    "查询内存使用": "DSP PERF TYPE=MEM",
+                    "查询网络流量": "DSP PERF TYPE=NET",
+                    "查询消息统计": "DSP PERF TYPE=MSG"
                 }
             },
             "日志管理": {
@@ -205,6 +204,12 @@ class MMLCommandExecutor:
                 parts = parts[:2] + [f"SUBTYPE=STAT"] + parts[3:]
             elif parts[2].upper() == 'TODAY':
                 parts = parts[:2] + [f"DATE=TODAY"] + parts[3:]
+        
+        # 特殊处理：DSP PERF ALL/CPU/MEM/NET/MSG -> DSP PERF TYPE=xxx
+        if obj == 'PERF' and len(parts) > 2:
+            perf_type = parts[2].upper()
+            if perf_type in ['ALL', 'CPU', 'MEM', 'NET', 'MSG']:
+                parts = parts[:2] + [f"TYPE={perf_type}"] + parts[3:]
         
         params = self._parse_params(parts[2:])
         
@@ -428,12 +433,80 @@ class MMLCommandExecutor:
     def _display_calls(self, srv, params):
         """显示呼叫信息"""
         subtype = params.get('SUBTYPE', 'ACTIVE').upper()
+        call_id_filter = params.get('CALLID', '').strip()
         dialogs = srv.get('DIALOGS', {})
         pending = srv.get('PENDING_REQUESTS', {})
         branches = srv.get('INVITE_BRANCHES', {})
         
+        # 查询指定呼叫
+        if call_id_filter:
+            # 智能匹配：支持完整 Call-ID 或部分匹配
+            matched_calls = []
+            for call_id, dialog in dialogs.items():
+                if call_id_filter.lower() in call_id.lower():
+                    matched_calls.append((call_id, dialog))
+            
+            if not matched_calls:
+                return self._error_response(f"未找到匹配的呼叫: {call_id_filter}")
+            
+            if len(matched_calls) > 1:
+                # 找到多个匹配，要求用户提供更精确的 Call-ID
+                output = [
+                    "=" * 100,
+                    f"找到 {len(matched_calls)} 个匹配的呼叫，请提供更精确的 Call-ID：",
+                    "=" * 100,
+                    f"{'Call-ID':<50} {'状态':<10}",
+                    "-" * 100,
+                ]
+                for call_id, dialog in matched_calls:
+                    output.append(f"{call_id:<50} {'ACTIVE':<10}")
+                output.append("=" * 100)
+                return self._error_response("\n".join(output))
+            
+            # 找到唯一匹配的呼叫，显示详细信息
+            call_id, dialog = matched_calls[0]
+            caller_addr, callee_addr = dialog
+            
+            # 从 CDR 获取更多信息（如果有）
+            try:
+                from sipcore.cdr import get_cdr
+                cdr = get_cdr()
+                session = cdr.get_session(call_id) if cdr else None
+            except:
+                session = None
+            
+            output = [
+                "=" * 100,
+                "呼叫详情",
+                "=" * 100,
+                f"Call-ID          : {call_id}",
+                f"状态             : ACTIVE",
+                "",
+                "【Dialog 信息】",
+                f"  Caller 地址    : {caller_addr[0]}:{caller_addr[1]}",
+                f"  Callee 地址    : {callee_addr[0]}:{callee_addr[1]}",
+            ]
+            
+            if session:
+                output.extend([
+                    "",
+                    "【CDR 信息】",
+                    f"  Caller URI     : {session.get('caller_uri', 'N/A')}",
+                    f"  Callee URI     : {session.get('callee_uri', 'N/A')}",
+                    f"  呼叫状态       : {session.get('call_state', 'N/A')}",
+                    f"  呼叫类型       : {session.get('call_type', 'N/A')}",
+                    f"  编解码         : {session.get('codec', 'N/A')}",
+                    f"  开始时间       : {session.get('start_time', 'N/A')}",
+                    f"  建立时长       : {session.get('setup_time', 'N/A')}",
+                ])
+                if 'answer_time' in session:
+                    output.append(f"  接听时间       : {session.get('answer_time', 'N/A')}")
+            
+            output.append("=" * 100)
+            return self._success_response("\n".join(output))
+        
+        # 呼叫统计
         if subtype == 'STAT':
-            # 呼叫统计
             output = [
                 "=" * 60,
                 "呼叫统计",
@@ -456,9 +529,12 @@ class MMLCommandExecutor:
             count = 0
             for call_id, dialog in dialogs.items():
                 count += 1
+                caller_addr, callee_addr = dialog
                 # 简化显示
                 call_id_short = call_id[:36] + "..." if len(call_id) > 36 else call_id
-                output.append(f"{call_id_short:<40} {'N/A':<25} {'N/A':<25} {'ACTIVE':<10}")
+                caller_str = f"{caller_addr[0]}:{caller_addr[1]}"
+                callee_str = f"{callee_addr[0]}:{callee_addr[1]}"
+                output.append(f"{call_id_short:<40} {caller_str:<25} {callee_str:<25} {'ACTIVE':<10}")
             
             output.append("-" * 100)
             output.append(f"总计: {count} 个活跃呼叫")
@@ -691,51 +767,512 @@ class MMLCommandExecutor:
         
         return uri[:18]  # 限制长度
     
+    def _get_config_registry(self):
+        """
+        获取配置注册表
+        包含所有配置项的元数据：名称、当前值、说明、类型、是否可修改
+        """
+        import logging
+        
+        # 从 run.py 获取配置（通过 server_globals）
+        srv = self.server_globals or {}
+        
+        registry = {
+            # ===== SIP 核心配置（不可修改，影响核心服务） =====
+            "SIP.SERVER_IP": {
+                "value": srv.get("SERVER_IP", "N/A"),
+                "description": "SIP 服务器 IP 地址",
+                "type": "string",
+                "editable": False,
+                "category": "SIP 核心",
+                "note": "修改需重启服务"
+            },
+            "SIP.SERVER_PORT": {
+                "value": srv.get("SERVER_PORT", "N/A"),
+                "description": "SIP 服务器端口",
+                "type": "int",
+                "editable": False,
+                "category": "SIP 核心",
+                "note": "修改需重启服务"
+            },
+            "SIP.SERVER_URI": {
+                "value": srv.get("SERVER_URI", "N/A"),
+                "description": "SIP 服务器 URI（用于 Record-Route）",
+                "type": "string",
+                "editable": False,
+                "category": "SIP 核心",
+                "note": "自动生成，不可修改"
+            },
+            "SIP.ALLOW": {
+                "value": "INVITE, ACK, CANCEL, BYE, OPTIONS, REGISTER, ...",
+                "description": "SIP 允许的方法列表",
+                "type": "string",
+                "editable": False,
+                "category": "SIP 核心",
+                "note": "固定值，不可修改"
+            },
+            "SIP.FORCE_LOCAL_ADDR": {
+                "value": srv.get("FORCE_LOCAL_ADDR", False),
+                "description": "强制使用本地地址（单机测试模式）",
+                "type": "bool",
+                "editable": False,
+                "category": "SIP 核心",
+                "note": "修改需重启服务"
+            },
+            
+            # ===== 日志配置（可修改，不影响核心服务） =====
+            "LOG.LEVEL": {
+                "value": logging.getLevelName(logging.getLogger("ims-sip-server").level),
+                "description": "日志级别",
+                "type": "select",
+                "options": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+                "editable": True,
+                "category": "日志",
+                "note": "可通过 MML 动态修改"
+            },
+            "LOG.FILE": {
+                "value": "logs/{date}/ims-sip-server.log",
+                "description": "日志文件路径（按日期分文件夹）",
+                "type": "string",
+                "editable": False,
+                "category": "日志",
+                "note": "固定路径，不可修改"
+            },
+            "LOG.MAX_ENTRIES": {
+                "value": "1000",
+                "description": "MML 页面最大日志条数",
+                "type": "int",
+                "editable": False,
+                "category": "日志",
+                "note": "前端固定值"
+            },
+            
+            # ===== CDR 配置（不可修改） =====
+            "CDR.BASE_DIR": {
+                "value": "CDR",
+                "description": "CDR 数据存储目录",
+                "type": "string",
+                "editable": False,
+                "category": "CDR",
+                "note": "固定目录，不可修改"
+            },
+            "CDR.FILE_FORMAT": {
+                "value": "CDR/{date}/cdr_{date}.csv",
+                "description": "CDR 文件格式（按日期分文件夹）",
+                "type": "string",
+                "editable": False,
+                "category": "CDR",
+                "note": "固定格式，不可修改"
+            },
+            
+            # ===== 用户管理配置（不可修改） =====
+            "USER.DATA_FILE": {
+                "value": "data/users.json",
+                "description": "用户数据存储文件",
+                "type": "string",
+                "editable": False,
+                "category": "用户管理",
+                "note": "固定文件，不可修改"
+            },
+            
+            # ===== MML 配置（可修改，不影响核心服务） =====
+            "MML.HTTP_PORT": {
+                "value": "8888",
+                "description": "MML HTTP 服务端口",
+                "type": "int",
+                "editable": False,
+                "category": "MML",
+                "note": "修改需重启服务"
+            },
+            "MML.WEBSOCKET_PORT": {
+                "value": "8889",
+                "description": "MML WebSocket 端口（日志推送）",
+                "type": "int",
+                "editable": False,
+                "category": "MML",
+                "note": "修改需重启服务"
+            },
+            "MML.MAX_HISTORY": {
+                "value": "100",
+                "description": "MML 命令历史最大条数",
+                "type": "int",
+                "editable": False,
+                "category": "MML",
+                "note": "前端固定值"
+            },
+            
+            # ===== 会话统计（只读） =====
+            "SESSION.ACTIVE_CALLS": {
+                "value": str(len(srv.get("DIALOGS", {}))),
+                "description": "当前活跃呼叫数",
+                "type": "int",
+                "editable": False,
+                "category": "会话统计",
+                "note": "实时统计，只读"
+            },
+            "SESSION.REGISTRATIONS": {
+                "value": str(len(srv.get("REGISTRATIONS", {}))),
+                "description": "当前注册 AOR 数",
+                "type": "int",
+                "editable": False,
+                "category": "会话统计",
+                "note": "实时统计，只读"
+            },
+            "SESSION.PENDING_REQUESTS": {
+                "value": str(len(srv.get("PENDING_REQUESTS", {}))),
+                "description": "待处理请求数",
+                "type": "int",
+                "editable": False,
+                "category": "会话统计",
+                "note": "实时统计，只读"
+            },
+        }
+        
+        return registry
+    
     def _display_config(self, srv, params):
         """显示配置"""
-        try:
-            from config.config_manager import load_config
-            config = load_config("config/config.json")
+        registry = self._get_config_registry()
+        
+        # 支持按分类查询或查询所有
+        category_filter = params.get('CATEGORY', '').upper()
+        key_filter = params.get('KEY', '').upper()
+        
+        output = [
+            "=" * 120,
+            "系统配置一览",
+            "=" * 120,
+            "",
+            "说明：本配置表包含系统所有配置项的元数据",
+            "  • [可修改]：可通过 MML 命令动态修改",
+            "  • [只读]：  不可修改，或需重启服务",
+            "",
+            "=" * 120,
+        ]
+        
+        # 按分类组织输出
+        categories = {}
+        for key, meta in registry.items():
+            cat = meta["category"]
+            if cat not in categories:
+                categories[cat] = []
+            categories[cat].append((key, meta))
+        
+        # 输出每个分类
+        for cat in sorted(categories.keys()):
+            # 如果指定了分类过滤，跳过不匹配的分类
+            if category_filter and category_filter not in cat.upper():
+                continue
             
-            output = [
-                "=" * 60,
-                "配置参数",
-                "=" * 60,
-            ]
+            output.append("")
+            output.append(f"【{cat}】")
+            output.append("-" * 120)
             
-            for key, value in config.items():
-                output.append(f"{key:<30} : {value}")
-            
-            output.append("=" * 60)
-            return self._success_response("\n".join(output))
-        except Exception as e:
-            return self._error_response(f"读取配置失败: {str(e)}")
+            for key, meta in categories[cat]:
+                # 如果指定了键名过滤，跳过不匹配的
+                if key_filter and key_filter not in key.upper():
+                    continue
+                
+                editable_tag = "[可修改]" if meta["editable"] else "[只读]"
+                output.append(f"\n  配置项: {key}")
+                output.append(f"  当前值: {meta['value']}")
+                output.append(f"  说明  : {meta['description']}")
+                output.append(f"  类型  : {meta['type']}")
+                output.append(f"  状态  : {editable_tag}")
+                if meta.get('options'):
+                    output.append(f"  可选值: {', '.join(meta['options'])}")
+                if meta.get('note'):
+                    output.append(f"  备注  : {meta['note']}")
+        
+        output.extend([
+            "",
+            "=" * 120,
+            f"总配置项数: {len(registry)} 个",
+            f"可修改项数: {sum(1 for m in registry.values() if m['editable'])} 个",
+            "=" * 120,
+        ])
+        
+        return self._success_response("\n".join(output))
     
     def _display_performance(self, srv, params):
         """显示性能指标"""
-        output = [
-            "=" * 60,
-            "性能指标",
-            "=" * 60,
-        ]
+        perf_type = params.get('TYPE', 'ALL').upper()
         
-        # 尝试获取性能指标（需要 psutil）
+        # 尝试导入 psutil
         try:
             import psutil
-            output.extend([
-                f"CPU 使用率     : {psutil.cpu_percent()}%",
-                f"内存使用率     : {psutil.virtual_memory().percent}%",
-                f"磁盘使用率     : {psutil.disk_usage('/').percent}%",
-                f"网络连接数     : {len(psutil.net_connections())}",
-            ])
         except ImportError:
-            output.append("性能指标不可用 (需要安装 psutil)")
-            output.append("")
-            output.append("安装命令: pip install psutil")
+            return self._error_response(
+                "性能监控功能不可用\n\n"
+                "需要安装 psutil 库:\n"
+                "  pip install psutil\n\n"
+                "或者:\n"
+                "  pip3 install psutil"
+            )
         
-        output.append("=" * 60)
+        output = []
+        
+        # 显示所有性能指标
+        if perf_type == 'ALL':
+            output.extend(self._get_cpu_info())
+            output.append("")
+            output.extend(self._get_memory_info())
+            output.append("")
+            output.extend(self._get_network_info())
+            output.append("")
+            output.extend(self._get_message_stats(srv))
+        
+        # 显示 CPU 性能
+        elif perf_type == 'CPU':
+            output.extend(self._get_cpu_info())
+        
+        # 显示内存性能
+        elif perf_type == 'MEM':
+            output.extend(self._get_memory_info())
+        
+        # 显示网络流量
+        elif perf_type == 'NET':
+            output.extend(self._get_network_info())
+        
+        # 显示消息统计
+        elif perf_type == 'MSG':
+            output.extend(self._get_message_stats(srv))
+        
+        else:
+            return self._error_response(f"不支持的性能监控类型: {perf_type}")
         
         return self._success_response("\n".join(output))
+    
+    def _get_cpu_info(self):
+        """获取 CPU 性能信息"""
+        import psutil
+        import os
+        
+        cpu_percent = psutil.cpu_percent(interval=0.5)
+        cpu_count = psutil.cpu_count()
+        cpu_count_logical = psutil.cpu_count(logical=True)
+        cpu_freq = psutil.cpu_freq()
+        
+        # CPU 每核心使用率
+        per_cpu = psutil.cpu_percent(interval=0.5, percpu=True)
+        
+        output = [
+            "=" * 80,
+            "【CPU 性能指标】",
+            "=" * 80,
+            "",
+            "【基本信息】",
+            f"  物理核心数          : {cpu_count} 核",
+            f"  逻辑核心数          : {cpu_count_logical} 核",
+        ]
+        
+        if cpu_freq:
+            output.extend([
+                f"  当前频率            : {cpu_freq.current:.2f} MHz",
+                f"  最小频率            : {cpu_freq.min:.2f} MHz",
+                f"  最大频率            : {cpu_freq.max:.2f} MHz",
+            ])
+        
+        output.extend([
+            "",
+            "【CPU 使用率】",
+            f"  总体使用率          : {cpu_percent:.1f}%",
+        ])
+        
+        # 显示每个核心的使用率
+        if per_cpu:
+            output.append("")
+            output.append("【各核心使用率】")
+            for i, percent in enumerate(per_cpu):
+                bar_length = int(percent / 2)  # 50% = 25个字符
+                bar = '█' * bar_length + '░' * (50 - bar_length)
+                output.append(f"  CPU {i:2d}  [{bar}] {percent:5.1f}%")
+        
+        # 进程信息
+        try:
+            process = psutil.Process(os.getpid())
+            output.extend([
+                "",
+                "【当前进程 (SIP服务器)】",
+                f"  进程 ID             : {process.pid}",
+                f"  CPU 使用率          : {process.cpu_percent():.1f}%",
+                f"  线程数              : {process.num_threads()}",
+                f"  运行时间            : {self._format_uptime(process.create_time())}",
+            ])
+        except:
+            pass
+        
+        output.append("=" * 80)
+        return output
+    
+    def _get_memory_info(self):
+        """获取内存性能信息"""
+        import psutil
+        import os
+        
+        # 虚拟内存（物理内存）
+        vm = psutil.virtual_memory()
+        # 交换分区
+        swap = psutil.swap_memory()
+        
+        output = [
+            "=" * 80,
+            "【内存性能指标】",
+            "=" * 80,
+            "",
+            "【物理内存】",
+            f"  总容量              : {self._format_bytes(vm.total)}",
+            f"  已使用              : {self._format_bytes(vm.used)} ({vm.percent:.1f}%)",
+            f"  可用                : {self._format_bytes(vm.available)}",
+            f"  空闲                : {self._format_bytes(vm.free)}",
+        ]
+        
+        # 内存使用进度条
+        bar_length = int(vm.percent / 2)
+        bar = '█' * bar_length + '░' * (50 - bar_length)
+        output.append(f"  [{bar}] {vm.percent:.1f}%")
+        
+        output.extend([
+            "",
+            "【交换分区】",
+            f"  总容量              : {self._format_bytes(swap.total)}",
+            f"  已使用              : {self._format_bytes(swap.used)} ({swap.percent:.1f}%)",
+            f"  空闲                : {self._format_bytes(swap.free)}",
+        ])
+        
+        # 进程内存使用
+        try:
+            process = psutil.Process(os.getpid())
+            mem_info = process.memory_info()
+            mem_percent = process.memory_percent()
+            
+            output.extend([
+                "",
+                "【当前进程 (SIP服务器)】",
+                f"  物理内存            : {self._format_bytes(mem_info.rss)} ({mem_percent:.2f}%)",
+                f"  虚拟内存            : {self._format_bytes(mem_info.vms)}",
+            ])
+        except:
+            pass
+        
+        output.append("=" * 80)
+        return output
+    
+    def _get_network_info(self):
+        """获取网络流量信息"""
+        import psutil
+        
+        # 网络 IO 统计
+        net_io = psutil.net_io_counters()
+        
+        # 网络连接数
+        try:
+            connections = psutil.net_connections(kind='inet')
+            conn_count = len(connections)
+            
+            # 按状态统计
+            conn_stats = {}
+            for conn in connections:
+                status = conn.status
+                conn_stats[status] = conn_stats.get(status, 0) + 1
+        except:
+            conn_count = 0
+            conn_stats = {}
+        
+        output = [
+            "=" * 80,
+            "【网络性能指标】",
+            "=" * 80,
+            "",
+            "【流量统计】",
+            f"  发送字节数          : {self._format_bytes(net_io.bytes_sent)}",
+            f"  接收字节数          : {self._format_bytes(net_io.bytes_recv)}",
+            f"  发送数据包          : {net_io.packets_sent:,}",
+            f"  接收数据包          : {net_io.packets_recv:,}",
+            f"  发送错误            : {net_io.errout:,}",
+            f"  接收错误            : {net_io.errin:,}",
+            f"  发送丢包            : {net_io.dropout:,}",
+            f"  接收丢包            : {net_io.dropin:,}",
+            "",
+            "【连接统计】",
+            f"  总连接数            : {conn_count}",
+        ]
+        
+        # 按状态显示连接数
+        if conn_stats:
+            output.append("")
+            output.append("【连接状态分布】")
+            for status, count in sorted(conn_stats.items()):
+                output.append(f"  {status:<20}: {count:>6}")
+        
+        output.append("=" * 80)
+        return output
+    
+    def _get_message_stats(self, srv):
+        """获取消息统计信息"""
+        dialogs = srv.get('DIALOGS', {})
+        registrations = srv.get('REGISTRATIONS', {})
+        pending = srv.get('PENDING_REQUESTS', {})
+        branches = srv.get('INVITE_BRANCHES', {})
+        
+        # 统计注册数量
+        total_bindings = sum(len(bindings) for bindings in registrations.values())
+        
+        output = [
+            "=" * 80,
+            "【SIP 消息统计】",
+            "=" * 80,
+            "",
+            "【会话状态】",
+            f"  活跃呼叫数          : {len(dialogs)}",
+            f"  注册 AOR 数         : {len(registrations)}",
+            f"  注册绑定数          : {total_bindings}",
+            f"  待处理请求          : {len(pending)}",
+            f"  INVITE 分支数       : {len(branches)}",
+        ]
+        
+        # 从 CDR 获取消息统计（如果有）
+        try:
+            from sipcore.cdr import get_cdr
+            cdr = get_cdr()
+            if cdr and hasattr(cdr, 'active_sessions'):
+                active_sessions = cdr.active_sessions
+                output.extend([
+                    "",
+                    "【CDR 会话】",
+                    f"  活跃 CDR 会话       : {len(active_sessions)}",
+                ])
+        except:
+            pass
+        
+        output.append("=" * 80)
+        return output
+    
+    def _format_bytes(self, bytes_val):
+        """格式化字节数为易读格式"""
+        for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+            if bytes_val < 1024.0:
+                return f"{bytes_val:.2f} {unit}"
+            bytes_val /= 1024.0
+        return f"{bytes_val:.2f} PB"
+    
+    def _format_uptime(self, create_time):
+        """格式化运行时间"""
+        import time
+        uptime_seconds = int(time.time() - create_time)
+        days = uptime_seconds // 86400
+        hours = (uptime_seconds % 86400) // 3600
+        minutes = (uptime_seconds % 3600) // 60
+        seconds = uptime_seconds % 60
+        
+        if days > 0:
+            return f"{days}天 {hours}小时 {minutes}分钟"
+        elif hours > 0:
+            return f"{hours}小时 {minutes}分钟 {seconds}秒"
+        elif minutes > 0:
+            return f"{minutes}分钟 {seconds}秒"
+        else:
+            return f"{seconds}秒"
     
     def _display_logs(self, params):
         """显示日志"""
@@ -793,23 +1330,44 @@ class MMLCommandExecutor:
             return self._error_response(f"不支持的 SET 对象: {obj}")
     
     def _set_config(self, params):
-        """设置配置"""
-        key = params.get('KEY')
-        value = params.get('VALUE')
+        """
+        设置配置
+        目前只支持修改日志级别（不影响 SIP 核心服务）
+        """
+        key = params.get('KEY', 'LOG.LEVEL').upper()
+        value = params.get('VALUE', '').upper()
         
-        if not key or not value:
-            return self._error_response("需要指定 KEY 和 VALUE")
+        # 获取配置注册表
+        registry = self._get_config_registry()
         
-        try:
-            from config.config_manager import apply_config_change
-            success, message = apply_config_change(key, value)
+        # 检查配置项是否存在
+        if key not in registry:
+            return self._error_response(f"配置项不存在: {key}")
+        
+        # 检查配置项是否可修改
+        if not registry[key]["editable"]:
+            return self._error_response(
+                f"配置项 {key} 不可修改\n"
+                f"原因: {registry[key].get('note', '需要重启服务或修改代码')}"
+            )
+        
+        # 目前只支持修改日志级别
+        if key == "LOG.LEVEL":
+            if not value:
+                return self._error_response("需要指定 VALUE 参数")
             
-            if success:
-                return self._success_response(f"配置更新成功: {message}")
-            else:
-                return self._error_response(f"配置更新失败: {message}")
-        except Exception as e:
-            return self._error_response(f"设置配置失败: {str(e)}")
+            # 检查值是否有效
+            valid_levels = registry[key].get("options", [])
+            if value not in valid_levels:
+                return self._error_response(
+                    f"无效的日志级别: {value}\n"
+                    f"有效值: {', '.join(valid_levels)}"
+                )
+            
+            # 调用日志级别修改方法
+            return self._set_log_level({"LEVEL": value})
+        
+        return self._error_response(f"配置项 {key} 暂不支持通过 MML 修改")
     
     def _set_log_level(self, params):
         """设置日志级别"""
@@ -854,6 +1412,8 @@ class MMLCommandExecutor:
             return self._remove_user(params)
         elif obj == "REG":
             return self._remove_registration(params)
+        elif obj == "CALL":
+            return self._remove_call(params)
         else:
             return self._error_response(f"不支持的对象类型: {obj}")
     
@@ -978,6 +1538,136 @@ class MMLCommandExecutor:
         registrations.clear()
         
         return self._success_response(f"已清除所有注册：{total_aors} 个 AOR，共 {total_bindings} 条注册记录")
+    
+    def _remove_call(self, params):
+        """强制挂断单个呼叫"""
+        call_id_filter = params.get('CALLID', '').strip()
+        confirm = params.get('CONFIRM', '').upper()
+        
+        if not call_id_filter:
+            return self._error_response("需要指定 CALLID 参数")
+        
+        if confirm != 'YES':
+            return self._error_response("需要确认参数: CONFIRM=YES")
+        
+        dialogs = self.server_globals.get('DIALOGS', {})
+        
+        # 智能匹配 Call-ID
+        matched_calls = []
+        for call_id in list(dialogs.keys()):
+            if call_id_filter.lower() in call_id.lower():
+                matched_calls.append(call_id)
+        
+        if not matched_calls:
+            return self._error_response(f"未找到匹配的呼叫: {call_id_filter}")
+        
+        if len(matched_calls) > 1:
+            # 找到多个匹配，要求用户提供更精确的 Call-ID
+            output = [
+                "=" * 100,
+                f"找到 {len(matched_calls)} 个匹配的呼叫，请提供更精确的 Call-ID：",
+                "=" * 100,
+            ]
+            for call_id in matched_calls:
+                output.append(f"  {call_id}")
+            output.append("=" * 100)
+            return self._error_response("\n".join(output))
+        
+        # 找到唯一匹配的呼叫，执行强制挂断
+        call_id = matched_calls[0]
+        dialog = dialogs.get(call_id)
+        
+        # 从 DIALOGS 中移除（不发送 BYE，只是清理服务器状态）
+        del dialogs[call_id]
+        
+        # 同时清理 CDR 会话（标记为强制终止）
+        try:
+            from sipcore.cdr import get_cdr
+            cdr = get_cdr()
+            if cdr:
+                session = cdr.get_session(call_id)
+                if session:
+                    cdr.record_call_end(
+                        call_id=call_id,
+                        termination_reason="FORCED_TERMINATION_BY_MML"
+                    )
+        except Exception as e:
+            # CDR 操作失败不影响主功能
+            pass
+        
+        output = [
+            "=" * 100,
+            "强制挂断成功",
+            "=" * 100,
+            f"Call-ID          : {call_id}",
+            f"操作             : 已从服务器 DIALOGS 中移除",
+            f"备注             : 此操作不会发送 BYE 消息，仅清理服务器状态",
+            "=" * 100,
+        ]
+        
+        return self._success_response("\n".join(output))
+    
+    def _clear_calls(self, params):
+        """清除所有呼叫"""
+        confirm = params.get('CONFIRM', '').upper()
+        
+        if confirm != 'YES':
+            return self._error_response("需要确认参数: CONFIRM=YES")
+        
+        dialogs = self.server_globals.get('DIALOGS', {})
+        pending = self.server_globals.get('PENDING_REQUESTS', {})
+        branches = self.server_globals.get('INVITE_BRANCHES', {})
+        
+        # 统计呼叫数量
+        total_dialogs = len(dialogs)
+        total_pending = len(pending)
+        total_branches = len(branches)
+        
+        # 收集所有 Call-ID（用于 CDR 清理）
+        all_call_ids = list(dialogs.keys())
+        
+        # 清空所有呼叫相关的数据结构
+        dialogs.clear()
+        pending.clear()
+        branches.clear()
+        
+        # 清理所有活跃会话的 CDR（标记为强制终止）
+        terminated_sessions = 0
+        try:
+            from sipcore.cdr import get_cdr
+            cdr = get_cdr()
+            if cdr:
+                for call_id in all_call_ids:
+                    session = cdr.get_session(call_id)
+                    if session and session.get('call_state') not in ['ENDED', 'FAILED', 'CANCELLED']:
+                        cdr.record_call_end(
+                            call_id=call_id,
+                            termination_reason="FORCED_TERMINATION_BY_MML_CLR_ALL"
+                        )
+                        terminated_sessions += 1
+        except Exception as e:
+            # CDR 操作失败不影响主功能
+            pass
+        
+        output = [
+            "=" * 100,
+            "清除所有呼叫成功",
+            "=" * 100,
+            f"已清除 DIALOGS        : {total_dialogs} 个活跃呼叫",
+            f"已清除 PENDING        : {total_pending} 个待处理请求",
+            f"已清除 INVITE_BRANCHES: {total_branches} 个 INVITE 分支",
+        ]
+        
+        if terminated_sessions > 0:
+            output.append(f"已终止 CDR 会话       : {terminated_sessions} 个")
+        
+        output.extend([
+            "",
+            "备注: 此操作不会发送 BYE 消息，仅清理服务器状态",
+            "=" * 100,
+        ])
+        
+        return self._success_response("\n".join(output))
     
     def _export_cdr(self, params):
         """导出 CDR"""
@@ -1127,6 +1817,79 @@ class MMLCommandExecutor:
             import traceback
             return self._error_response(f"清理 CDR 失败: {str(e)}\n{traceback.format_exc()}")
     
+    def _export_config(self, params):
+        """导出配置到文件"""
+        import os
+        import json
+        from datetime import datetime
+        
+        try:
+            # 获取配置注册表
+            registry = self._get_config_registry()
+            
+            # 创建导出目录
+            export_dir = "config/exports"
+            os.makedirs(export_dir, exist_ok=True)
+            
+            # 生成导出文件名（带时间戳）
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            export_file = os.path.join(export_dir, f"config_export_{timestamp}.json")
+            
+            # 准备导出数据
+            export_data = {
+                "export_time": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                "export_by": "MML Interface",
+                "config_version": "1.0",
+                "categories": {}
+            }
+            
+            # 按分类组织配置
+            for key, meta in registry.items():
+                cat = meta["category"]
+                if cat not in export_data["categories"]:
+                    export_data["categories"][cat] = []
+                
+                export_data["categories"][cat].append({
+                    "key": key,
+                    "value": str(meta["value"]),
+                    "description": meta["description"],
+                    "type": meta["type"],
+                    "editable": meta["editable"],
+                    "note": meta.get("note", "")
+                })
+            
+            # 写入文件
+            with open(export_file, 'w', encoding='utf-8') as f:
+                json.dump(export_data, f, ensure_ascii=False, indent=2)
+            
+            # 统计信息
+            total_count = len(registry)
+            editable_count = sum(1 for m in registry.values() if m["editable"])
+            
+            output = [
+                "=" * 80,
+                "配置导出成功",
+                "=" * 80,
+                f"导出文件        : {export_file}",
+                f"导出时间        : {export_data['export_time']}",
+                f"总配置项数      : {total_count} 个",
+                f"可修改配置项    : {editable_count} 个",
+                f"配置分类数      : {len(export_data['categories'])} 类",
+                "",
+                "【导出文件格式】",
+                "  • JSON 格式",
+                "  • 包含所有配置项的完整元数据",
+                "  • 按分类组织",
+                "  • 可用于备份或文档生成",
+                "=" * 80,
+            ]
+            
+            return self._success_response("\n".join(output))
+            
+        except Exception as e:
+            import traceback
+            return self._error_response(f"导出配置失败: {str(e)}\n{traceback.format_exc()}")
+    
     def _modify_user(self, params):
         """修改用户信息"""
         from sipcore.user_manager import get_user_manager
@@ -1186,6 +1949,8 @@ class MMLCommandExecutor:
         
         if obj == "REG":
             return self._clear_registrations(params)
+        elif obj == "CALL":
+            return self._clear_calls(params)
         elif obj == "CDR":
             return self._clear_cdr(params)
         else:
@@ -1205,6 +1970,8 @@ class MMLCommandExecutor:
         
         if obj == "CDR":
             return self._export_cdr(params)
+        elif obj == "CFG":
+            return self._export_config(params)
         else:
             return self._error_response(f"不支持的对象类型: {obj}")
     

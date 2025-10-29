@@ -67,9 +67,13 @@ class ColoredFormatter(EnhancedFormatter):
     RESET = '\033[0m'
     
     def format(self, record):
-        log_color = self.COLORS.get(record.levelname, self.RESET)
-        record.levelname = f"{log_color}{record.levelname}{self.RESET}"
-        return super().format(record)
+        # 关键：创建 record 的副本，避免修改原始 record 影响其他 handler
+        # 因为同一个 LogRecord 对象会被多个 handler 共享（控制台、文件、WebSocket）
+        import copy
+        record_copy = copy.copy(record)
+        log_color = self.COLORS.get(record_copy.levelname, self.RESET)
+        record_copy.levelname = f"{log_color}{record_copy.levelname}{self.RESET}"
+        return super().format(record_copy)
 
 
 class DailyRotatingFileHandler(logging.Handler):
