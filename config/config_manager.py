@@ -200,7 +200,13 @@ def apply_config_change(key: str, value: Any) -> tuple[bool, str]:
         config_mgr.set(key, value)
         
         # 应用到运行时
-        import run
+        # 使用 sys.modules 访问已导入的 run 模块，避免重新执行模块级别代码
+        import sys
+        run = sys.modules.get('run')
+        if run is None:
+            # 如果 run 模块还未导入（不太可能），则正常导入
+            import run as run_module
+            run = run_module
         
         if key == "USERS":
             # 动态更新用户列表

@@ -2,9 +2,12 @@
 """
 SIP服务器日志模块
 提供统一的日志记录功能，支持控制台和文件输出
+按日期分文件夹存储日志，避免单个文件过大
 """
 import logging
+import logging.handlers
 import sys
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -28,6 +31,72 @@ class ColoredFormatter(logging.Formatter):
         return super().format(record)
 
 
+class DailyRotatingFileHandler(logging.Handler):
+    """
+    按日期分文件夹的日志处理器
+    - 每天创建一个新的日志文件夹（logs/YYYY-MM-DD/）
+    - 日志文件保存在对应日期的文件夹中
+    - 自动切换到新的日期文件夹
+    """
+    
+    def __init__(self, base_dir: str = "logs", filename: str = "ims-sip-server.log", encoding: str = 'utf-8'):
+        """
+        初始化日志处理器
+        
+        Args:
+            base_dir: 日志基础目录
+            filename: 日志文件名（不含路径）
+            encoding: 文件编码
+        """
+        super().__init__()
+        self.base_dir = base_dir
+        self.filename = filename
+        self.encoding = encoding
+        self.current_date = None
+        self.current_handler = None
+        self._ensure_handler()
+    
+    def _ensure_handler(self):
+        """确保有正确的日志文件处理器"""
+        today = datetime.now().strftime('%Y-%m-%d')
+        
+        # 如果日期变了，需要切换到新的日志文件
+        if self.current_date != today:
+            # 创建日期文件夹
+            date_dir = os.path.join(self.base_dir, today)
+            os.makedirs(date_dir, exist_ok=True)
+            
+            # 日志文件完整路径
+            log_file = os.path.join(date_dir, self.filename)
+            
+            # 关闭旧的处理器
+            if self.current_handler:
+                self.current_handler.close()
+            
+            # 创建新的文件处理器
+            self.current_handler = logging.FileHandler(log_file, encoding=self.encoding)
+            self.current_handler.setFormatter(self.formatter)
+            self.current_handler.setLevel(self.level)
+            
+            self.current_date = today
+    
+    def emit(self, record):
+        """发出日志记录"""
+        try:
+            # 确保使用正确日期的处理器
+            self._ensure_handler()
+            # 使用当前处理器记录日志
+            self.current_handler.emit(record)
+        except Exception:
+            self.handleError(record)
+    
+    def close(self):
+        """关闭处理器"""
+        if self.current_handler:
+            self.current_handler.close()
+        super().close()
+
+
 def setup_logger(
     name: str = "ims-sip-server",
     level: str = "INFO",
@@ -41,7 +110,7 @@ def setup_logger(
     Args:
         name: 日志记录器名称
         level: 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-        log_file: 日志文件路径（可选）
+        log_file: 日志文件路径（可选，格式: logs/ims-sip-server.log）
         console: 是否输出到控制台
         console_color: 控制台输出是否使用颜色
         
@@ -72,9 +141,16 @@ def setup_logger(
         console_handler.setFormatter(formatter)
         logger.addHandler(console_handler)
     
-    # 文件输出
+    # 文件输出（按日期分文件夹）
     if log_file:
-        file_handler = logging.FileHandler(log_file, encoding='utf-8')
+        # 解析日志文件路径，提取基础目录和文件名
+        # 例如: "logs/ims-sip-server.log" -> base_dir="logs", filename="ims-sip-server.log"
+        log_path = Path(log_file)
+        base_dir = str(log_path.parent) if log_path.parent != Path('.') else 'logs'
+        filename = log_path.name
+        
+        # 使用按日期分文件夹的处理器
+        file_handler = DailyRotatingFileHandler(base_dir=base_dir, filename=filename, encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)  # 文件记录所有级别的日志
         file_formatter = logging.Formatter(log_format, date_format)
         file_handler.setFormatter(file_formatter)

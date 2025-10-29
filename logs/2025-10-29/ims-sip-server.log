@@ -1,0 +1,832 @@
+[CDR] CDR system initialized
+[USER] User management system initialized
+UDP server listening on ('192.168.8.126', 5060)
+[TIMERS] Started all SIP timers
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[TIMER-REG] Cleaned up 1 expired binding(s) for sip:1001@192.168.8.126
+[TIMER-REG] Removed AOR sip:1001@192.168.8.126 (no bindings left)
+[TIMER-REG] Cleaned up 1 expired binding(s) for sip:1003@192.168.8.126
+[TIMER-REG] Removed AOR sip:1003@192.168.8.126 (no bindings left)
+[TIMER-CLEANUP] Total expired registrations: 2, Active AORs: 1
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+[TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+[TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+[TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+[TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[CDR] CDR system initialized
+[USER] User management system initialized
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[CDR] CDR system initialized
+[USER] User management system initialized
+UDP server listening on ('192.168.8.126', 5060)
+[TIMERS] Started all SIP timers
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: iU0yUnVuFXAWS1LbN6gpFQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=0)
+[RX] ('192.168.8.129', 55098) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: x37Guimmx6_Sjtns7RsdwA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:55098 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.129:55098 <- SIP/2.0 200 OK (bindings=0)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> PUBLISH sip:1004@192.168.8.126 SIP/2.0 | Call-ID: LAtvozSjzNZBEBy0-tN4ow.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> PUBLISH sip:1004@192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 405 Method Not Allowed
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[TIMER-REG] Removed AOR sip:1001@192.168.8.126 (no bindings left)
+[TIMER-REG] Removed AOR sip:1003@192.168.8.126 (no bindings left)
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.129', 5960) -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Tui4Ygk_KRWIx-EMLujr9Q.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> SUBSCRIBE sip:1004@192.168.8.126 SIP/2.0
+[ROUTE] Using Request-URI: sip:1004@192.168.8.126 -> ('192.168.8.126', 5060)
+[DROP] Loop detected: skipping self-forward to 192.168.8.126:5060
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-zugjoEOtT2 for Call-ID: asMRypFZ__MfcwjN8mVgdA..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---6cf8d956ac2e9e56;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: asMRypFZ__MfcwjN8mVgdA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---6cf8d956ac2e9e56;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: asMRypFZ__MfcwjN8mVgdA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID asMRypFZ__MfcwjN8mVgdA.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID asMRypFZ__MfcwjN8mVgdA.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> BYE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> BYE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID asMRypFZ__MfcwjN8mVgdA.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1007@192.168.8.120:8044 -> sip:1007@192.168.8.120:8044
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[BYE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: BYE | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: asMRypFZ__MfcwjN8mVgdA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---5417340910c8ce47;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: asMRypFZ__MfcwjN8mVgdA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: asMRypFZ__MfcwjN8mVgdA..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: asMRypFZ__MfcwjN8mVgdA..
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-nXlKku0z7r for Call-ID: lBjoS_8xO2RzJHLIHI5mPA..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---244bd57c656a9161;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: lBjoS_8xO2RzJHLIHI5mPA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---244bd57c656a9161;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: lBjoS_8xO2RzJHLIHI5mPA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID lBjoS_8xO2RzJHLIHI5mPA.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID lBjoS_8xO2RzJHLIHI5mPA.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.129', 5960) -> BYE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> BYE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID lBjoS_8xO2RzJHLIHI5mPA.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1007@192.168.8.120:8044 -> sip:1007@192.168.8.120:8044
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[BYE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: BYE | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: lBjoS_8xO2RzJHLIHI5mPA.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---807579539738356d;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: lBjoS_8xO2RzJHLIHI5mPA.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: lBjoS_8xO2RzJHLIHI5mPA..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: lBjoS_8xO2RzJHLIHI5mPA..
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[CDR] CDR system initialized
+[USER] User management system initialized
+UDP server listening on ('192.168.8.126', 5060)
+[TIMERS] Started all SIP timers
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-zDZon5sUBv for Call-ID: Az3JTZBDkuBAW6Fz-Dngeg..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---5914872c9ee98835;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[REQ-TRACK] Call-ID Az3JTZBDkuBAW6Fz-Dngeg.. is in DIALOGS, responding 100 Trying to duplicate INVITE
+[TX] 192.168.8.129:5960 <- SIP/2.0 100 Trying (duplicate INVITE handling)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---5914872c9ee98835;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID Az3JTZBDkuBAW6Fz-Dngeg.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID Az3JTZBDkuBAW6Fz-Dngeg.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> BYE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> BYE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID Az3JTZBDkuBAW6Fz-Dngeg.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1007@192.168.8.120:8044 -> sip:1007@192.168.8.120:8044
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[BYE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: BYE | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---0853e667f866ab1a;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: Az3JTZBDkuBAW6Fz-Dngeg.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: Az3JTZBDkuBAW6Fz-Dngeg..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: Az3JTZBDkuBAW6Fz-Dngeg..
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> MESSAGE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: 1exSApQFnMNdSw9Rvi57dQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> MESSAGE sip:1007@192.168.8.126 SIP/2.0
+[MESSAGE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[MESSAGE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[MESSAGE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: MESSAGE | Call-ID: 1exSApQFnMNdSw9Rvi57dQ.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] MESSAGE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: 1exSApQFnMNdSw9Rvi57dQ.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---35540111a7dbe80d;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: 1exSApQFnMNdSw9Rvi57dQ.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 16Mk9_vrAz7Isim2P2PaZg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[CDR] CDR system initialized
+[USER] User management system initialized
+UDP server listening on ('192.168.8.126', 5060)
+[TIMERS] Started all SIP timers
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 401 Unauthorized (Auth failed)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-3iLXJC6Thn for Call-ID: 0QhM81F6pBbeJ-9GL1FuRw..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---56260549670e5346;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---56260549670e5346;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID 0QhM81F6pBbeJ-9GL1FuRw.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID 0QhM81F6pBbeJ-9GL1FuRw.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.129', 5960) -> BYE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> BYE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID 0QhM81F6pBbeJ-9GL1FuRw.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1007@192.168.8.120:8044 -> sip:1007@192.168.8.120:8044
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[BYE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: BYE | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---5c5bfe1d1332d317;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: 0QhM81F6pBbeJ-9GL1FuRw.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: 0QhM81F6pBbeJ-9GL1FuRw..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: 0QhM81F6pBbeJ-9GL1FuRw..
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> INVITE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> INVITE sip:1004@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1004@192.168.8.126 | To: <sip:1004@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1004@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-QU4879LJ7e for Call-ID: Yd7-20s1dYz6ANs_Milsug..
+[ROUTE] Using Request-URI: sip:1004@192.168.8.129:5960 -> ('192.168.8.129', 5960)
+[INVITE] Using registered contact: sip:1004@192.168.8.129:5960 -> 192.168.8.129:5960
+[FWD-DETAIL] Method: INVITE | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Target: 192.168.8.129:5960 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.129:5960 R-URI=sip:1004@192.168.8.129:5960
+[RX] ('192.168.8.129', 5960) -> SIP/2.0 180 Ringing | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Via: 2 hops
+[RX] 192.168.8.129:5960 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:8044;branch=z9hG4bK-524287-1---14b8e64b757fc42b;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:8044
+[RESP-ROUTE] Call-ID: Yd7-20s1dYz6ANs_Milsug.., Original sender: ('192.168.8.120', 8044), Via解析: 192.168.8.120:8044
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.120', 8044), callee=('192.168.8.129', 5960), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.120:8044 
+[RX] ('192.168.8.129', 5960) -> SIP/2.0 200 OK | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Via: 2 hops
+[RX] 192.168.8.129:5960 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:8044;branch=z9hG4bK-524287-1---14b8e64b757fc42b;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:8044
+[RESP-ROUTE] Call-ID: Yd7-20s1dYz6ANs_Milsug.., Original sender: ('192.168.8.120', 8044), Via解析: 192.168.8.120:8044
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.120', 8044), callee=('192.168.8.129', 5960), status=200
+Final INVITE response 200 to caller: ('192.168.8.120', 8044) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:8044 
+[RX] ('192.168.8.120', 8044) -> ACK sip:1004@192.168.8.129:5960 SIP/2.0 | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.120:8044 -> ACK sip:1004@192.168.8.129:5960 SIP/2.0
+[REQ-TRACK] Call-ID Yd7-20s1dYz6ANs_Milsug.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID Yd7-20s1dYz6ANs_Milsug.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1004@192.168.8.129:5960 -> ('192.168.8.129', 5960)
+[FWD-DETAIL] Method: ACK | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Target: 192.168.8.129:5960 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.129:5960 R-URI=sip:1004@192.168.8.129:5960
+[RX] ('192.168.8.129', 5960) -> BYE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> BYE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID Yd7-20s1dYz6ANs_Milsug.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1007@192.168.8.120:8044 -> sip:1007@192.168.8.120:8044
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[BYE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: BYE | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: Yd7-20s1dYz6ANs_Milsug.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---f963466c925b7708;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: Yd7-20s1dYz6ANs_Milsug.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] Non-INVITE response (2 BYE): using Via route to 192.168.8.129:5960
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: Yd7-20s1dYz6ANs_Milsug..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: Yd7-20s1dYz6ANs_Milsug..
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-2orskbaVL6 for Call-ID: WHlnqwftqc1an7uaLvfRBQ..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---7c6e254c50ac6637;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: WHlnqwftqc1an7uaLvfRBQ.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---7c6e254c50ac6637;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: WHlnqwftqc1an7uaLvfRBQ.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID WHlnqwftqc1an7uaLvfRBQ.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID WHlnqwftqc1an7uaLvfRBQ.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> INVITE sip:1004@192.168.8.129:5960 SIP/2.0 | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.120:8044 -> INVITE sip:1004@192.168.8.129:5960 SIP/2.0
+[REQ-TRACK] Call-ID WHlnqwftqc1an7uaLvfRBQ.. is in DIALOGS, responding 100 Trying to duplicate INVITE
+[TX] 192.168.8.120:8044 <- SIP/2.0 100 Trying (duplicate INVITE handling)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID WHlnqwftqc1an7uaLvfRBQ.. is in DIALOGS, responding 100 Trying to duplicate INVITE
+[TX] 192.168.8.129:5960 <- SIP/2.0 100 Trying (duplicate INVITE handling)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> BYE sip:1004@192.168.8.129:5960 SIP/2.0 | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.120:8044 -> BYE sip:1004@192.168.8.129:5960 SIP/2.0
+[REQ-TRACK] Call-ID WHlnqwftqc1an7uaLvfRBQ.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1004@192.168.8.129:5960 -> sip:1004@192.168.8.129:5960
+[ROUTE] Using Request-URI: sip:1004@192.168.8.129:5960 -> ('192.168.8.129', 5960)
+[BYE] Using registered contact: sip:1004@192.168.8.129:5960 -> 192.168.8.129:5960
+[FWD-DETAIL] Method: BYE | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Target: 192.168.8.129:5960 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.129:5960 R-URI=sip:1004@192.168.8.129:5960
+[RX] ('192.168.8.129', 5960) -> SIP/2.0 200 OK | Call-ID: WHlnqwftqc1an7uaLvfRBQ.. | Via: 2 hops
+[RX] 192.168.8.129:5960 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:8044;branch=z9hG4bK-524287-1---e7dd3245609e0304;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:8044
+[RESP-ROUTE] Call-ID: WHlnqwftqc1an7uaLvfRBQ.., Original sender: ('192.168.8.120', 8044), Via解析: 192.168.8.120:8044
+[DIALOG-ROUTE] Non-INVITE response (3 BYE): using Via route to 192.168.8.120:8044
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:8044 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: WHlnqwftqc1an7uaLvfRBQ..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: WHlnqwftqc1an7uaLvfRBQ..
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> INVITE sip:1007@192.168.8.126 SIP/2.0 | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> INVITE sip:1007@192.168.8.126 SIP/2.0
+[INVITE-INITIAL] AOR: sip:1007@192.168.8.126 | To: <sip:1007@192.168.8.126>
+[INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1007@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[INVITE] Saved branch: z9hG4bK-UNukhH05b2 for Call-ID: KbELhFwqJLbBgz_gJKsRhg..
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[INVITE] Using registered contact: sip:1007@192.168.8.120:8044 -> 192.168.8.120:8044
+[FWD-DETAIL] Method: INVITE | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Target: 192.168.8.120:8044 | Via hops: 2 | Route: 0
+[FWD] INVITE -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 180 Ringing | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 180 Ringing
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---3a668277fdc3a30a;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: KbELhFwqJLbBgz_gJKsRhg.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=180
+[FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.129:5960 
+[RX] ('192.168.8.120', 8044) -> SIP/2.0 200 OK | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Via: 2 hops
+[RX] 192.168.8.120:8044 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:5960;branch=z9hG4bK-524287-1---3a668277fdc3a30a;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:5960
+[RESP-ROUTE] Call-ID: KbELhFwqJLbBgz_gJKsRhg.., Original sender: ('192.168.8.129', 5960), Via解析: 192.168.8.129:5960
+[DIALOG-ROUTE] INVITE response: caller=('192.168.8.129', 5960), callee=('192.168.8.120', 8044), status=200
+Final INVITE response 200 to caller: ('192.168.8.129', 5960) (overriding Via route)
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:5960 
+[RX] ('192.168.8.129', 5960) -> ACK sip:1007@192.168.8.120:8044 SIP/2.0 | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.129:5960 -> ACK sip:1007@192.168.8.120:8044 SIP/2.0
+[REQ-TRACK] Call-ID KbELhFwqJLbBgz_gJKsRhg.. is in DIALOGS, treating as in-dialog ACK request
+ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+[ACK-RECEIVED] ACK for Call-ID KbELhFwqJLbBgz_gJKsRhg.., dialog confirmed
+[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+[ROUTE] Using Request-URI: sip:1007@192.168.8.120:8044 -> ('192.168.8.120', 8044)
+[FWD-DETAIL] Method: ACK | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Target: 192.168.8.120:8044 | Via hops: 1 | Route: 0
+[FWD] ACK -> 192.168.8.120:8044 R-URI=sip:1007@192.168.8.120:8044
+[RX] ('192.168.8.120', 8044) -> INVITE sip:1004@192.168.8.129:5960 SIP/2.0 | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.120:8044 -> INVITE sip:1004@192.168.8.129:5960 SIP/2.0
+[REQ-TRACK] Call-ID KbELhFwqJLbBgz_gJKsRhg.. is in DIALOGS, responding 100 Trying to duplicate INVITE
+[TX] 192.168.8.120:8044 <- SIP/2.0 100 Trying (duplicate INVITE handling)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> BYE sip:1004@192.168.8.129:5960 SIP/2.0 | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | To tag: YES | Via: 1 hops
+[RX] 192.168.8.120:8044 -> BYE sip:1004@192.168.8.129:5960 SIP/2.0
+[REQ-TRACK] Call-ID KbELhFwqJLbBgz_gJKsRhg.. is in DIALOGS, treating as in-dialog BYE request
+BYE R-URI corrected: sip:1004@192.168.8.129:5960 -> sip:1004@192.168.8.129:5960
+[ROUTE] Using Request-URI: sip:1004@192.168.8.129:5960 -> ('192.168.8.129', 5960)
+[BYE] Using registered contact: sip:1004@192.168.8.129:5960 -> 192.168.8.129:5960
+[FWD-DETAIL] Method: BYE | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Target: 192.168.8.129:5960 | Via hops: 2 | Route: 0
+[FWD] BYE -> 192.168.8.129:5960 R-URI=sip:1004@192.168.8.129:5960
+[RX] ('192.168.8.129', 5960) -> SIP/2.0 200 OK | Call-ID: KbELhFwqJLbBgz_gJKsRhg.. | Via: 2 hops
+[RX] 192.168.8.129:5960 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:8044;branch=z9hG4bK-524287-1---2190ed4de98feb30;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:8044
+[RESP-ROUTE] Call-ID: KbELhFwqJLbBgz_gJKsRhg.., Original sender: ('192.168.8.120', 8044), Via解析: 192.168.8.120:8044
+[DIALOG-ROUTE] Non-INVITE response (3 BYE): using Via route to 192.168.8.120:8044
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:8044 
+[DIALOG-CLEANUP] Cleaned up dialog after BYE: KbELhFwqJLbBgz_gJKsRhg..
+[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: KbELhFwqJLbBgz_gJKsRhg..
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 77BQyksQ-elzg3bGWwUyyQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.120:8044 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 8044) -> MESSAGE sip:1004@192.168.8.126 SIP/2.0 | Call-ID: rWNHKCRfrg9QZad_yeu4vw.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:8044 -> MESSAGE sip:1004@192.168.8.126 SIP/2.0
+[MESSAGE-INITIAL] AOR: sip:1004@192.168.8.126 | To: <sip:1004@192.168.8.126>
+[MESSAGE-INITIAL] Found 1 valid bindings for AOR: sip:1004@192.168.8.126
+[RECORD-ROUTE] Added Record-Route for initial INVITE
+[ROUTE] Using Request-URI: sip:1004@192.168.8.129:5960 -> ('192.168.8.129', 5960)
+[MESSAGE] Using registered contact: sip:1004@192.168.8.129:5960 -> 192.168.8.129:5960
+[FWD-DETAIL] Method: MESSAGE | Call-ID: rWNHKCRfrg9QZad_yeu4vw.. | Target: 192.168.8.129:5960 | Via hops: 2 | Route: 0
+[FWD] MESSAGE -> 192.168.8.129:5960 R-URI=sip:1004@192.168.8.129:5960
+[RX] ('192.168.8.129', 5960) -> SIP/2.0 200 OK | Call-ID: rWNHKCRfrg9QZad_yeu4vw.. | Via: 2 hops
+[RX] 192.168.8.129:5960 -> SIP/2.0 200 OK
+[RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:8044;branch=z9hG4bK-524287-1---9095956b6a88bc75;rport
+[RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:8044
+[RESP-ROUTE] Call-ID: rWNHKCRfrg9QZad_yeu4vw.., Original sender: ('192.168.8.120', 8044), Via解析: 192.168.8.120:8044
+[FWD] RESP SIP/2.0 200 OK -> 192.168.8.120:8044 
+[RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: xMjMVwoc6PYEE2353GKkmQ.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+[TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+[RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: WlodaWGDj-rE2dvkuAh6yg.. | To tag: NO | Via: 1 hops
+[RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+[TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)

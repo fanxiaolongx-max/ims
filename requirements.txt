@@ -36,3 +36,7 @@
 # SIP 客户端库（可选，用于测试）
 # pjsua>=2.13.0
 
+# MML 管理界面（推荐）
+websockets>=12.0  # WebSocket 实时日志推送
+psutil>=5.9.0     # 系统性能监控
+

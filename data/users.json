@@ -1,0 +1,77 @@
+{
+  "1001": {
+    "username": "1001",
+    "password": "1234",
+    "display_name": "测试用户1001",
+    "phone": "13800001001",
+    "email": "user1001@example.com",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-29T00:36:33.528944"
+  },
+  "1002": {
+    "username": "1002",
+    "password": "1234",
+    "display_name": "测试用户1002",
+    "phone": "13800001002",
+    "email": "user1002@example.com",
+    "status": "ACTIVE",
+    "service_type": "PREMIUM",
+    "create_time": "2025-10-29T00:36:33.528947"
+  },
+  "1003": {
+    "username": "1003",
+    "password": "1234",
+    "display_name": "测试用户1003",
+    "phone": "13800001003",
+    "email": "user1003@example.com",
+    "status": "ACTIVE",
+    "service_type": "VIP",
+    "create_time": "2025-10-29T04:32:20.397036",
+    "update_time": "2025-10-29T05:01:22.797099"
+  },
+  "1004": {
+    "username": "1004",
+    "password": "lem600@HW",
+    "display_name": "用户1004",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-29T11:44:30.696129",
+    "update_time": "2025-10-29T11:44:30.696149"
+  },
+  "1005": {
+    "username": "1005",
+    "password": "1234",
+    "display_name": "用户1005",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-29T12:01:00.298284",
+    "update_time": "2025-10-29T12:01:00.298306"
+  },
+  "1006": {
+    "username": "1006",
+    "password": "1234",
+    "display_name": "用户1006",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-29T12:26:35.659162",
+    "update_time": "2025-10-29T12:26:35.659178"
+  },
+  "1007": {
+    "username": "1007",
+    "password": "1234",
+    "display_name": "用户1007",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-29T12:30:22.106782",
+    "update_time": "2025-10-29T12:30:22.106799"
+  }
+}

@@ -8,6 +8,8 @@ from sipcore.auth import make_401, check_digest
 from sipcore.logger import init_logging
 from sipcore.timers import create_timers
 from sipcore.cdr import init_cdr, get_cdr
+from sipcore.user_manager import init_user_manager, get_user_manager
+from sipcore.sdp_parser import extract_sdp_info
 
 # 初始化日志系统
 log = init_logging(level="DEBUG", log_file="logs/ims-sip-server.log")
@@ -16,9 +18,11 @@ log = init_logging(level="DEBUG", log_file="logs/ims-sip-server.log")
 from config.config_manager import init_config_manager
 config_mgr = init_config_manager("config/config.json")
 
-# 初始化 CDR 系统
+# 初始化 CDR 系统（日志输出已移到 init_cdr 内部）
 cdr = init_cdr(base_dir="CDR")
-log.info("[CDR] CDR system initialized")
+
+# 初始化用户管理系统（日志输出已移到 init_user_manager 内部）
+user_mgr = init_user_manager(data_file="data/users.json")
 
 # ====== 配置区 ======
 SERVER_IP = "192.168.8.126"
@@ -41,9 +45,7 @@ LOCAL_NETWORKS.extend(["192.168.8.0/16"])
 # 设置为 False 时，支持真实的多机网络环境
 FORCE_LOCAL_ADDR = False   # True: 本机测试模式 | False: 真实网络模式
 
-# 内存用户与注册绑定（上一版）
-USERS = {"1001": "1234", "1002": "1234", "1003": "1234"}
-# AOR -> list of bindings: [{"contact": "sip:1001@ip:port", "expires": epoch}]
+# 注册绑定: AOR -> list of bindings: [{"contact": "sip:1001@ip:port", "expires": epoch}]
 REG_BINDINGS: dict[str, list[dict]] = {}
 
 # 请求追踪：Call-ID -> 原始发送地址
@@ -257,7 +259,19 @@ def _make_response(req: SIPMessage, code: int, reason: str, extra_headers: dict 
 # ====== 业务处理 ======
 
 def handle_register(msg: SIPMessage, addr, transport):
-    if not check_digest(msg, USERS):
+    # 从 user_manager 获取 ACTIVE 用户构建认证字典
+    try:
+        active_users = {
+            user['username']: user['password'] 
+            for user in user_mgr.get_all_users() 
+            if user.get('status') == 'ACTIVE'
+        }
+    except Exception as e:
+        log.error(f"Failed to get users from user_manager: {e}")
+        active_users = {}
+    
+    # 检查认证
+    if not check_digest(msg, active_users):
         resp = make_401(msg)
         transport.sendto(resp.to_bytes(), addr)
         log.tx(addr, resp.start_line, extra="Auth failed")
@@ -721,6 +735,10 @@ def _forward_request(msg: SIPMessage, addr, transport):
             # 记录对话信息：主叫和被叫地址
             if method == "INVITE":
                 DIALOGS[call_id] = (addr, (host, port))
+                
+                # 解析 SDP 提取呼叫类型和编解码信息
+                call_type, codec = extract_sdp_info(msg.body)
+                
                 # CDR: 记录呼叫开始
                 cdr.record_call_start(
                     call_id=call_id,
@@ -729,6 +747,8 @@ def _forward_request(msg: SIPMessage, addr, transport):
                     caller_addr=addr,
                     callee_ip=host,
                     callee_port=port,
+                    call_type=call_type,
+                    codec=codec,
                     user_agent=msg.get("user-agent") or "",
                     cseq=msg.get("cseq") or "",
                     server_ip=SERVER_IP,
@@ -955,10 +975,15 @@ def _forward_response(resp: SIPMessage, addr, transport):
         # CDR: 记录呼叫应答和呼叫失败（只在第一次收到响应时记录，避免重传导致重复）
         if is_invite_response:
             if status_code == "200":
+                # 解析 200 OK 响应中的 SDP（被叫可能使用不同的编解码）
+                call_type_answer, codec_answer = extract_sdp_info(resp.body)
+                
                 # CDR: 记录呼叫应答
                 cdr.record_call_answer(
                     call_id=call_id,
                     callee_addr=addr,
+                    call_type=call_type_answer if call_type_answer else None,
+                    codec=codec_answer if codec_answer else None,
                     status_code=200,
                     status_text="OK"
                 )
@@ -990,14 +1015,20 @@ def _forward_response(resp: SIPMessage, addr, transport):
                     if call_id in INVITE_BRANCHES:
                         del INVITE_BRANCHES[call_id]
         elif status_code == "200":
-            # 200 OK：保留 DIALOGS，等待 ACK 到达
-            # PENDING_REQUESTS 和 INVITE_BRANCHES 可以清理（响应已发送，不再需要 CANCEL）
+            # 200 OK：需要区分不同场景
+            # - INVITE 200 OK：已在上面处理（保留 DIALOGS 等待 ACK）
+            # - BYE 200 OK：应该清理 DIALOGS（呼叫已结束）
+            # - 其他方法 200 OK：与 DIALOGS 无关
+            if "BYE" in cseq_header and call_id in DIALOGS:
+                # BYE 200 OK：清理 dialog
+                del DIALOGS[call_id]
+                log.debug(f"[DIALOG-CLEANUP] Cleaned up dialog after BYE: {call_id}")
+            # 清理其他追踪数据
             if call_id in PENDING_REQUESTS:
                 del PENDING_REQUESTS[call_id]
             if call_id in INVITE_BRANCHES:
                 del INVITE_BRANCHES[call_id]
                 log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: {call_id}")
-            log.debug(f"[DIALOG-KEEP] Keeping dialog for ACK: {call_id}")
     except OSError as e:
         # UDP发送错误 - 尝试备用地址
         log.error(f"UDP send failed to ({nhost}:{nport}): {e}")
@@ -1068,12 +1099,22 @@ def on_datagram(data: bytes, addr, transport):
         log.error(f"parse/send failed: {e}")
 
 async def main():
-    # 启动 Web 配置界面
+    # 启动 MML 管理界面
     try:
-        from web.web_config import init_web_interface
-        init_web_interface()
+        from web.mml_server import init_mml_interface
+        # 传递服务器全局状态给 MML 界面
+        server_globals = {
+            'SERVER_IP': SERVER_IP,
+            'SERVER_PORT': SERVER_PORT,
+            'FORCE_LOCAL_ADDR': FORCE_LOCAL_ADDR,
+            'REGISTRATIONS': REG_BINDINGS,  # 实际变量名是 REG_BINDINGS
+            'DIALOGS': DIALOGS,
+            'PENDING_REQUESTS': PENDING_REQUESTS,
+            'INVITE_BRANCHES': INVITE_BRANCHES,
+        }
+        init_mml_interface(port=8888, server_globals=server_globals)
     except Exception as e:
-        log.warning(f"Web interface failed to start: {e}")
+        log.warning(f"MML interface failed to start: {e}")
     
     # 创建 UDP 服务器
     udp = UDPServer((SERVER_IP, SERVER_PORT), on_datagram)

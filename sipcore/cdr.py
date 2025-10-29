@@ -64,6 +64,8 @@ class CDRWriter:
         "ringing_time",        # 180 Ringing 时间
         "answer_time",         # 200 OK 时间
         "bye_time",            # BYE 时间
+        "call_type",           # 呼叫类型（AUDIO/VIDEO/AUDIO+VIDEO）
+        "codec",               # 编解码（如：PCMU, PCMA, H264等）
         "user_agent",          # 用户代理
         "contact",             # Contact 地址
         "expires",             # 过期时间（注册）
@@ -312,8 +314,12 @@ class CDRWriter:
         session = self.sessions.pop(call_id)
         session["end_time"] = datetime.now()
         
-        # 计算时长
-        duration = (session["end_time"] - session["start_time"]).total_seconds()
+        # 计算时长：从接听时间（answer_time）到结束时间（end_time）
+        # 如果没有 answer_time（未接听），则从开始时间（start_time）算起
+        if "answer_time" in session:
+            duration = (session["end_time"] - session["answer_time"]).total_seconds()
+        else:
+            duration = (session["end_time"] - session["start_time"]).total_seconds()
         session["duration"] = round(duration, 2)
         
         return session
@@ -405,13 +411,23 @@ class CDRWriter:
             if setup_time == 0 and "start_time" in session:
                 setup_time = (session["answer_time"] - session["start_time"]).total_seconds() * 1000
         
+        # 移除可能冲突的参数（避免重复传递）
+        kwargs.pop('status_code', None)
+        kwargs.pop('status_text', None)
+        
+        # 格式化 setup_time 为易读格式（如 "14.82s"）
+        setup_time_str = ""
+        if setup_time:
+            setup_time_seconds = setup_time / 1000  # 毫秒转秒
+            setup_time_str = f"{setup_time_seconds:.2f}s"
+        
         now = datetime.now()
         self._update_or_create_record(
             call_id=call_id,
             call_state="ANSWERED",
             callee_ip=callee_addr[0],
             callee_port=callee_addr[1],
-            setup_time=round(setup_time, 2) if setup_time else "",
+            setup_time=setup_time_str,
             answer_time=now.strftime("%H:%M:%S.%f")[:-3],
             status_code=200,
             status_text="OK",
@@ -422,6 +438,12 @@ class CDRWriter:
     def record_call_end(self, call_id: str, termination_reason: str = "Normal", **kwargs):
         """记录呼叫结束（BYE）"""
         session = self.end_session(call_id)
+        
+        # 移除可能冲突的参数（避免重复传递）
+        kwargs.pop('call_state', None)
+        kwargs.pop('bye_time', None)
+        kwargs.pop('termination_reason', None)
+        kwargs.pop('duration', None)
         
         now = datetime.now()
         updates = {
@@ -443,6 +465,12 @@ class CDRWriter:
         """记录呼叫失败"""
         session = self.end_session(call_id)
         
+        # 移除可能冲突的参数（避免重复传递）
+        kwargs.pop('status_code', None)
+        kwargs.pop('status_text', None)
+        kwargs.pop('reason', None)
+        kwargs.pop('termination_reason', None)
+        
         self._update_or_create_record(
             call_id=call_id,
             call_state="FAILED",
@@ -457,6 +485,10 @@ class CDRWriter:
     def record_call_cancel(self, call_id: str, **kwargs):
         """记录呼叫取消（CANCEL）"""
         session = self.end_session(call_id)
+        
+        # 移除可能冲突的参数（避免重复传递）
+        kwargs.pop('call_state', None)
+        kwargs.pop('termination_reason', None)
         
         self._update_or_create_record(
             call_id=call_id,
@@ -564,9 +596,38 @@ _cdr_instance: Optional[CDRWriter] = None
 
 
 def init_cdr(base_dir: str = "CDR", merge_mode: bool = True) -> CDRWriter:
-    """初始化全局 CDR 实例"""
+    """
+    初始化全局 CDR 实例（单例模式）
+    
+    Args:
+        base_dir: CDR 文件根目录
+        merge_mode: 是否启用合并模式
+    
+    Returns:
+        CDRWriter 实例
+    
+    Note:
+        如果实例已存在，直接返回现有实例，不会重复创建
+    """
     global _cdr_instance
+    
+    # 单例检查：如果实例已存在，直接返回
+    if _cdr_instance is not None:
+        return _cdr_instance
+    
+    # 创建新实例
     _cdr_instance = CDRWriter(base_dir, merge_mode=merge_mode)
+    
+    # 只在真正创建实例时输出日志
+    try:
+        # 尝试获取日志记录器
+        from sipcore.logger import get_logger
+        log = get_logger()
+        log.info("[CDR] CDR system initialized")
+    except:
+        # 如果日志系统未初始化，使用 print
+        print("[CDR] CDR system initialized")
+    
     return _cdr_instance
 
 

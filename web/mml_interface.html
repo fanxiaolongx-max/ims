@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMS MML 管理终端</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        #main-area {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        /* 拖动分隔条样式 */
+        .resizer {
+            background: #3e3e42;
+            cursor: col-resize;
+            width: 4px;
+            position: relative;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .resizer:hover {
+            background: #667eea;
+        }
+        
+        .resizer:hover .toggle-panel-btn {
+            opacity: 1;
+        }
+        
+        .resizer-horizontal {
+            cursor: row-resize;
+            height: 4px;
+            width: 100%;
+        }
+
+        /* 头部 */
+        #header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        #header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        #header .status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* 左侧命令树 */
+        #command-tree-panel {
+            background: #252526;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 280px;
+            min-width: 200px;
+            max-width: 600px;
+            transition: width 0.3s ease, min-width 0.3s ease;
+        }
+        
+        #command-tree-panel.collapsed {
+            display: none;
+        }
+
+        .tree-header {
+            padding: 15px;
+            background: #2d2d30;
+            border-bottom: 1px solid #3e3e42;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .tree-header h3 {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+
+        #tree-search {
+            width: 100%;
+            padding: 8px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            border-radius: 3px;
+            color: #d4d4d4;
+            font-size: 12px;
+        }
+
+        #tree-search:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .tree-category {
+            margin: 5px 0;
+        }
+
+        .category-header {
+            padding: 10px 15px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .category-header:hover {
+            background: #2d2d30;
+        }
+
+        .category-icon {
+            font-size: 16px;
+        }
+
+        .category-name {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .category-toggle {
+            margin-left: auto;
+            transition: transform 0.2s;
+        }
+
+        .category-toggle.expanded {
+            transform: rotate(90deg);
+        }
+
+        .category-commands {
+            display: none;
+            background: #1e1e1e;
+        }
+
+        .category-commands.show {
+            display: block;
+        }
+
+        .command-item {
+            padding: 8px 15px 8px 40px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .command-item:hover {
+            background: #094771;
+        }
+
+        .command-item.selected {
+            background: #0e639c;
+        }
+
+        /* 中间面板 */
+        #middle-panel {
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+            min-height: 0;
+            flex: 1;
+            min-width: 400px;
+        }
+
+        /* 输出区域 */
+        #output-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+            min-height: 0;
+        }
+        
+        /* 输出页签 */
+        #output-tabs {
+            display: flex;
+            gap: 2px;
+            background: #1e1e1e;
+            padding: 5px 15px 0;
+            border-bottom: 1px solid #3e3e42;
+            flex-shrink: 0;
+        }
+        
+        .output-tab {
+            background: #2d2d30;
+            color: #969696;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .output-tab:hover {
+            background: #3c3c3c;
+            color: #cccccc;
+        }
+        
+        .output-tab.active {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            border-bottom-color: #4ec9b0;
+        }
+        
+        /* 输出内容区域 */
+        #output-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            min-height: 0;
+        }
+        
+        /* 历史记录区域 */
+        #history-content {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            min-height: 0;
+        }
+        
+        #history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            font-size: 13px;
+            min-height: 0;
+        }
+        
+        #history-detail {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            font-size: 13px;
+            background: #1a1a1a;
+            border-top: 1px solid #3e3e42;
+            display: none;
+            min-height: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.6;
+        }
+        
+        #history-detail.show {
+            display: block;
+        }
+        
+        #history-detail .output-entry {
+            color: #d4d4d4;
+        }
+        
+        .history-item {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 4px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .history-item:hover {
+            background: #3c3c3c;
+            border-color: #4ec9b0;
+        }
+        
+        .history-item.selected {
+            background: #3c3c3c;
+            border-color: #4ec9b0;
+        }
+        
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .history-item-command {
+            color: #4ec9b0;
+            font-weight: 500;
+        }
+        
+        .history-item-time {
+            color: #858585;
+            font-size: 11px;
+        }
+        
+        .history-item-result {
+            color: #d4d4d4;
+            font-size: 12px;
+            opacity: 0.8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #output-content {
+            color: #d4d4d4;
+        }
+
+        .output-entry {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .output-command {
+            color: #4ec9b0;
+            margin-bottom: 5px;
+        }
+
+        .output-time {
+            color: #858585;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .output-result {
+            color: #d4d4d4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-error {
+            color: #f48771;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-success {
+            color: #4ade80;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* 输入区域 */
+        #input-area {
+            background: #252526;
+            padding: 10px 15px;
+            height: 33vh;  /* 默认占页面高度的三分之一 */
+            min-height: 50px;
+            max-height: 600px;  /* 增加到 600px，允许更多参数显示 */
+            display: flex;  /* 使用 flex 布局 */
+            flex-direction: column;  /* 垂直排列 */
+        }
+
+        #command-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            border-radius: 3px;
+            padding: 5px 10px;
+            position: relative;
+            flex-shrink: 0;  /* 防止命令输入框被压缩 */
+        }
+        
+        /* 命令自动补全下拉菜单 */
+        #autocomplete-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: #2d2d30;
+            border: 1px solid #555;
+            border-bottom: none;
+            border-radius: 3px 3px 0 0;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .autocomplete-item {
+            padding: 8px 15px;
+            cursor: pointer;
+            color: #d4d4d4;
+            border-bottom: 1px solid #3e3e42;
+        }
+        
+        .autocomplete-item:hover,
+        .autocomplete-item.selected {
+            background: #094771;
+        }
+        
+        .autocomplete-item .command-name {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+        
+        .autocomplete-item .command-desc {
+            color: #858585;
+            font-size: 11px;
+            margin-left: 10px;
+        }
+
+        #command-input-wrapper.focused {
+            border-color: #007acc;
+        }
+        
+        /* 参数输入表单样式 */
+        #param-form {
+            margin-top: 10px;
+            background: #2d2d30;
+            border: 1px solid #555;
+            border-radius: 3px;
+            padding: 10px;
+            flex: 1;  /* 自动填充 input-area 的剩余空间 */
+            min-height: 0;  /* 允许缩小到内容高度 */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;  /* 保持滚动条 */
+        }
+        
+        /* 参数表单拖动条（已禁用，因为使用 flex: 1 自动填充） */
+        .param-form-resizer {
+            display: none;  /* 隐藏拖动条 */
+        }
+        
+        .param-form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #3e3e42;
+        }
+        
+        .param-form-title {
+            color: #4ec9b0;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .param-form-close {
+            background: none;
+            border: none;
+            color: #858585;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            border-radius: 3px;
+        }
+        
+        .param-form-close:hover {
+            background: #3e3e42;
+            color: #d4d4d4;
+        }
+        
+        #param-form-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            padding-top: 5px;
+            /* 移除 overflow-y 和 flex: 1，让内容自适应高度 */
+        }
+        
+        .param-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .param-field label {
+            color: #d4d4d4;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+        
+        .param-field .required {
+            color: #f48771;
+        }
+        
+        .param-field input,
+        .param-field select {
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #d4d4d4;
+            padding: 6px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        .param-field input:focus,
+        .param-field select:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .input-prompt {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+
+        #command-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #d4d4d4;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .execute-btn {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .execute-btn:hover {
+            background: #1177bb;
+        }
+
+        .execute-btn:active {
+            background: #0d5789;
+        }
+
+        /* 右侧日志面板 */
+        #log-panel {
+            background: #252526;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            width: 350px;
+            min-width: 250px;
+            max-width: 800px;
+            transition: width 0.3s ease, min-width 0.3s ease;
+        }
+        
+        #log-panel.collapsed {
+            display: none;
+        }
+        
+        .resizer.collapsed {
+            display: none;
+        }
+        
+        /* 浮动展开按钮 */
+        .floating-expand-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: #2d2d30;
+            border: 1px solid #4ec9b0;
+            color: #4ec9b0;
+            padding: 8px 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            opacity: 0.3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+        
+        .floating-expand-btn:hover {
+            background: #4ec9b0;
+            color: #1e1e1e;
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        #left-expand-btn {
+            left: 0;
+        }
+        
+        #right-expand-btn {
+            right: 0;
+        }
+        
+        #left-expand-btn.show,
+        #right-expand-btn.show {
+            display: block;
+        }
+
+        .log-header {
+            padding: 15px;
+            background: #2d2d30;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-header h3 {
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        .log-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .log-btn {
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #d4d4d4;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .log-btn:hover {
+            background: #4a4a4a;
+        }
+        
+        /* 收起/展开按钮样式（在拖动条上）*/
+        .toggle-panel-btn {
+            background: #2d2d30;
+            border: 1px solid #4ec9b0;
+            color: #4ec9b0;
+            padding: 4px 2px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 10px;
+            line-height: 1;
+            transition: all 0.2s ease;
+            opacity: 0.2;
+            position: absolute;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            width: 16px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toggle-panel-btn:hover {
+            background: #4ec9b0;
+            color: #1e1e1e;
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        /* 补全按钮样式 */
+        /* 历史导航按钮 */
+        .history-nav-btn {
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #cccccc;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+        }
+        
+        .history-nav-btn:hover:not(:disabled) {
+            background: #4a4a4a;
+            border-color: #4ec9b0;
+            color: #4ec9b0;
+        }
+        
+        .history-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .parse-btn {
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #9cdcfe;
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .parse-btn:hover {
+            background: #4a4a4a;
+            border-color: #9cdcfe;
+            transform: translateY(-1px);
+        }
+        
+        .parse-btn:active {
+            transform: translateY(0);
+        }
+
+        #log-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 1.5;
+            min-height: 0; /* 确保 flex 子元素可以滚动 */
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 3px 5px;
+            border-left: 2px solid transparent;
+        }
+
+        .log-entry.DEBUG {
+            color: #858585;
+            border-left-color: #858585;
+        }
+
+        .log-entry.INFO {
+            color: #4ec9b0;
+            border-left-color: #4ec9b0;
+        }
+
+        .log-entry.WARNING {
+            color: #dcdcaa;
+            border-left-color: #dcdcaa;
+        }
+
+        .log-entry.ERROR {
+            color: #f48771;
+            border-left-color: #f48771;
+        }
+
+        .log-time {
+            color: #858585;
+            margin-right: 5px;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #424242;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4e4e4e;
+        }
+
+        /* 加载动画 */
+        .loading {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #4ec9b0;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            #command-tree-panel {
+                width: 250px;
+            }
+            #log-panel {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- 头部 -->
+        <div id="header">
+            <h1>🖥️ IMS MML 管理终端</h1>
+            <div class="status">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>服务运行中</span>
+                </div>
+                <div class="status-indicator">
+                    <span id="time"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 浮动展开按钮 -->
+        <button class="floating-expand-btn" id="left-expand-btn" title="展开命令目录">▶</button>
+        <button class="floating-expand-btn" id="right-expand-btn" title="展开日志面板">◀</button>
+        
+        <!-- 主区域 -->
+        <div id="main-area">
+        <!-- 左侧命令树 -->
+        <div id="command-tree-panel">
+            <div class="tree-header">
+                <h3>📚 命令目录</h3>
+                <input type="text" id="tree-search" placeholder="搜索命令...">
+            </div>
+            <div id="command-tree"></div>
+        </div>
+
+        <!-- 左侧拖动分隔条 -->
+        <div class="resizer" id="left-resizer">
+            <button class="toggle-panel-btn" id="toggle-left-panel" title="收起/展开命令目录">◀</button>
+        </div>
+
+        <!-- 中间面板 -->
+        <div id="middle-panel">
+            <!-- 输出区域 -->
+            <div id="output-area">
+                <!-- 页签 -->
+                <div id="output-tabs">
+                    <button class="output-tab active" id="current-tab">当前回显</button>
+                    <button class="output-tab" id="history-tab">历史记录</button>
+                </div>
+                
+                <!-- 当前回显内容 -->
+                <div id="output-content">
+                    <div class="output-entry">
+                        <div class="output-time">系统时间: <span id="welcome-time"></span></div>
+                        <div class="output-result">
+欢迎使用 IMS MML 管理终端
+=================================================================
+
+命令格式: VERB OBJECT [PARAM1=VALUE1] [PARAM2=VALUE2] ...
+
+快速开始:
+  DSP SYSINFO           - 查看系统信息
+  DSP REG ALL           - 查看注册列表
+  DSP CALL ACTIVE       - 查看活跃呼叫
+  HELP ALL              - 显示所有命令帮助
+
+提示: 左侧可选择命令，或在下方直接输入
+=================================================================
+                        </div>
+                    </div>
+                    <!-- 滚动锚点：用于可靠的自动滚动 -->
+                    <div id="output-anchor" style="height: 1px;"></div>
+                </div>
+                
+                <!-- 历史记录内容 -->
+                <div id="history-content">
+                    <!-- 历史列表 -->
+                    <div id="history-list">
+                        <p style="color: #858585; text-align: center; margin-top: 50px;">暂无历史记录</p>
+                    </div>
+                    <!-- 历史详情 -->
+                    <div id="history-detail">
+                        <p style="color: #858585; text-align: center; margin-top: 50px;">请选择一条历史记录查看详情</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 水平拖动分隔条 -->
+            <div class="resizer resizer-horizontal" id="horizontal-resizer"></div>
+
+            <!-- 输入区域 -->
+            <div id="input-area">
+                <div id="command-input-wrapper">
+                    <!-- 自动补全下拉框 -->
+                    <div id="autocomplete-dropdown"></div>
+                    <span class="input-prompt">MML></span>
+                    <input type="text" id="command-input" placeholder="输入 MML 命令..." autocomplete="off">
+                    <button class="history-nav-btn" id="history-prev-btn" title="上一条历史命令 (↑)">←</button>
+                    <button class="history-nav-btn" id="history-next-btn" title="下一条历史命令 (↓)">→</button>
+                    <button class="parse-btn" id="parse-btn" title="解析命令并补全到参数表单">补全</button>
+                    <button class="execute-btn" id="execute-btn">执行</button>
+                </div>
+                <!-- 参数输入表单（根据命令自动显示/隐藏） -->
+                <div id="param-form" style="display: none;">
+                    <!-- 拖动条 -->
+                    <div class="param-form-resizer" id="param-form-resizer"></div>
+                    <div class="param-form-header">
+                        <span class="param-form-title">命令参数</span>
+                    </div>
+                    <div id="param-form-fields"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧拖动分隔条 -->
+        <div class="resizer" id="right-resizer">
+            <button class="toggle-panel-btn" id="toggle-right-panel" title="收起/展开日志面板">▶</button>
+        </div>
+
+        <!-- 右侧日志面板 -->
+        <div id="log-panel">
+            <div class="log-header">
+                <h3>📋 实时日志</h3>
+                <div class="log-controls">
+                    <button class="log-btn" id="clear-log-btn">清空</button>
+                    <button class="log-btn" id="pause-log-btn">暂停</button>
+                </div>
+            </div>
+            <div id="log-content">
+                <div class="log-entry INFO">
+                    <span class="log-time" id="log-start-time"></span>
+                    <span>日志系统已启动</span>
+                </div>
+                <!-- 滚动锚点：用于可靠的自动滚动 -->
+                <div id="log-anchor" style="height: 1px;"></div>
+            </div>
+        </div>
+        </div> <!-- 结束 main-area -->
+    </div> <!-- 结束 container -->
+
+    <script>
+        // 全局变量
+        let commandHistory = [];
+        let historyIndex = -1;
+        let logPaused = false;
+        let ws = null;
+        let autocompleteIndex = -1;
+        let allCommands = [];  // 存储所有命令用于自动补全
+
+        // 初始化时间显示
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleString('zh-CN', { hour12: false });
+            document.getElementById('time').textContent = timeStr;
+            
+            if (!document.getElementById('welcome-time').textContent) {
+                document.getElementById('welcome-time').textContent = timeStr;
+                document.getElementById('log-start-time').textContent = timeStr;
+            }
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 加载命令树
+        async function loadCommandTree() {
+            try {
+                const response = await fetch('/api/command_tree');
+                const tree = await response.json();
+                renderCommandTree(tree);
+                
+                // 收集所有命令用于自动补全
+                allCommands = [];
+                for (const [category, data] of Object.entries(tree)) {
+                    for (const [name, cmd] of Object.entries(data.commands)) {
+                        allCommands.push({
+                            name: name,
+                            command: cmd,
+                            category: category
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error('加载命令树失败:', error);
+            }
+        }
+
+        // 渲染命令树
+        function renderCommandTree(tree) {
+            const container = document.getElementById('command-tree');
+            container.innerHTML = '';
+
+            for (const [category, data] of Object.entries(tree)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'tree-category';
+
+                // 分类头部
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.innerHTML = `
+                    <span class="category-icon">${data.icon || '📁'}</span>
+                    <span class="category-name">${category}</span>
+                    <span class="category-toggle">▶</span>
+                `;
+
+                // 命令列表
+                const commandsDiv = document.createElement('div');
+                commandsDiv.className = 'category-commands';
+
+                for (const [name, cmd] of Object.entries(data.commands)) {
+                    const cmdItem = document.createElement('div');
+                    cmdItem.className = 'command-item';
+                    cmdItem.textContent = name;
+                    cmdItem.title = cmd;
+                    cmdItem.dataset.command = cmd;
+
+                    cmdItem.addEventListener('click', () => {
+                        document.getElementById('command-input').value = cmd;
+                        document.querySelectorAll('.command-item').forEach(item => {
+                            item.classList.remove('selected');
+                        });
+                        cmdItem.classList.add('selected');
+                        document.getElementById('command-input').focus();
+                        
+                        // 触发参数表单检查
+                        checkAndShowParamForm();
+                    });
+
+                    commandsDiv.appendChild(cmdItem);
+                }
+
+                // 折叠/展开
+                header.addEventListener('click', () => {
+                    const toggle = header.querySelector('.category-toggle');
+                    if (commandsDiv.classList.contains('show')) {
+                        commandsDiv.classList.remove('show');
+                        toggle.classList.remove('expanded');
+                    } else {
+                        commandsDiv.classList.add('show');
+                        toggle.classList.add('expanded');
+                    }
+                });
+
+                categoryDiv.appendChild(header);
+                categoryDiv.appendChild(commandsDiv);
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // 历史记录详细信息（包含命令和结果）
+        const commandHistoryDetails = [];
+        
+        // 执行命令
+        async function executeCommand() {
+            const input = document.getElementById('command-input');
+            const command = input.value.trim();
+
+            if (!command) return;
+
+            // 添加到历史
+            commandHistory.unshift(command);
+            historyIndex = -1;
+
+            // 显示命令
+            appendOutput(command, '执行中...', 'pending');
+
+            try {
+                const response = await fetch('/api/execute', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ command })
+                });
+
+                const result = await response.json();
+
+                // 显示结果
+                appendOutput(command, result.output, result.retcode === 0 ? 'success' : 'error', result.timestamp);
+                
+                // 保存到历史记录详情
+                commandHistoryDetails.unshift({
+                    id: Date.now(),
+                    command: command,
+                    output: result.output,
+                    status: result.retcode === 0 ? 'success' : 'error',
+                    timestamp: result.timestamp || new Date().toLocaleString('zh-CN')
+                });
+                
+                // 更新历史记录显示
+                updateHistoryDisplay();
+                
+                // 更新历史按钮状态
+                updateHistoryButtons();
+
+                // 清空输入
+                input.value = '';
+
+            } catch (error) {
+                appendOutput(command, `执行失败: ${error.message}`, 'error');
+            }
+        }
+
+        // 添加输出
+        function appendOutput(command, output, type, timestamp) {
+            const outputContent = document.getElementById('output-content');
+            const outputAnchor = document.getElementById('output-anchor');
+            
+            const entry = document.createElement('div');
+            entry.className = 'output-entry';
+
+            const timeStr = timestamp || new Date().toLocaleString('zh-CN', { hour12: false });
+
+            entry.innerHTML = `
+                <div class="output-command">MML> ${escapeHtml(command)}</div>
+                <div class="output-time">${timeStr}</div>
+                <div class="output-result ${type === 'error' ? 'output-error' : type === 'success' ? 'output-success' : ''}">${escapeHtml(output)}</div>
+            `;
+
+            // 插入到锚点之前
+            outputContent.insertBefore(entry, outputAnchor);
+
+            // 限制输出条数，保留最近 1000 条（防止页面卡死）
+            const maxEntries = 1000;
+            const entries = outputContent.querySelectorAll('.output-entry');
+            if (entries.length > maxEntries) {
+                // 删除最旧的条目（从前面开始删除）
+                const deleteCount = entries.length - maxEntries;
+                for (let i = 0; i < deleteCount; i++) {
+                    entries[i].remove();
+                }
+            }
+
+            // 滚动到底部（修正：滚动 outputContent 而不是 outputArea）
+            setTimeout(() => {
+                outputContent.scrollTop = outputContent.scrollHeight;
+            }, 0);
+        }
+
+        // HTML 转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 添加日志（支持中文日志和WebSocket日志）
+        function appendLog(message, level = 'INFO') {
+            if (logPaused) return;
+
+            const logContent = document.getElementById('log-content');
+            const logAnchor = document.getElementById('log-anchor');
+            
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${level}`;
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
+
+            // 将英文日志转换为中文（可选）
+            const displayMessage = translateLogMessage(message);
+
+            entry.innerHTML = `
+                <span class="log-time">${timeStr}</span>
+                <span>${escapeHtml(displayMessage)}</span>
+            `;
+
+            // 插入到锚点之前
+            logContent.insertBefore(entry, logAnchor);
+
+            // 限制日志条数（但保留锚点）
+            const entries = logContent.querySelectorAll('.log-entry');
+            while (entries.length > 500) {
+                entries[0].remove();
+            }
+
+            // 滚动到底部
+            if (!logPaused) {
+                setTimeout(() => {
+                    logContent.scrollTop = logContent.scrollHeight;
+                }, 0);
+            }
+        }
+        
+        // 将英文日志转换为中文描述
+        function translateLogMessage(message) {
+            const translations = {
+                'UDP server listening on': 'UDP 服务器监听',
+                'Started all SIP timers': '所有 SIP 定时器已启动',
+                'CDR system initialized': 'CDR 话单系统已初始化',
+                'WebSocket connection established': 'WebSocket 连接已建立',
+                'REGISTER': '注册',
+                'INVITE': '呼叫邀请',
+                'BYE': '结束通话',
+                'MESSAGE': '消息',
+                'ACK': '确认',
+                'CANCEL': '取消',
+                'OPTIONS': '选项查询',
+                'Received': '接收',
+                'Sent': '发送',
+                'Failed': '失败',
+                'Success': '成功',
+                'Error': '错误',
+                'Warning': '警告',
+                'Info': '信息'
+            };
+            
+            let translated = message;
+            for (const [en, cn] of Object.entries(translations)) {
+                translated = translated.replace(new RegExp(en, 'gi'), cn);
+            }
+            
+            return translated;
+        }
+
+        // 搜索命令
+        document.getElementById('tree-search').addEventListener('input', (e) => {
+            const keyword = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.command-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const cmd = item.dataset.command.toLowerCase();
+
+                if (text.includes(keyword) || cmd.includes(keyword)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // 输入框焦点
+        const inputWrapper = document.getElementById('command-input-wrapper');
+        const commandInput = document.getElementById('command-input');
+
+        commandInput.addEventListener('focus', () => {
+            inputWrapper.classList.add('focused');
+        });
+
+        commandInput.addEventListener('blur', () => {
+            inputWrapper.classList.remove('focused');
+        });
+
+        // 命令历史
+        commandInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                executeCommand();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    commandInput.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    commandInput.value = commandHistory[historyIndex];
+                } else if (historyIndex === 0) {
+                    historyIndex = -1;
+                    commandInput.value = '';
+                }
+            }
+        });
+
+        // 执行按钮
+        document.getElementById('execute-btn').addEventListener('click', executeCommand);
+        
+        // 补全按钮 - 解析命令并填充到参数表单
+        document.getElementById('parse-btn').addEventListener('click', () => {
+            const command = document.getElementById('command-input').value.trim().toUpperCase();
+            
+            if (!command) {
+                appendOutput('', '请先输入 MML 命令', 'error');
+                return;
+            }
+            
+            // 检查是否匹配已配置的命令
+            let matchedConfig = null;
+            for (const [cmdPattern, config] of Object.entries(commandParamConfigs)) {
+                if (command.startsWith(cmdPattern)) {
+                    matchedConfig = { pattern: cmdPattern, config };
+                    break;
+                }
+            }
+            
+            if (matchedConfig) {
+                // 显示参数表单
+                showParamForm(matchedConfig.pattern, matchedConfig.config);
+                
+                // 从命令文本解析参数并填充到表单
+                parseCommandToForm(command, matchedConfig.pattern);
+                
+                appendOutput('补全', `命令已解析并填充到参数表单: ${command}`, 'success');
+            } else {
+                appendOutput('补全', `该命令不支持参数表单: ${command}`, 'error');
+            }
+        });
+        
+        // 左侧边栏收起/展开
+        let leftPanelCollapsed = false;
+        const leftExpandBtn = document.getElementById('left-expand-btn');
+        
+        function toggleLeftPanel() {
+            const panel = document.getElementById('command-tree-panel');
+            const resizer = document.getElementById('left-resizer');
+            const btn = document.getElementById('toggle-left-panel');
+            
+            if (leftPanelCollapsed) {
+                // 展开
+                panel.classList.remove('collapsed');
+                resizer.classList.remove('collapsed');
+                leftExpandBtn.classList.remove('show');
+                btn.textContent = '◀';
+                btn.title = '收起命令目录';
+                leftPanelCollapsed = false;
+            } else {
+                // 收起
+                panel.classList.add('collapsed');
+                resizer.classList.add('collapsed');
+                leftExpandBtn.classList.add('show');
+                btn.textContent = '▶';
+                btn.title = '展开命令目录';
+                leftPanelCollapsed = true;
+            }
+        }
+        
+        document.getElementById('toggle-left-panel').addEventListener('click', toggleLeftPanel);
+        leftExpandBtn.addEventListener('click', toggleLeftPanel);
+        
+        // 右侧边栏收起/展开
+        let rightPanelCollapsed = false;
+        const rightExpandBtn = document.getElementById('right-expand-btn');
+        
+        function toggleRightPanel() {
+            const panel = document.getElementById('log-panel');
+            const resizer = document.getElementById('right-resizer');
+            const btn = document.getElementById('toggle-right-panel');
+            
+            if (rightPanelCollapsed) {
+                // 展开
+                panel.classList.remove('collapsed');
+                resizer.classList.remove('collapsed');
+                rightExpandBtn.classList.remove('show');
+                btn.textContent = '▶';
+                btn.title = '收起日志面板';
+                rightPanelCollapsed = false;
+            } else {
+                // 收起
+                panel.classList.add('collapsed');
+                resizer.classList.add('collapsed');
+                rightExpandBtn.classList.add('show');
+                btn.textContent = '◀';
+                btn.title = '展开日志面板';
+                rightPanelCollapsed = true;
+            }
+        }
+        
+        document.getElementById('toggle-right-panel').addEventListener('click', toggleRightPanel);
+        rightExpandBtn.addEventListener('click', toggleRightPanel);
+
+        // 日志控制
+        document.getElementById('clear-log-btn').addEventListener('click', () => {
+            const logContent = document.getElementById('log-content');
+            logContent.innerHTML = '';
+            appendLog('日志已清空', 'INFO');
+        });
+
+        document.getElementById('pause-log-btn').addEventListener('click', (e) => {
+            logPaused = !logPaused;
+            e.target.textContent = logPaused ? '继续' : '暂停';
+            appendLog(logPaused ? '日志已暂停' : '日志已继续', 'INFO');
+        });
+
+        // WebSocket 连接（实时日志）
+        function connectWebSocket() {
+            try {
+                ws = new WebSocket('ws://localhost:8889');
+
+                ws.onopen = () => {
+                    appendLog('WebSocket 连接已建立', 'INFO');
+                };
+
+                ws.onmessage = (event) => {
+                    // 服务器发送纯文本格式: [LEVEL] message
+                    const text = event.data;
+                    
+                    // 提取日志级别和消息
+                    const match = text.match(/^\[(\w+)\]\s*(.+)$/);
+                    if (match) {
+                        const level = match[1];  // INFO, DEBUG, WARNING, ERROR
+                        const message = match[2];
+                        appendLog(message, level);
+                    } else {
+                        // 如果格式不匹配，直接显示
+                        appendLog(text, 'INFO');
+                    }
+                };
+
+                ws.onerror = () => {
+                    appendLog('WebSocket 连接错误（实时日志不可用）', 'WARNING');
+                };
+
+                ws.onclose = () => {
+                    appendLog('WebSocket 连接已关闭', 'WARNING');
+                };
+            } catch (error) {
+                console.error('WebSocket 不可用:', error);
+            }
+        }
+
+        // 面板拖动调整大小功能
+        function initResizers() {
+            // 左侧面板拖动
+            const leftResizer = document.getElementById('left-resizer');
+            const leftPanel = document.getElementById('command-tree-panel');
+            
+            leftResizer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                const startX = e.clientX;
+                const startWidth = leftPanel.offsetWidth;
+                let rafId = null;
+                let currentWidth = startWidth;
+                
+                function onMouseMove(e) {
+                    const newWidth = startWidth + (e.clientX - startX);
+                    // 最小40px（收起状态），最大不限制
+                    if (newWidth >= 40) {
+                        currentWidth = newWidth;
+                        
+                        // 使用 requestAnimationFrame 优化性能
+                        if (rafId) {
+                            cancelAnimationFrame(rafId);
+                        }
+                        rafId = requestAnimationFrame(() => {
+                            leftPanel.style.width = currentWidth + 'px';
+                        });
+                    }
+                }
+                
+                function onMouseUp() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                }
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+            
+            // 右侧面板拖动
+            const rightResizer = document.getElementById('right-resizer');
+            const rightPanel = document.getElementById('log-panel');
+            
+            rightResizer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                const startX = e.clientX;
+                const startWidth = rightPanel.offsetWidth;
+                let rafId = null;
+                let currentWidth = startWidth;
+                
+                function onMouseMove(e) {
+                    const newWidth = startWidth - (e.clientX - startX);
+                    // 最小40px（收起状态），最大不限制
+                    if (newWidth >= 40) {
+                        currentWidth = newWidth;
+                        
+                        // 使用 requestAnimationFrame 优化性能
+                        if (rafId) {
+                            cancelAnimationFrame(rafId);
+                        }
+                        rafId = requestAnimationFrame(() => {
+                            rightPanel.style.width = currentWidth + 'px';
+                        });
+                    }
+                }
+                
+                function onMouseUp() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                }
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+            
+            // 水平拖动（输出区域和输入区域）
+            const horizontalResizer = document.getElementById('horizontal-resizer');
+            const outputArea = document.getElementById('output-area');
+            const inputArea = document.getElementById('input-area');
+            
+            horizontalResizer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                const startY = e.clientY;
+                const startHeight = inputArea.offsetHeight;
+                let rafId = null;
+                let currentHeight = startHeight;
+                
+                function onMouseMove(e) {
+                    const newHeight = startHeight - (e.clientY - startY);
+                    if (newHeight >= 50 && newHeight <= 600) {
+                        currentHeight = newHeight;
+                        
+                        // 使用 requestAnimationFrame 优化性能
+                        if (rafId) {
+                            cancelAnimationFrame(rafId);
+                        }
+                        rafId = requestAnimationFrame(() => {
+                            inputArea.style.height = currentHeight + 'px';
+                            // 参数表单使用 flex: 1 自动填充剩余空间，无需手动调整
+                        });
+                    }
+                }
+                
+                function onMouseUp() {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                }
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+        
+        // 命令参数表单配置
+        const commandParamConfigs = {
+            // 日志级别设置命令（支持两种格式）
+            'SET LOGLEVEL': [
+                { name: 'LEVEL', label: '日志级别', required: true, type: 'select', options: ['DEBUG', 'INFO', 'WARNING', 'ERROR'] }
+            ],
+            'SET LOG': [
+                { name: 'LEVEL', label: '日志级别', required: true, type: 'select', options: ['DEBUG', 'INFO', 'WARNING', 'ERROR'] }
+            ],
+            // 查询注册命令
+            'DSP REG': [
+                { name: 'URI', label: '用户URI', required: false, placeholder: '如: 1001 或 sip:1001@domain' }
+            ],
+            // 强制注销命令
+            'RMV REG': [
+                { name: 'URI', label: '用户URI', required: true, placeholder: '如: 1001 或 sip:1001@domain' },
+                { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
+            ],
+            // 清除所有注册命令
+            'CLR REG': [
+                { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
+            ],
+            // CDR 管理命令
+            'DSP CDR': [
+                { name: 'DATE', label: '日期', required: false, placeholder: '格式: YYYY-MM-DD 或 TODAY，留空为今天' },
+                { name: 'TYPE', label: '记录类型', required: false, type: 'select', options: ['CALL', 'REGISTER', 'MESSAGE', 'OPTIONS'] },
+                { name: 'LIMIT', label: '显示条数', required: false, placeholder: '默认 50 条' }
+            ],
+            'EXP CDR': [
+                { name: 'DATE', label: '日期', required: false, placeholder: '格式: YYYY-MM-DD 或 TODAY，留空为今天' },
+                { name: 'TYPE', label: '记录类型', required: false, type: 'select', options: ['CALL', 'REGISTER', 'MESSAGE', 'OPTIONS'] },
+                { name: 'FORMAT', label: '导出格式', required: false, type: 'select', options: ['CSV'] }
+            ],
+            'CLR CDR': [
+                { name: 'BEFORE', label: '删除此日期之前的数据', required: true, placeholder: '格式: YYYY-MM-DD (至少7天前)' },
+                { name: 'CONFIRM', label: '确认', required: true, type: 'select', options: ['YES', 'NO'] }
+            ],
+            // 查询用户命令
+            'DSP USER': [
+                { name: 'USERNAME', label: '用户名', required: false, placeholder: '留空查询所有用户' },
+                { name: 'STATUS', label: '状态', required: false, type: 'select', options: ['ACTIVE', 'INACTIVE', 'SUSPENDED'] }
+            ],
+            // 支持 ADD USR 和 ADD USER 两种写法
+            'ADD USER': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '如: 1003' },
+                { name: 'PASSWORD', label: '密码', required: true, placeholder: '密码', type: 'password' },
+                { name: 'NAME', label: '显示名称', required: false, placeholder: '如: 用户1003' },
+                { name: 'PHONE', label: '电话号码', required: false, placeholder: '如: 13800001003' },
+                { name: 'EMAIL', label: '邮箱', required: false, placeholder: '如: user@example.com' },
+                { name: 'SERVICE', label: '服务类型', required: false, type: 'select', options: ['BASIC', 'PREMIUM', 'VIP'] }
+            ],
+            'ADD USR': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '如: 1003' },
+                { name: 'PASSWORD', label: '密码', required: true, placeholder: '密码', type: 'password' },
+                { name: 'NAME', label: '显示名称', required: false, placeholder: '如: 用户1003' },
+                { name: 'PHONE', label: '电话号码', required: false, placeholder: '如: 13800001003' },
+                { name: 'EMAIL', label: '邮箱', required: false, placeholder: '如: user@example.com' },
+                { name: 'SERVICE', label: '服务类型', required: false, type: 'select', options: ['BASIC', 'PREMIUM', 'VIP'] }
+            ],
+            'MOD USER': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '如: 1001' },
+                { name: 'PASSWORD', label: '新密码', required: false, placeholder: '留空表示不修改' },
+                { name: 'NAME', label: '显示名称', required: false, placeholder: '留空表示不修改' },
+                { name: 'PHONE', label: '电话号码', required: false, placeholder: '留空表示不修改' },
+                { name: 'EMAIL', label: '邮箱', required: false, placeholder: '留空表示不修改' },
+                { name: 'SERVICE', label: '服务类型', required: false, type: 'select', options: ['BASIC', 'PREMIUM', 'VIP'] },
+                { name: 'STATUS', label: '状态', required: false, type: 'select', options: ['ACTIVE', 'INACTIVE', 'SUSPENDED'] }
+            ],
+            'MOD USR': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '如: 1001' },
+                { name: 'PASSWORD', label: '新密码', required: false, placeholder: '留空表示不修改' },
+                { name: 'NAME', label: '显示名称', required: false, placeholder: '留空表示不修改' },
+                { name: 'PHONE', label: '电话号码', required: false, placeholder: '留空表示不修改' },
+                { name: 'EMAIL', label: '邮箱', required: false, placeholder: '留空表示不修改' },
+                { name: 'SERVICE', label: '服务类型', required: false, type: 'select', options: ['BASIC', 'PREMIUM', 'VIP'] },
+                { name: 'STATUS', label: '状态', required: false, type: 'select', options: ['ACTIVE', 'INACTIVE', 'SUSPENDED'] }
+            ],
+            'RMV USER': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '要删除的用户名' }
+            ],
+            'RMV USR': [
+                { name: 'USERNAME', label: '用户名', required: true, placeholder: '要删除的用户名' }
+            ]
+        };
+        
+        // 动态参数表单功能
+        function initParamForm() {
+            const input = document.getElementById('command-input');
+            const paramForm = document.getElementById('param-form');
+            const paramFields = document.getElementById('param-form-fields');
+            const resizer = document.getElementById('param-form-resizer');
+            
+            // 监听命令输入变化
+            input.addEventListener('input', () => {
+                checkAndShowParamForm();
+            });
+            
+            // 参数表单现在使用 flex: 1 自动填充空间，不再需要独立的拖动调整
+            // 用户可以通过拖动 input-area 顶部的水平分隔条来调整整个输入区域的高度
+        }
+        
+        // 检查并显示参数表单（独立函数，可以被多处调用）
+        function checkAndShowParamForm() {
+            const input = document.getElementById('command-input');
+            const paramForm = document.getElementById('param-form');
+            const command = input.value.trim().toUpperCase();
+            
+            // 检查是否匹配已配置的命令
+            let matchedConfig = null;
+            for (const [cmdPattern, config] of Object.entries(commandParamConfigs)) {
+                if (command.startsWith(cmdPattern)) {
+                    matchedConfig = { pattern: cmdPattern, config };
+                    break;
+                }
+            }
+            
+            if (matchedConfig) {
+                // 显示参数表单
+                showParamForm(matchedConfig.pattern, matchedConfig.config);
+                
+                // 从命令文本解析已有参数
+                parseCommandToForm(command, matchedConfig.pattern);
+            } else {
+                // 没有匹配的命令，隐藏参数表单
+                paramForm.style.display = 'none';
+            }
+        }
+        
+        function showParamForm(cmdPattern, config) {
+            const paramForm = document.getElementById('param-form');
+            const paramFields = document.getElementById('param-form-fields');
+            
+            // 清空现有字段
+            paramFields.innerHTML = '';
+            
+            // 生成参数输入字段
+            config.forEach(field => {
+                const fieldDiv = document.createElement('div');
+                fieldDiv.className = 'param-field';
+                
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                if (field.required) {
+                    const required = document.createElement('span');
+                    required.className = 'required';
+                    required.textContent = ' *';
+                    label.appendChild(required);
+                }
+                
+                let inputElement;
+                if (field.type === 'select' && field.options) {
+                    inputElement = document.createElement('select');
+                    const emptyOption = document.createElement('option');
+                    emptyOption.value = '';
+                    emptyOption.textContent = '-- 请选择 --';
+                    inputElement.appendChild(emptyOption);
+                    
+                    field.options.forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt;
+                        option.textContent = opt;
+                        inputElement.appendChild(option);
+                    });
+                } else {
+                    inputElement = document.createElement('input');
+                    inputElement.type = field.type || 'text';
+                    inputElement.placeholder = field.placeholder || '';
+                }
+                
+                inputElement.dataset.paramName = field.name;
+                inputElement.dataset.required = field.required;
+                
+                // 监听参数输入变化，更新命令文本
+                inputElement.addEventListener('input', () => {
+                    updateCommandFromForm(cmdPattern);
+                });
+                
+                fieldDiv.appendChild(label);
+                fieldDiv.appendChild(inputElement);
+                paramFields.appendChild(fieldDiv);
+            });
+            
+            paramForm.style.display = 'flex';
+            
+            // 参数表单现在使用 flex: 1 自动填充 input-area 剩余空间
+            // 不再需要手动设置高度，overflow-y: auto 会自动显示滚动条
+        }
+        
+        function parseCommandToForm(command, cmdPattern) {
+            // 从命令文本解析参数
+            const paramFields = document.getElementById('param-form-fields');
+            const inputs = paramFields.querySelectorAll('input, select');
+            
+            // 解析参数：USERNAME=1003 PASSWORD=1003 等
+            const paramRegex = /(\w+)=([^\s]+)/g;
+            const params = {};
+            let match;
+            while ((match = paramRegex.exec(command)) !== null) {
+                params[match[1]] = match[2];
+            }
+            
+            // 更新表单字段
+            inputs.forEach(input => {
+                const paramName = input.dataset.paramName;
+                if (params[paramName]) {
+                    input.value = params[paramName];
+                }
+            });
+        }
+        
+        function updateCommandFromForm(cmdPattern) {
+            const paramFields = document.getElementById('param-form-fields');
+            const inputs = paramFields.querySelectorAll('input, select');
+            const commandInput = document.getElementById('command-input');
+            
+            // 收集参数
+            const params = [];
+            inputs.forEach(input => {
+                const paramName = input.dataset.paramName;
+                const value = input.value.trim();
+                
+                if (value) {
+                    params.push(`${paramName}=${value}`);
+                }
+            });
+            
+            // 更新命令文本
+            let newCommand = cmdPattern;
+            if (params.length > 0) {
+                newCommand += ' ' + params.join(' ');
+            }
+            
+            commandInput.value = newCommand;
+        }
+        
+        // 命令自动补全功能
+        function initAutocomplete() {
+            const input = document.getElementById('command-input');
+            const dropdown = document.getElementById('autocomplete-dropdown');
+            
+            input.addEventListener('input', () => {
+                const value = input.value.trim().toUpperCase();
+                
+                if (value.length === 0) {
+                    dropdown.style.display = 'none';
+                    autocompleteIndex = -1;
+                    return;
+                }
+                
+                // 查找匹配的命令
+                const matches = allCommands.filter(cmd => {
+                    return cmd.command.toUpperCase().includes(value) ||
+                           cmd.name.toUpperCase().includes(value);
+                }).slice(0, 10);  // 最多显示10个
+                
+                if (matches.length === 0) {
+                    dropdown.style.display = 'none';
+                    autocompleteIndex = -1;
+                    return;
+                }
+                
+                // 渲染匹配结果
+                dropdown.innerHTML = '';
+                matches.forEach((cmd, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'autocomplete-item';
+                    item.innerHTML = `
+                        <span class="command-name">${cmd.command}</span>
+                        <span class="command-desc">${cmd.name} - ${cmd.category}</span>
+                    `;
+                    
+                    item.addEventListener('click', () => {
+                        input.value = cmd.command;
+                        dropdown.style.display = 'none';
+                        autocompleteIndex = -1;
+                        input.focus();
+                    });
+                    
+                    dropdown.appendChild(item);
+                });
+                
+                dropdown.style.display = 'block';
+                autocompleteIndex = -1;
+            });
+            
+            // 键盘导航
+            input.addEventListener('keydown', (e) => {
+                const items = dropdown.querySelectorAll('.autocomplete-item');
+                
+                if (items.length === 0) return;
+                
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    autocompleteIndex = Math.min(autocompleteIndex + 1, items.length - 1);
+                    updateAutocompleteSelection(items);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    autocompleteIndex = Math.max(autocompleteIndex - 1, -1);
+                    updateAutocompleteSelection(items);
+                } else if (e.key === 'Enter' && autocompleteIndex >= 0) {
+                    e.preventDefault();
+                    items[autocompleteIndex].click();
+                } else if (e.key === 'Escape') {
+                    dropdown.style.display = 'none';
+                    autocompleteIndex = -1;
+                }
+            });
+            
+            // 点击外部关闭下拉框
+            document.addEventListener('click', (e) => {
+                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                    autocompleteIndex = -1;
+                }
+            });
+        }
+        
+        function updateAutocompleteSelection(items) {
+            items.forEach((item, index) => {
+                if (index === autocompleteIndex) {
+                    item.classList.add('selected');
+                    item.scrollIntoView({ block: 'nearest' });
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+        
+        // 初始化
+        // 页签切换
+        function initOutputTabs() {
+            const currentTab = document.getElementById('current-tab');
+            const historyTab = document.getElementById('history-tab');
+            const outputContent = document.getElementById('output-content');
+            const historyContent = document.getElementById('history-content');
+            
+            currentTab.addEventListener('click', () => {
+                currentTab.classList.add('active');
+                historyTab.classList.remove('active');
+                outputContent.style.display = 'block';
+                historyContent.style.display = 'none';
+            });
+            
+            historyTab.addEventListener('click', () => {
+                historyTab.classList.add('active');
+                currentTab.classList.remove('active');
+                historyContent.style.display = 'flex';
+                outputContent.style.display = 'none';
+            });
+        }
+        
+        // 更新历史记录显示
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('history-list');
+            
+            if (commandHistoryDetails.length === 0) {
+                historyList.innerHTML = '<p style="color: #858585; text-align: center; margin-top: 50px;">暂无历史记录</p>';
+                return;
+            }
+            
+            historyList.innerHTML = '';
+            
+            commandHistoryDetails.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'history-item';
+                itemDiv.dataset.id = item.id;
+                
+                // 截取输出的前80个字符作为预览
+                const preview = item.output.split('\n')[0].substring(0, 80) + 
+                               (item.output.length > 80 ? '...' : '');
+                
+                itemDiv.innerHTML = `
+                    <div class="history-item-header">
+                        <span class="history-item-command">${escapeHtml(item.command)}</span>
+                        <span class="history-item-time">${item.timestamp}</span>
+                    </div>
+                    <div class="history-item-result">${escapeHtml(preview)}</div>
+                `;
+                
+                itemDiv.addEventListener('click', () => {
+                    // 移除之前的选中状态
+                    document.querySelectorAll('.history-item').forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    itemDiv.classList.add('selected');
+                    
+                    // 在历史详情区域显示完整结果
+                    const historyDetail = document.getElementById('history-detail');
+                    historyDetail.classList.add('show');
+                    historyDetail.innerHTML = `
+                        <div class="output-entry">
+                            <div class="output-time">[历史记录] ${item.timestamp}</div>
+                            <div class="output-command">MML> ${escapeHtml(item.command)}</div>
+                            <div class="output-${item.status}">${escapeHtml(item.output)}</div>
+                        </div>
+                    `;
+                    
+                    // 滚动到顶部
+                    historyDetail.scrollTop = 0;
+                });
+                
+                historyList.appendChild(itemDiv);
+            });
+        }
+        
+        // 更新历史按钮状态
+        function updateHistoryButtons() {
+            const prevBtn = document.getElementById('history-prev-btn');
+            const nextBtn = document.getElementById('history-next-btn');
+            
+            prevBtn.disabled = historyIndex >= commandHistory.length - 1;
+            nextBtn.disabled = historyIndex <= -1;
+        }
+        
+        // 历史导航
+        function initHistoryNavigation() {
+            const prevBtn = document.getElementById('history-prev-btn');
+            const nextBtn = document.getElementById('history-next-btn');
+            const input = document.getElementById('command-input');
+            
+            // 上一条命令
+            prevBtn.addEventListener('click', () => {
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                    updateHistoryButtons();
+                }
+            });
+            
+            // 下一条命令
+            nextBtn.addEventListener('click', () => {
+                if (historyIndex > -1) {
+                    historyIndex--;
+                    if (historyIndex === -1) {
+                        input.value = '';
+                    } else {
+                        input.value = commandHistory[historyIndex];
+                    }
+                    updateHistoryButtons();
+                }
+            });
+            
+            // 键盘快捷键：↑ 和 ↓
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    prevBtn.click();
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    nextBtn.click();
+                }
+            });
+            
+            // 初始状态
+            updateHistoryButtons();
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCommandTree();
+            connectWebSocket();
+            initResizers();
+            initAutocomplete();
+            initParamForm();
+            initOutputTabs();
+            initHistoryNavigation();
+        });
+    </script>
+</body>
+</html>
+
