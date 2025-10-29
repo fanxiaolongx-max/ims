@@ -761,13 +761,17 @@ class MMLCommandExecutor:
                 recent = log_lines[-lines:]
                 
                 output = [
-                    "=" * 100,
+                    "=" * 120,
                     f"日志文件: {log_file}",
                     f"最近 {len(recent)} 条日志",
-                    "=" * 100,
+                    "",
+                    "日志格式说明：",
+                    "  时间戳(含毫秒)      级别        文件名:函数名:行号                    消息内容",
+                    "  YYYY-MM-DD HH:MM:SS.mmm [LEVEL   ] [filename.py:function:line]  message",
+                    "=" * 120,
                 ]
                 output.extend([line.rstrip() for line in recent])
-                output.append("=" * 100)
+                output.append("=" * 120)
                 
                 return self._success_response("\n".join(output))
         except Exception as e:
@@ -1405,7 +1409,18 @@ def init_mml_interface(port=8888, server_globals=None):
         # 添加到根日志器
         ws_handler = WebSocketLogHandler()
         ws_handler.setLevel(logging.DEBUG)
-        ws_handler.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
+        
+        # 使用增强的日志格式（业界最佳实践）
+        # 导入 EnhancedFormatter
+        try:
+            from sipcore.logger import EnhancedFormatter
+            log_format = '%(asctime)s [%(levelname)-8s] [%(filename)s:%(funcName)s:%(lineno)d] %(message)s'
+            date_format = '%Y-%m-%d %H:%M:%S'
+            ws_handler.setFormatter(EnhancedFormatter(log_format, date_format))
+        except ImportError:
+            # 降级到标准格式
+            ws_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)-8s] %(message)s', '%Y-%m-%d %H:%M:%S'))
+        
         logging.getLogger().addHandler(ws_handler)
 
 

@@ -499,6 +499,39 @@ class CDRWriter:
         # 呼叫取消，立即写入文件
         self.flush_record(call_id)
     
+    def record_media_change(self, call_id: str, new_call_type: str = None,
+                           new_codec: str = None, **kwargs):
+        """
+        记录媒体变化（re-INVITE/UPDATE）
+        
+        策略：记录最终状态（更新 call_type 和 codec 字段）
+        
+        Args:
+            call_id: Call-ID
+            new_call_type: 新的呼叫类型（如 AUDIO, VIDEO, AUDIO+VIDEO）
+            new_codec: 新的编解码（如 PCMU, PCMA, H264）
+            **kwargs: 其他参数
+        
+        Note:
+            此方法采用"记录最终状态"策略：
+            - 直接更新 call_type 和 codec 字段
+            - 不保留初始值，只保留最新值
+            - 简单高效，适合大多数场景
+        """
+        updates = {}
+        
+        # 只更新非空的字段
+        if new_call_type:
+            updates["call_type"] = new_call_type
+        
+        if new_codec:
+            updates["codec"] = new_codec
+        
+        # 更新现有记录
+        if updates:
+            self._update_or_create_record(call_id=call_id, **updates, **kwargs)
+            # 不立即 flush，等待呼叫结束
+    
     def record_message(self, call_id: str, caller_uri: str, callee_uri: str,
                       caller_addr: tuple, message_body: str = "", **kwargs):
         """记录短信/消息"""

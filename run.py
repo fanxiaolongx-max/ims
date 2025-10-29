@@ -378,14 +378,25 @@ def _forward_request(msg: SIPMessage, addr, transport):
     # 防止重复请求：检查 Call-ID 是否已经在 DIALOGS 中（可能是重发）
     call_id = msg.get("call-id")
     if call_id and call_id in DIALOGS:
-        # 这是一个已知对话的请求（可能是重发的 INVITE）
-        # 对于重发的 INVITE in-dialog 请求，发送 100 Trying 响应，避免客户端重复重试
+        # 区分重发的初始 INVITE 和 re-INVITE
         if method == "INVITE":
-            log.debug(f"[REQ-TRACK] Call-ID {call_id} is in DIALOGS, responding 100 Trying to duplicate INVITE")
-            resp = _make_response(msg, 100, "Trying")
-            transport.sendto(resp.to_bytes(), addr)
-            log.tx(addr, resp.start_line, extra="duplicate INVITE handling")
-            return
+            # 通过 To 头的 tag 参数区分：
+            # - 初始 INVITE：To 头没有 tag
+            # - re-INVITE：To 头有 tag（对话已建立）
+            to_header = msg.get("to") or ""
+            has_to_tag = "tag=" in to_header
+            
+            if has_to_tag:
+                # re-INVITE：对话内的媒体协商（hold/resume/add video 等）
+                log.info(f"[re-INVITE] Detected for Call-ID: {call_id}")
+                # 继续处理，不 return
+            else:
+                # 重发的初始 INVITE：返回 100 Trying，不转发
+                log.debug(f"[DUPLICATE] Initial INVITE retransmission for Call-ID: {call_id}")
+                resp = _make_response(msg, 100, "Trying")
+                transport.sendto(resp.to_bytes(), addr)
+                log.tx(addr, resp.start_line, extra="duplicate INVITE handling")
+                return
         # 其他 in-dialog 请求（BYE, UPDATE等）继续处理
         log.debug(f"[REQ-TRACK] Call-ID {call_id} is in DIALOGS, treating as in-dialog {method} request")
 
@@ -734,26 +745,44 @@ def _forward_request(msg: SIPMessage, addr, transport):
             PENDING_REQUESTS[call_id] = addr  # 记录请求发送者地址
             # 记录对话信息：主叫和被叫地址
             if method == "INVITE":
-                DIALOGS[call_id] = (addr, (host, port))
+                # 判断是初始 INVITE 还是 re-INVITE
+                to_header = msg.get("to") or ""
+                has_to_tag = "tag=" in to_header
                 
                 # 解析 SDP 提取呼叫类型和编解码信息
                 call_type, codec = extract_sdp_info(msg.body)
                 
-                # CDR: 记录呼叫开始
-                cdr.record_call_start(
-                    call_id=call_id,
-                    caller_uri=msg.get("from") or "",
-                    callee_uri=msg.get("to") or "",
-                    caller_addr=addr,
-                    callee_ip=host,
-                    callee_port=port,
-                    call_type=call_type,
-                    codec=codec,
-                    user_agent=msg.get("user-agent") or "",
-                    cseq=msg.get("cseq") or "",
-                    server_ip=SERVER_IP,
-                    server_port=SERVER_PORT
-                )
+                if not has_to_tag:
+                    # 初始 INVITE：建立新对话
+                    DIALOGS[call_id] = (addr, (host, port))
+                    
+                    # CDR: 记录呼叫开始
+                    cdr.record_call_start(
+                        call_id=call_id,
+                        caller_uri=msg.get("from") or "",
+                        callee_uri=msg.get("to") or "",
+                        caller_addr=addr,
+                        callee_ip=host,
+                        callee_port=port,
+                        call_type=call_type,
+                        codec=codec,
+                        user_agent=msg.get("user-agent") or "",
+                        cseq=msg.get("cseq") or "",
+                        server_ip=SERVER_IP,
+                        server_port=SERVER_PORT
+                    )
+                else:
+                    # re-INVITE：媒体协商变化
+                    log.info(f"[re-INVITE] Media change - Call-ID: {call_id}, "
+                            f"New media: {call_type}, Codec: {codec}")
+                    
+                    # CDR: 记录媒体变化（更新到最终状态）
+                    if call_type or codec:
+                        cdr.record_media_change(
+                            call_id=call_id,
+                            new_call_type=call_type,
+                            new_codec=codec
+                        )
             elif method == "BYE":
                 # CDR: 记录呼叫结束（只在第一次收到 BYE 时记录，避免重传导致重复）
                 # 通过检查 DIALOGS 是否存在来判断是否是第一次
@@ -931,24 +960,36 @@ def _forward_response(resp: SIPMessage, addr, transport):
         log.drop(f"Prevented response loop to self ({nhost}:{nport})")
         return
 
-    # 检查是否是 INVITE 的最终响应
-    # 只有 INVITE 的响应需要特殊路由到主叫（因为可能有 NAT 问题）
-    # 其他请求（BYE, CANCEL, UPDATE）的响应应该按 Via 头路由
+    # ═══════════════════════════════════════════════════════════════════════
+    # RFC 3261 标准路由：所有响应严格按照 Via 头路由
+    # ═══════════════════════════════════════════════════════════════════════
+    # 
+    # 之前的逻辑（已注释）：强制所有 INVITE 响应发给 caller
+    # 问题：re-INVITE 可能由 callee 发起，此时响应应该发给 callee，而非 caller
+    # 解决：统一使用 Via 路由机制，自动处理所有场景（初始 INVITE、re-INVITE）
+    #
+    # 注：已有的 NAT 修正逻辑（930-951行）会处理 NAT 穿透问题
+    #
+    # status_code = resp.start_line.split()[1] if len(resp.start_line.split()) > 1 else ""
+    # cseq_header = resp.get("cseq") or ""
+    # is_invite_response = "INVITE" in cseq_header
+    # 
+    # if call_id in DIALOGS and is_invite_response:
+    #     caller_addr, callee_addr = DIALOGS[call_id]
+    #     log.debug(f"[DIALOG-ROUTE] INVITE response: caller={caller_addr}, callee={callee_addr}, status={status_code}")
+    #     # ❌ 这会导致 re-INVITE 响应回环（被叫发起的 re-INVITE 的响应会发回主叫）
+    #     if status_code in ("200", "486", "487", "488", "600", "603", "604"):
+    #         nhost, nport = caller_addr
+    #         log.debug(f"Final INVITE response {status_code} to caller: {caller_addr} (overriding Via route)")
+    # elif call_id in DIALOGS:
+    #     caller_addr, callee_addr = DIALOGS[call_id]
+    #     log.debug(f"[DIALOG-ROUTE] Non-INVITE response ({cseq_header}): using Via route to {nhost}:{nport}")
+    
+    # 调试日志：显示 Via 路由结果
     status_code = resp.start_line.split()[1] if len(resp.start_line.split()) > 1 else ""
     cseq_header = resp.get("cseq") or ""
     is_invite_response = "INVITE" in cseq_header
-    
-    if call_id in DIALOGS and is_invite_response:
-        caller_addr, callee_addr = DIALOGS[call_id]
-        log.debug(f"[DIALOG-ROUTE] INVITE response: caller={caller_addr}, callee={callee_addr}, status={status_code}")
-        # INVITE 的最终响应应该发给主叫（发起 INVITE 的一方）
-        if status_code in ("200", "486", "487", "488", "600", "603", "604"):
-            nhost, nport = caller_addr
-            log.debug(f"Final INVITE response {status_code} to caller: {caller_addr} (overriding Via route)")
-    elif call_id in DIALOGS:
-        # 非 INVITE 响应（如 BYE, CANCEL）：按 Via 头路由，不覆盖
-        caller_addr, callee_addr = DIALOGS[call_id]
-        log.debug(f"[DIALOG-ROUTE] Non-INVITE response ({cseq_header}): using Via route to {nhost}:{nport}")
+    log.debug(f"[VIA-ROUTE] Response {status_code} ({cseq_header}) → {nhost}:{nport}")
 
     try:
         transport.sendto(resp.to_bytes(), (nhost, nport))
@@ -978,15 +1019,33 @@ def _forward_response(resp: SIPMessage, addr, transport):
                 # 解析 200 OK 响应中的 SDP（被叫可能使用不同的编解码）
                 call_type_answer, codec_answer = extract_sdp_info(resp.body)
                 
-                # CDR: 记录呼叫应答
-                cdr.record_call_answer(
-                    call_id=call_id,
-                    callee_addr=addr,
-                    call_type=call_type_answer if call_type_answer else None,
-                    codec=codec_answer if codec_answer else None,
-                    status_code=200,
-                    status_text="OK"
-                )
+                # 判断是初始 INVITE 还是 re-INVITE 的 200 OK
+                # 通过检查会话是否已有 answer_time 来判断
+                session = cdr.get_session(call_id)
+                is_reinvite_response = session and "answer_time" in session
+                
+                if not is_reinvite_response:
+                    # 初始 INVITE 的 200 OK：记录呼叫接听
+                    cdr.record_call_answer(
+                        call_id=call_id,
+                        callee_addr=addr,
+                        call_type=call_type_answer if call_type_answer else None,
+                        codec=codec_answer if codec_answer else None,
+                        status_code=200,
+                        status_text="OK"
+                    )
+                else:
+                    # re-INVITE 的 200 OK：确认媒体变化
+                    log.info(f"[re-INVITE-OK] Media change confirmed - Call-ID: {call_id}, "
+                            f"Media: {call_type_answer}, Codec: {codec_answer}")
+                    
+                    # 更新最终媒体信息（如果有的话）
+                    if call_type_answer or codec_answer:
+                        cdr.record_media_change(
+                            call_id=call_id,
+                            new_call_type=call_type_answer,
+                            new_codec=codec_answer
+                        )
             elif need_cleanup:
                 # CDR: 记录呼叫失败（仅在第一次清理时记录）
                 status_text = resp.start_line.split(maxsplit=2)[2] if len(resp.start_line.split(maxsplit=2)) > 2 else "Failed"

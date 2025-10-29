@@ -1130,6 +1130,12 @@
                     timestamp: result.timestamp || new Date().toLocaleString('zh-CN')
                 });
                 
+                // ✅ 限制历史记录数量，防止内存无限增长
+                const maxHistoryCount = 100;
+                if (commandHistoryDetails.length > maxHistoryCount) {
+                    commandHistoryDetails.splice(maxHistoryCount);
+                }
+                
                 // 更新历史记录显示
                 updateHistoryDisplay();
                 
@@ -1170,14 +1176,17 @@
                 // 删除最旧的条目（从前面开始删除）
                 const deleteCount = entries.length - maxEntries;
                 for (let i = 0; i < deleteCount; i++) {
-                    entries[i].remove();
+                    if (entries[i]) {  // ✅ 添加安全检查
+                        entries[i].remove();
+                    }
                 }
             }
 
             // 滚动到底部（修正：滚动 outputContent 而不是 outputArea）
-            setTimeout(() => {
+            // 使用 requestAnimationFrame 优化性能
+            requestAnimationFrame(() => {
                 outputContent.scrollTop = outputContent.scrollHeight;
-            }, 0);
+            });
         }
 
         // HTML 转义
@@ -1188,6 +1197,9 @@
         }
 
         // 添加日志（支持中文日志和WebSocket日志）
+        // 滚动节流标志
+        let logScrollPending = false;
+        
         function appendLog(message, level = 'INFO') {
             if (logPaused) return;
 
@@ -1212,16 +1224,25 @@
             logContent.insertBefore(entry, logAnchor);
 
             // 限制日志条数（但保留锚点）
+            // ✅ 修复：使用 for 循环替代 while 循环，避免静态 NodeList 导致的过度删除
+            const maxLogEntries = 500;
             const entries = logContent.querySelectorAll('.log-entry');
-            while (entries.length > 500) {
-                entries[0].remove();
+            if (entries.length > maxLogEntries) {
+                const deleteCount = entries.length - maxLogEntries;
+                for (let i = 0; i < deleteCount; i++) {
+                    if (entries[i]) {
+                        entries[i].remove();
+                    }
+                }
             }
 
-            // 滚动到底部
-            if (!logPaused) {
-                setTimeout(() => {
+            // 滚动到底部（使用 requestAnimationFrame 节流）
+            if (!logPaused && !logScrollPending) {
+                logScrollPending = true;
+                requestAnimationFrame(() => {
                     logContent.scrollTop = logContent.scrollHeight;
-                }, 0);
+                    logScrollPending = false;
+                });
             }
         }
         

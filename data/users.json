@@ -32,14 +32,14 @@
   },
   "1004": {
     "username": "1004",
-    "password": "lem600@HW",
+    "password": "1234",
     "display_name": "用户1004",
     "phone": "",
     "email": "",
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T11:44:30.696129",
-    "update_time": "2025-10-29T11:44:30.696149"
+    "update_time": "2025-10-29T15:25:22.756732"
   },
   "1005": {
     "username": "1005",
@@ -50,7 +50,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:01:00.298284",
-    "update_time": "2025-10-29T12:01:00.298306"
+    "update_time": "2025-10-29T15:25:27.773725"
   },
   "1006": {
     "username": "1006",
@@ -61,7 +61,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:26:35.659162",
-    "update_time": "2025-10-29T12:26:35.659178"
+    "update_time": "2025-10-29T15:25:31.851228"
   },
   "1007": {
     "username": "1007",
@@ -72,6 +72,6 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:30:22.106782",
-    "update_time": "2025-10-29T12:30:22.106799"
+    "update_time": "2025-10-29T15:25:36.367631"
   }
 }

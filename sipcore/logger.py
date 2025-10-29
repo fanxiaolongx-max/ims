@@ -3,6 +3,25 @@
 SIP服务器日志模块
 提供统一的日志记录功能，支持控制台和文件输出
 按日期分文件夹存储日志，避免单个文件过大
+
+日志格式（遵循业界最佳实践）：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+时间戳            级别      文件名:函数名:行号            消息内容
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+示例：
+2025-10-29 14:30:45.123 [INFO    ] [run.py:handle_register:245] User 1001 registered successfully
+2025-10-29 14:30:45.456 [DEBUG   ] [sip_parser.py:parse_message:89] Parsing SIP message
+2025-10-29 14:30:45.789 [WARNING ] [auth.py:check_auth:156] Authentication failed for user 1002
+2025-10-29 14:30:46.012 [ERROR   ] [cdr.py:write_record:423] Failed to write CDR: disk full
+
+特性：
+- ✅ 毫秒级时间戳（精确到毫秒）
+- ✅ 对齐的日志级别（固定8字符宽度）
+- ✅ 源代码位置（文件名:函数名:行号）
+- ✅ 彩色控制台输出（可选）
+- ✅ 按日期分文件夹存储
+- ✅ 支持 DEBUG, INFO, WARNING, ERROR, CRITICAL 级别
 """
 import logging
 import logging.handlers
@@ -13,8 +32,30 @@ from pathlib import Path
 from typing import Optional
 
 
-class ColoredFormatter(logging.Formatter):
-    """彩色日志格式化器"""
+class EnhancedFormatter(logging.Formatter):
+    """
+    增强的日志格式化器
+    - 支持毫秒级时间戳
+    - 遵循业界最佳实践
+    """
+    
+    def formatTime(self, record, datefmt=None):
+        """
+        重写时间格式化方法，添加毫秒支持
+        格式：YYYY-MM-DD HH:MM:SS.mmm
+        """
+        ct = datetime.fromtimestamp(record.created)
+        if datefmt:
+            s = ct.strftime(datefmt)
+        else:
+            s = ct.strftime("%Y-%m-%d %H:%M:%S")
+        # 添加毫秒
+        s = f"{s}.{int(record.msecs):03d}"
+        return s
+
+
+class ColoredFormatter(EnhancedFormatter):
+    """彩色日志格式化器（基于增强格式化器）"""
     
     COLORS = {
         'DEBUG': '\033[36m',      # 青色
@@ -75,10 +116,22 @@ class DailyRotatingFileHandler(logging.Handler):
             
             # 创建新的文件处理器
             self.current_handler = logging.FileHandler(log_file, encoding=self.encoding)
-            self.current_handler.setFormatter(self.formatter)
+            # 如果已经设置了 formatter，应用到内部 handler
+            if self.formatter:
+                self.current_handler.setFormatter(self.formatter)
             self.current_handler.setLevel(self.level)
             
             self.current_date = today
+    
+    def setFormatter(self, fmt):
+        """
+        设置格式化器
+        重写此方法以确保内部 FileHandler 也使用相同的格式化器
+        """
+        super().setFormatter(fmt)
+        # 同时设置内部 handler 的 formatter
+        if self.current_handler:
+            self.current_handler.setFormatter(fmt)
     
     def emit(self, record):
         """发出日志记录"""
@@ -120,12 +173,15 @@ def setup_logger(
     logger = logging.getLogger(name)
     logger.setLevel(getattr(logging, level.upper(), logging.INFO))
     
-    # 避免重复添加handler
+    # 清除已有的handlers，确保使用新格式
+    # 这样可以在重启或重新配置时应用最新的格式化器
     if logger.handlers:
-        return logger
+        logger.handlers.clear()
     
-    # 日志格式
-    log_format = '%(asctime)s [%(levelname)s] %(message)s'
+    # 日志格式（业界最佳实践）
+    # 格式：时间戳(含毫秒) [级别] [文件名:函数名:行号] 消息内容
+    # 示例：2025-10-29 14:30:45.123 [INFO] [run.py:handle_register:245] User 1001 registered
+    log_format = '%(asctime)s [%(levelname)-8s] [%(filename)s:%(funcName)s:%(lineno)d] %(message)s'
     date_format = '%Y-%m-%d %H:%M:%S'
     
     # 控制台输出
@@ -136,7 +192,7 @@ def setup_logger(
         if console_color:
             formatter = ColoredFormatter(log_format, date_format)
         else:
-            formatter = logging.Formatter(log_format, date_format)
+            formatter = EnhancedFormatter(log_format, date_format)
         
         console_handler.setFormatter(formatter)
         logger.addHandler(console_handler)
@@ -152,7 +208,7 @@ def setup_logger(
         # 使用按日期分文件夹的处理器
         file_handler = DailyRotatingFileHandler(base_dir=base_dir, filename=filename, encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)  # 文件记录所有级别的日志
-        file_formatter = logging.Formatter(log_format, date_format)
+        file_formatter = EnhancedFormatter(log_format, date_format)
         file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
     
