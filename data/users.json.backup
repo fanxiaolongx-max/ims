@@ -7,10 +7,7 @@
     "email": "user1001@example.com",
     "status": "ACTIVE",
     "service_type": "BASIC",
-    "create_time": "2025-10-29T00:36:33.528944",
-    "role": "USER",
-    "mml_access": false,
-    "update_time": "2025-10-29T00:36:33.528944"
+    "create_time": "2025-10-29T00:36:33.528944"
   },
   "1002": {
     "username": "1002",
@@ -20,10 +17,7 @@
     "email": "user1002@example.com",
     "status": "ACTIVE",
     "service_type": "PREMIUM",
-    "create_time": "2025-10-29T00:36:33.528947",
-    "role": "USER",
-    "mml_access": false,
-    "update_time": "2025-10-29T00:36:33.528947"
+    "create_time": "2025-10-29T00:36:33.528947"
   },
   "1003": {
     "username": "1003",
@@ -34,9 +28,7 @@
     "status": "ACTIVE",
     "service_type": "VIP",
     "create_time": "2025-10-29T04:32:20.397036",
-    "update_time": "2025-10-29T05:01:22.797099",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-29T05:01:22.797099"
   },
   "1004": {
     "username": "1004",
@@ -47,9 +39,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T11:44:30.696129",
-    "update_time": "2025-10-29T15:25:22.756732",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-29T15:25:22.756732"
   },
   "1005": {
     "username": "1005",
@@ -60,9 +50,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:01:00.298284",
-    "update_time": "2025-10-29T15:25:27.773725",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-29T15:25:27.773725"
   },
   "1006": {
     "username": "1006",
@@ -73,9 +61,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:26:35.659162",
-    "update_time": "2025-10-29T15:25:31.851228",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-29T15:25:31.851228"
   },
   "1007": {
     "username": "1007",
@@ -86,9 +72,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-29T12:30:22.106782",
-    "update_time": "2025-10-29T15:25:36.367631",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-29T15:25:36.367631"
   },
   "1008": {
     "username": "1008",
@@ -99,9 +83,7 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-30T00:15:17.637736",
-    "update_time": "2025-10-30T00:15:17.637749",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-30T00:15:17.637749"
   },
   "1009": {
     "username": "1009",
@@ -112,8 +94,6 @@
     "status": "ACTIVE",
     "service_type": "BASIC",
     "create_time": "2025-10-30T14:14:57.408799",
-    "update_time": "2025-10-30T14:14:57.408822",
-    "role": "USER",
-    "mml_access": false
+    "update_time": "2025-10-30T14:14:57.408822"
   }
 }
