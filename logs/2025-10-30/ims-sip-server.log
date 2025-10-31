@@ -4618,3 +4618,1244 @@
 2025-10-30 19:27:12.627 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
 2025-10-30 19:27:12.627 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
 2025-10-30 19:27:12.628 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:27:39.387 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:27:39.387 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:27:39.388 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:28:14.562 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:28:14.563 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:28:14.564 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:29:00.692 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:29:00.693 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:29:00.693 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:29:16.578 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:29:16.578 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:29:16.579 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:30:18.622 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:30:18.623 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:30:18.623 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:30:22.003 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:30:22.003 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:30:22.004 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:31:20.604 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:31:20.606 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:31:20.606 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:31:43.053 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:31:43.054 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:31:43.055 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:31:56.609 [INFO    ] [logger.py:info:237] [TIMER-F] Cleaned up expired pending request: 3TQ0knKCLu-8IWJbaiZerA.. (age: 600.0s)
+2025-10-30 19:31:56.610 [DEBUG   ] [logger.py:debug:233] [TIMER-CLEANUP] Pending requests: 0, Cleaned: 1
+2025-10-30 19:32:22.581 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:32:22.582 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:32:22.582 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:33:04.149 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:33:04.149 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:33:04.150 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:33:16.732 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:33:16.733 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:33:16.733 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:34:24.700 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:34:24.700 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:34:24.700 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:34:25.268 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:34:25.268 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:34:25.269 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:35:26.674 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 19:35:26.675 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 19:35:26.675 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 2
+2025-10-30 19:35:27.621 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:35:27.621 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:35:27.621 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:35:46.409 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:35:46.409 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:35:46.410 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:36:29.559 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:36:29.560 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:36:29.560 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:37:07.545 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:37:07.546 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:37:07.546 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:37:31.589 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:37:31.589 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:37:31.590 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:38:28.658 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:38:28.659 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:38:28.659 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:38:33.644 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:38:33.645 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:38:33.645 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:39:34.593 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:39:34.593 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:39:34.594 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:39:49.730 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:39:49.730 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:39:49.730 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:40:36.576 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:40:36.576 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:40:36.576 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:41:10.751 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:41:10.751 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:41:10.752 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:41:38.647 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:41:38.647 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:41:38.647 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 151310@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 151310@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:41:45.606 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:41:46.108 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 509770@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:41:46.108 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:41:46.108 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:41:46.109 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 509770@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:41:46.109 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:41:46.109 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:06.157 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 991363@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:06.157 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:06.157 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:06.157 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 991363@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:06.158 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:06.158 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:06.663 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 795719@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:06.664 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:06.664 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:06.664 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 795719@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:06.664 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:06.664 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:31.882 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:42:31.882 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:31.882 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:42:34.405 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:42:34.406 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:42:34.406 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:42:46.767 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 641097@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:46.767 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:46.768 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:46.768 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 641097@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:46.768 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:46.768 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 174415@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 174415@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:42:47.272 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:36.902 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 836848@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:36.902 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:36.902 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:36.903 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 836848@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:36.903 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:36.903 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:37.406 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 847546@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:37.407 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:37.407 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:37.407 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 847546@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:37.407 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:37.407 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:37.782 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:43:37.782 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:43:37.782 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:43:53.080 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:43:53.080 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:53.081 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:43:53.760 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 136146@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:53.761 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:53.761 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:53.761 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 136146@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:53.761 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:53.761 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:54.267 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 688924@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:54.267 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:54.267 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:43:54.268 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 688924@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:43:54.268 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:43:54.268 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 768311@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 768311@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:44:18.671 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:44:19.177 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 365539@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:44:19.177 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:44:19.178 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:44:19.178 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 365539@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:44:19.178 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:44:19.179 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:44:43.591 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:44:43.592 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:44:43.592 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 854095@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 854095@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:00.217 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:00.720 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 928984@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:00.721 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:00.721 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:00.722 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 928984@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:00.722 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:00.722 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:14.349 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:45:14.349 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:14.349 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:45:45.649 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:45:45.650 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:45:45.650 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:45:45.695 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 780967@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:45.696 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:45.696 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:45.696 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 780967@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:45.696 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:45.696 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:46.201 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 975384@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:46.202 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:46.202 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:45:46.202 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 975384@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:45:46.202 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:45:46.202 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 765549@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 765549@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:33.438 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 591374@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [RX] ('127.0.0.1', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 591374@127.0.0.1 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [RX] 127.0.0.1:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:33.944 [INFO    ] [logger.py:info:237] [TX] 127.0.0.1:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:35.564 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:46:35.564 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:35.565 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 468094@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 468094@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:47.129 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:47.634 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 634710@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:47.634 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:47.635 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:47.635 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 634710@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:46:47.635 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:46:47.635 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:46:47.671 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:46:47.671 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:46:47.671 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:47:22.864 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 205621@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:47:22.865 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:47:22.865 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:47:22.865 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 205621@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:47:22.865 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:47:22.865 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:47:23.370 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 898560@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:47:23.371 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:47:23.371 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:47:23.372 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 898560@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:47:23.372 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:47:23.372 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:47:49.690 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:47:49.690 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:47:49.691 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:47:56.623 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:47:56.623 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:47:56.623 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:48:51.647 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:48:51.648 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:48:51.648 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:49:17.779 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:49:17.780 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:49:17.780 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:49:47.589 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:49:47.589 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:49:47.589 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:50:38.915 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:50:38.915 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:50:38.915 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:50:55.639 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:50:55.640 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:50:55.640 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 732137@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 732137@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:35.026 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:35.532 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 796705@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:35.533 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:35.533 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:35.534 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 796705@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:35.534 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:35.534 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 214925@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 214925@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:52.974 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:53.480 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 897668@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:53.480 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:53.481 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:53.481 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 897668@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:51:53.481 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:53.482 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:51:56.746 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 19:51:56.747 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 19:51:56.747 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 2
+2025-10-30 19:51:57.629 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:51:57.629 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:51:57.630 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:51:59.990 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:51:59.991 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:51:59.991 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:52:46.039 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56832) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: slbPtJMemT | To tag: NO | Via: 1 hops
+2025-10-30 19:52:46.040 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56832 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:52:46.040 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56832 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:52:46.082 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56832) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: slbPtJMemT | To tag: NO | Via: 1 hops
+2025-10-30 19:52:46.082 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56832 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:52:46.083 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56832 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:52:46.125 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56832) -> PUBLISH sip:1006@192.168.8.126 SIP/2.0 | Call-ID: OIY0hPifHK | To tag: NO | Via: 1 hops
+2025-10-30 19:52:46.126 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56832 -> PUBLISH sip:1006@192.168.8.126 SIP/2.0
+2025-10-30 19:52:46.126 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56832 <- SIP/2.0 405 Method Not Allowed
+2025-10-30 19:52:59.593 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:52:59.593 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:52:59.594 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:53:21.126 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:53:21.127 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:53:21.127 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 812255@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 812255@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:53:28.192 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:53:28.698 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 241082@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:53:28.698 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:53:28.699 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:53:28.699 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 241082@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:53:28.699 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:53:28.699 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:54:01.611 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:54:01.612 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:54:01.612 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:54:07.272 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-123456@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:54:07.272 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:54:07.273 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:54:07.273 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-123456@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:54:07.273 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:54:07.273 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:54:42.369 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:54:42.370 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:54:42.370 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:55:03.600 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:55:03.601 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:55:03.601 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:56:03.652 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:56:03.653 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:56:03.654 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:56:04.586 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:56:04.587 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:56:04.587 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:57:06.652 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:57:06.652 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:57:06.653 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:57:24.776 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:57:24.776 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:57:24.776 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:58:08.647 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:58:08.648 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:58:08.648 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:58:18.165 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 437510@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:18.166 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:18.166 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:18.166 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 437510@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:18.166 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:18.166 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:18.667 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 895932@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:18.667 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:18.668 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:18.668 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 895932@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:18.669 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:18.669 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5072) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-noqop-1761843509@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5072 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5072 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5072) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-noqop-1761843509@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5072 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:29.104 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5072 <- SIP/2.0 200 OK (bindings=2)
+2025-10-30 19:58:30.106 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5071) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-qop-1761843510@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:30.106 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5071 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:30.106 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5071 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 19:58:30.106 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5071) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: test-qop-1761843510@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 19:58:30.107 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5071 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:30.107 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5071 <- SIP/2.0 200 OK (bindings=3)
+2025-10-30 19:58:45.897 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 19:58:45.897 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 19:58:45.897 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 19:59:10.668 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 19:59:10.668 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 19:59:10.669 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:00:04.898 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:00:04.898 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:00:04.898 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:00:07.031 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:00:07.031 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:00:07.031 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:01:14.667 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:01:14.668 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:01:14.668 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:01:28.155 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:01:28.156 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:01:28.156 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:02:16.597 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:02:16.597 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:02:16.597 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:02:49.288 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:02:49.288 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:02:49.288 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:02:56.780 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1005@192.168.8.126
+2025-10-30 20:02:56.781 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1005@192.168.8.126 (no bindings left)
+2025-10-30 20:02:56.781 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 4
+2025-10-30 20:03:18.675 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:03:18.675 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:03:18.676 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:03:49.577 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:03:49.578 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:03:49.578 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:04:10.361 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:04:10.361 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:04:10.362 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:04:51.657 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:04:51.658 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:04:51.658 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:04:59.077 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 285934@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 20:04:59.078 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:04:59.078 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:04:59.078 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 285934@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 20:04:59.078 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:04:59.078 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 200 OK (bindings=3)
+2025-10-30 20:04:59.584 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 778291@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 20:04:59.585 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:04:59.585 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:04:59.585 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.126', 5061) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 778291@192.168.8.126 | To tag: NO | Via: 1 hops
+2025-10-30 20:04:59.585 [INFO    ] [logger.py:info:237] [RX] 192.168.8.126:5061 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:04:59.586 [INFO    ] [logger.py:info:237] [TX] 192.168.8.126:5061 <- SIP/2.0 200 OK (bindings=2)
+2025-10-30 20:05:18.556 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56832) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: slbPtJMemT | To tag: NO | Via: 1 hops
+2025-10-30 20:05:18.556 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56832 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:05:18.557 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56832 <- SIP/2.0 200 OK (bindings=0)
+2025-10-30 20:05:22.875 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: N8ZnHbPFJH | To tag: NO | Via: 1 hops
+2025-10-30 20:05:22.875 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:05:22.876 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:62971 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:05:22.902 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: N8ZnHbPFJH | To tag: NO | Via: 1 hops
+2025-10-30 20:05:22.902 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:05:22.902 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:62971 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:05:22.940 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> PUBLISH sip:1006@192.168.8.126 SIP/2.0 | Call-ID: X3nArfYqIc | To tag: NO | Via: 1 hops
+2025-10-30 20:05:22.940 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> PUBLISH sip:1006@192.168.8.126 SIP/2.0
+2025-10-30 20:05:22.940 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:62971 <- SIP/2.0 405 Method Not Allowed
+2025-10-30 20:05:26.675 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> INVITE sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: NO | Via: 1 hops
+2025-10-30 20:05:26.675 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> INVITE sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:26.675 [DEBUG   ] [logger.py:debug:233] [INVITE-INITIAL] AOR: sip:1002@192.168.8.126 | To: sip:1002@192.168.8.126
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1002@192.168.8.126
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-ug7Ex5gXmi for Call-ID: RuhOD0278Q
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:48494;rinstance=b40d1fb89e0d2df6 -> ('192.168.8.120', 48494)
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1002@192.168.8.120:48494;rinstance=b40d1fb89e0d2df6;transport=UDP -> 192.168.8.120:48494
+2025-10-30 20:05:26.676 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: RuhOD0278Q | Target: 192.168.8.120:48494 | Via hops: 2 | Route: 0
+2025-10-30 20:05:26.677 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.120:48494 R-URI=sip:1002@192.168.8.120:48494;rinstance=b40d1fb89e0d2df6
+2025-10-30 20:05:27.187 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> INVITE sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: NO | Via: 1 hops
+2025-10-30 20:05:27.188 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> INVITE sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:27.188 [DEBUG   ] [logger.py:debug:233] [DUPLICATE] Initial INVITE retransmission for Call-ID: RuhOD0278Q
+2025-10-30 20:05:27.189 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:62971 <- SIP/2.0 100 Trying (duplicate INVITE handling)
+2025-10-30 20:05:27.189 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 100 Trying | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:27.189 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 100 Trying
+2025-10-30 20:05:27.190 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:27.190 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:27.190 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:05:27.190 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:27.190 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.129:62971 
+2025-10-30 20:05:28.705 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> CANCEL sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: NO | Via: 1 hops
+2025-10-30 20:05:28.706 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> CANCEL sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:28.706 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID RuhOD0278Q is in DIALOGS, treating as in-dialog CANCEL request
+2025-10-30 20:05:28.707 [DEBUG   ] [logger.py:debug:233] CANCEL R-URI corrected: sip:1002@192.168.8.126 -> sip:1002@192.168.8.120:48494
+2025-10-30 20:05:28.707 [DEBUG   ] [logger.py:debug:233] [CANCEL] Reusing INVITE branch: z9hG4bK-ug7Ex5gXmi for Call-ID: RuhOD0278Q
+2025-10-30 20:05:28.707 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.120:48494 -> ('192.168.8.120', 48494)
+2025-10-30 20:05:28.708 [DEBUG   ] [logger.py:debug:233] [CANCEL] Using registered contact: sip:1002@192.168.8.120:48494;rinstance=b40d1fb89e0d2df6;transport=UDP -> 192.168.8.120:48494
+2025-10-30 20:05:28.708 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: CANCEL | Call-ID: RuhOD0278Q | Target: 192.168.8.120:48494 | Via hops: 2 | Route: 0
+2025-10-30 20:05:28.708 [INFO    ] [logger.py:info:237] [FWD] CANCEL -> 192.168.8.120:48494 R-URI=sip:1002@192.168.8.120:48494
+2025-10-30 20:05:29.124 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 200 OK | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:29.125 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 200 OK
+2025-10-30 20:05:29.125 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:29.125 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:29.125 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:05:29.125 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (20 CANCEL) → 192.168.8.129:62971
+2025-10-30 20:05:29.126 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 OK -> 192.168.8.129:62971 
+2025-10-30 20:05:29.126 [DEBUG   ] [logger.py:debug:233] [BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: RuhOD0278Q
+2025-10-30 20:05:29.126 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:29.126 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:29.127 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:29.127 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:29.127 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:29.127 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:29.127 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:29.127 [DEBUG   ] [logger.py:debug:233] [DIALOG-CLEANUP] Cleaned up failed call: RuhOD0278Q
+2025-10-30 20:05:29.164 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:29.165 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:29.165 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:29.165 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:29.165 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:29.165 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:29.165 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:29.648 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:29.648 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:29.648 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:29.648 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:29.648 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:29.648 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:29.648 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:29.690 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:29.690 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:29.690 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:29.690 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:29.690 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:29.690 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:29.690 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:30.691 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:30.692 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:30.692 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:30.692 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:30.692 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:30.692 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:30.692 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:30.780 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:30.780 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:30.780 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:30.780 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:30.780 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:30.781 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:30.781 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:31.408 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:05:31.408 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:05:31.409 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:05:32.314 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CuyByPj4Jt | To tag: NO | Via: 1 hops
+2025-10-30 20:05:32.315 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:05:32.315 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:46129 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:05:32.316 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> PUBLISH sip:1005@192.168.8.126 SIP/2.0 | Call-ID: obUKK5cOba | To tag: NO | Via: 1 hops
+2025-10-30 20:05:32.316 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> PUBLISH sip:1005@192.168.8.126 SIP/2.0
+2025-10-30 20:05:32.316 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:46129 <- SIP/2.0 405 Method Not Allowed
+2025-10-30 20:05:32.626 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:32.626 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:32.626 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:32.626 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:32.626 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:32.627 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:32.627 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:32.645 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:32.645 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:32.646 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:32.646 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:32.646 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:32.646 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:32.646 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:36.638 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:36.639 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:36.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:36.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:36.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:36.640 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:36.640 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:36.747 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:36.747 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:36.748 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:36.748 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:36.748 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:36.748 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:36.748 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:40.711 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:40.712 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:40.712 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:40.712 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:40.712 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:40.712 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:40.713 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:40.829 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:40.829 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:40.829 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:40.830 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:40.830 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:40.830 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:40.830 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:44.639 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:44.639 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:44.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:44.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:44.639 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:44.639 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:44.639 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:44.731 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:44.731 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:44.731 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:44.731 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:44.731 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:44.731 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:44.731 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:45.807 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:05:45.808 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:05:45.808 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:05:48.691 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:48.691 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:48.691 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:48.692 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:48.692 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:48.692 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:48.692 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:48.812 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:48.812 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:48.812 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:48.812 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:48.813 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:48.813 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:48.813 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:52.688 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:52.688 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:52.689 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:52.689 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:52.689 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:52.689 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:52.689 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:52.717 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:52.718 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:52.718 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:52.718 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:52.718 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:52.718 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:52.718 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:55.849 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> INVITE sip:1006@192.168.8.126 SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: NO | Via: 1 hops
+2025-10-30 20:05:55.849 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> INVITE sip:1006@192.168.8.126 SIP/2.0
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [INVITE-INITIAL] AOR: sip:1006@192.168.8.126 | To: "1006" <sip:1006@192.168.8.126>
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [INVITE-INITIAL] Found 1 valid bindings for AOR: sip:1006@192.168.8.126
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [RECORD-ROUTE] Added Record-Route for initial INVITE
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-OvC5cYm9Fm for Call-ID: U3i6JkBSTJ
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971 -> ('192.168.8.129', 62971)
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:05:55.850 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:05:55.850 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971
+2025-10-30 20:05:55.900 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:05:55.901 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 100 Trying
+2025-10-30 20:05:55.901 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.3qtK5t~pJ;rport
+2025-10-30 20:05:55.901 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:05:55.901 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:05:55.901 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (20 INVITE) → 192.168.8.120:46129
+2025-10-30 20:05:55.901 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:46129 
+2025-10-30 20:05:55.962 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 180 Ringing | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:05:55.963 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 180 Ringing
+2025-10-30 20:05:55.963 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.3qtK5t~pJ;rport
+2025-10-30 20:05:55.963 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:05:55.963 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:05:55.963 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 180 (20 INVITE) → 192.168.8.120:46129
+2025-10-30 20:05:55.963 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 180 Ringing -> 192.168.8.120:46129 
+2025-10-30 20:05:56.680 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:05:56.680 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:05:56.680 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:05:56.680 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:05:56.681 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:05:56.681 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:05:56.681 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:05:56.713 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:05:56.713 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:05:56.713 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:05:56.713 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:56.714 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:05:56.714 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:05:56.714 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:05:59.659 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:05:59.659 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:05:59.659 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.3qtK5t~pJ;rport
+2025-10-30 20:05:59.659 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:05:59.659 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:05:59.659 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (20 INVITE) → 192.168.8.120:46129
+2025-10-30 20:05:59.659 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:05:59.833 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:05:59.833 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:05:59.833 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:05:59.833 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:05:59.833 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:05:59.834 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:05:59.834 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:05:59.834 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 1 | Route: 0
+2025-10-30 20:05:59.834 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:00.673 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> SIP/2.0 487 Request Terminated | Call-ID: RuhOD0278Q | Via: 2 hops
+2025-10-30 20:06:00.674 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> SIP/2.0 487 Request Terminated
+2025-10-30 20:06:00.674 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.~SZI9SFKN;rport
+2025-10-30 20:06:00.674 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:00.674 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: RuhOD0278Q, Original sender: None, Via解析: 192.168.8.129:62971
+2025-10-30 20:06:00.675 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 487 (20 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:00.675 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 487 Request Terminated -> 192.168.8.129:62971 
+2025-10-30 20:06:00.726 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1002@192.168.8.126 SIP/2.0 | Call-ID: RuhOD0278Q | To tag: YES | Via: 1 hops
+2025-10-30 20:06:00.726 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1002@192.168.8.126 SIP/2.0
+2025-10-30 20:06:00.726 [DEBUG   ] [logger.py:debug:233] ACK (non-2xx): Original Route=False, To tag=True
+2025-10-30 20:06:00.726 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:00.726 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1002@192.168.8.126 -> ('192.168.8.126', 5060)
+2025-10-30 20:06:00.726 [DEBUG   ] [logger.py:debug:233] [ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target
+2025-10-30 20:06:00.726 [WARNING ] [logger.py:warning:241] [ACK-NON2XX] Call-ID RuhOD0278Q not in DIALOGS, cannot route
+2025-10-30 20:06:01.823 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:01.823 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:01.823 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:01.823 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:01.824 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-JlvVikkz3P for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:01.824 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:01.824 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:06:01.824 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:06:01.824 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:01.825 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:01.855 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:01.855 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 100 Trying
+2025-10-30 20:06:01.855 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.MUPKpT~PM;rport
+2025-10-30 20:06:01.855 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:01.856 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:01.856 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (21 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:01.856 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:46129 
+2025-10-30 20:06:01.884 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:01.884 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:06:01.884 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.MUPKpT~PM;rport
+2025-10-30 20:06:01.884 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:01.884 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:01.884 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (21 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:01.884 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:06:01.884 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:02.051 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:02.051 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:02.051 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:02.051 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:02.051 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:02.051 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:02.051 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:02.052 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 1 | Route: 0
+2025-10-30 20:06:02.052 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:02.414 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:02.414 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:02.414 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:02.414 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:02.415 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-jPKRXuFEdZ for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:02.415 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:02.415 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:06:02.415 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:06:02.415 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:02.416 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:02.454 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:02.454 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 100 Trying
+2025-10-30 20:06:02.455 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.g~axuFxjn;rport
+2025-10-30 20:06:02.455 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:02.455 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:02.455 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (22 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:02.455 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:46129 
+2025-10-30 20:06:02.495 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:02.496 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:06:02.496 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.g~axuFxjn;rport
+2025-10-30 20:06:02.496 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:02.496 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:02.496 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (22 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:02.497 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:06:02.497 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:02.586 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:02.586 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:02.587 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 1 | Route: 0
+2025-10-30 20:06:02.588 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:03.474 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:03.475 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:03.475 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:03.475 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:03.475 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-QjA1zcJu24 for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:03.475 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:03.475 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1005@192.168.8.120:46129;transport=udp -> 192.168.8.120:46129
+2025-10-30 20:06:03.476 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 2 | Route: 0
+2025-10-30 20:06:03.476 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:03.476 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:03.500 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:03.500 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 100 Trying
+2025-10-30 20:06:03.500 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.nAbJxmKM~;rport
+2025-10-30 20:06:03.500 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:03.500 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:03.500 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (111 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:03.501 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.129:62971 
+2025-10-30 20:06:03.509 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:03.509 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 200 Ok
+2025-10-30 20:06:03.509 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.nAbJxmKM~;rport
+2025-10-30 20:06:03.509 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:03.509 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:03.509 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (111 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:03.509 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.129:62971 
+2025-10-30 20:06:03.509 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:03.996 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:03.996 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:03.997 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 1 | Route: 0
+2025-10-30 20:06:03.998 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:04.074 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:04.074 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:04.074 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:04.075 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:04.075 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-fhdr5aC9IN for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:04.075 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:04.075 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1005@192.168.8.120:46129;transport=udp -> 192.168.8.120:46129
+2025-10-30 20:06:04.075 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 2 | Route: 0
+2025-10-30 20:06:04.075 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:04.076 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:04.107 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:04.107 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 100 Trying
+2025-10-30 20:06:04.108 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.BRTak81xo;rport
+2025-10-30 20:06:04.108 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:04.108 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:04.108 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (112 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:04.108 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.129:62971 
+2025-10-30 20:06:04.108 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:04.108 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 200 Ok
+2025-10-30 20:06:04.109 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.BRTak81xo;rport
+2025-10-30 20:06:04.109 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:04.109 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:04.109 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (112 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:04.109 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.129:62971 
+2025-10-30 20:06:04.109 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:04.386 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:04.387 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:04.387 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:04.387 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:04.387 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:04.387 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:04.387 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:04.388 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 1 | Route: 0
+2025-10-30 20:06:04.388 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:09.182 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:09.182 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:09.183 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:09.183 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:09.183 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-1OiFQelD67 for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:09.183 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:09.183 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:06:09.183 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:06:09.184 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:09.184 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:09.238 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:09.239 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 100 Trying
+2025-10-30 20:06:09.239 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.J0PZ5GDss;rport
+2025-10-30 20:06:09.239 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:09.239 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:09.239 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (23 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:09.239 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:46129 
+2025-10-30 20:06:09.267 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:09.267 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:06:09.267 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.J0PZ5GDss;rport
+2025-10-30 20:06:09.267 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:09.267 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:09.268 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (23 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:09.268 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:06:09.268 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:09.451 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:09.451 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:09.451 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:09.451 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:09.452 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:09.452 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:09.452 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:09.452 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 1 | Route: 0
+2025-10-30 20:06:09.453 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:10.303 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:10.304 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> INVITE sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:10.304 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:10.304 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:10.304 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-hIKtsDtbNr for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:10.304 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:10.305 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1005@192.168.8.120:46129;transport=udp -> 192.168.8.120:46129
+2025-10-30 20:06:10.305 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 2 | Route: 0
+2025-10-30 20:06:10.305 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:10.305 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:10.335 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:10.335 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 100 Trying
+2025-10-30 20:06:10.335 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.WPVhyuz8A;rport
+2025-10-30 20:06:10.335 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:10.335 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:10.335 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (113 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:10.336 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.129:62971 
+2025-10-30 20:06:10.359 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:10.359 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> SIP/2.0 200 Ok
+2025-10-30 20:06:10.359 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.129:62971;branch=z9hG4bK.WPVhyuz8A;rport
+2025-10-30 20:06:10.359 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.129:62971
+2025-10-30 20:06:10.359 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.129', 62971), Via解析: 192.168.8.129:62971
+2025-10-30 20:06:10.359 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (113 INVITE) → 192.168.8.129:62971
+2025-10-30 20:06:10.359 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.129:62971 
+2025-10-30 20:06:10.359 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:10.780 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:10.780 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> ACK sip:1005@192.168.8.120:46129;transport=udp SIP/2.0
+2025-10-30 20:06:10.780 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:10.780 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:10.781 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:10.781 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:10.781 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1005@192.168.8.120:46129;transport=udp -> ('192.168.8.120', 46129)
+2025-10-30 20:06:10.781 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.120:46129 | Via hops: 1 | Route: 0
+2025-10-30 20:06:10.781 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.120:46129 R-URI=sip:1005@192.168.8.120:46129;transport=udp
+2025-10-30 20:06:12.759 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:12.759 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> INVITE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:12.759 [INFO    ] [logger.py:info:237] [re-INVITE] Detected for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:12.760 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog INVITE request
+2025-10-30 20:06:12.760 [DEBUG   ] [logger.py:debug:233] [INVITE] Saved branch: z9hG4bK-UqD8EaO5Pm for Call-ID: U3i6JkBSTJ
+2025-10-30 20:06:12.760 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:12.760 [DEBUG   ] [logger.py:debug:233] [INVITE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:06:12.760 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: INVITE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:06:12.761 [INFO    ] [logger.py:info:237] [FWD] INVITE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:12.761 [INFO    ] [logger.py:info:237] [re-INVITE] Media change - Call-ID: U3i6JkBSTJ, New media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:12.799 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 100 Trying | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:12.799 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 100 Trying
+2025-10-30 20:06:12.799 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.R3HIgYhQk;rport
+2025-10-30 20:06:12.799 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:12.799 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:12.800 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 100 (24 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:12.800 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 100 Trying -> 192.168.8.120:46129 
+2025-10-30 20:06:12.835 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:12.835 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:06:12.835 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.R3HIgYhQk;rport
+2025-10-30 20:06:12.835 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:12.835 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:12.835 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (24 INVITE) → 192.168.8.120:46129
+2025-10-30 20:06:12.835 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:06:12.836 [INFO    ] [logger.py:info:237] [re-INVITE-OK] Media change confirmed - Call-ID: U3i6JkBSTJ, Media: AUDIO+VIDEO, Codec: opus, speex, telephone-event, H265, H264, AV1, VP8
+2025-10-30 20:06:12.964 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:12.964 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> ACK sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog ACK request
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] ACK (2xx): Original Route=True, To tag=YES, Dialog=True
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] [ACK-RECEIVED] ACK for Call-ID U3i6JkBSTJ, dialog confirmed
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] [ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971;transport=udp -> ('192.168.8.129', 62971)
+2025-10-30 20:06:12.965 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: ACK | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 1 | Route: 0
+2025-10-30 20:06:12.966 [INFO    ] [logger.py:info:237] [FWD] ACK -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971;transport=udp
+2025-10-30 20:06:25.866 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 46129) -> BYE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0 | Call-ID: U3i6JkBSTJ | To tag: YES | Via: 1 hops
+2025-10-30 20:06:25.867 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:46129 -> BYE sip:1006@192.168.8.129:62971;transport=udp SIP/2.0
+2025-10-30 20:06:25.867 [DEBUG   ] [logger.py:debug:233] [REQ-TRACK] Call-ID U3i6JkBSTJ is in DIALOGS, treating as in-dialog BYE request
+2025-10-30 20:06:25.867 [DEBUG   ] [logger.py:debug:233] BYE R-URI corrected: sip:1006@192.168.8.129:62971;transport=udp -> sip:1006@192.168.8.129:62971
+2025-10-30 20:06:25.867 [DEBUG   ] [logger.py:debug:233] [ROUTE] Using Request-URI: sip:1006@192.168.8.129:62971 -> ('192.168.8.129', 62971)
+2025-10-30 20:06:25.867 [DEBUG   ] [logger.py:debug:233] [BYE] Using registered contact: sip:1006@192.168.8.129:62971;transport=udp -> 192.168.8.129:62971
+2025-10-30 20:06:25.867 [DEBUG   ] [logger.py:debug:233] [FWD-DETAIL] Method: BYE | Call-ID: U3i6JkBSTJ | Target: 192.168.8.129:62971 | Via hops: 2 | Route: 0
+2025-10-30 20:06:25.868 [INFO    ] [logger.py:info:237] [FWD] BYE -> 192.168.8.129:62971 R-URI=sip:1006@192.168.8.129:62971
+2025-10-30 20:06:25.916 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> SIP/2.0 200 Ok | Call-ID: U3i6JkBSTJ | Via: 2 hops
+2025-10-30 20:06:25.916 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> SIP/2.0 200 Ok
+2025-10-30 20:06:25.916 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via头数量: 1, Via[0]: SIP/2.0/UDP 192.168.8.120:46129;branch=z9hG4bK.cIcgZXRmj;rport
+2025-10-30 20:06:25.916 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Via解析结果 -> target: 192.168.8.120:46129
+2025-10-30 20:06:25.917 [DEBUG   ] [logger.py:debug:233] [RESP-ROUTE] Call-ID: U3i6JkBSTJ, Original sender: ('192.168.8.120', 46129), Via解析: 192.168.8.120:46129
+2025-10-30 20:06:25.917 [DEBUG   ] [logger.py:debug:233] [VIA-ROUTE] Response 200 (25 BYE) → 192.168.8.120:46129
+2025-10-30 20:06:25.917 [INFO    ] [logger.py:info:237] [FWD] RESP SIP/2.0 200 Ok -> 192.168.8.120:46129 
+2025-10-30 20:06:25.917 [DEBUG   ] [logger.py:debug:233] [DIALOG-CLEANUP] Cleaned up dialog after BYE: U3i6JkBSTJ
+2025-10-30 20:06:25.917 [DEBUG   ] [logger.py:debug:233] [BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: U3i6JkBSTJ
+2025-10-30 20:06:40.000 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:06:40.000 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:06:40.000 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:06:52.548 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:06:52.548 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:06:52.549 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:07:34.172 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:07:34.172 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:07:34.173 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:08:13.684 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:08:13.685 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:08:13.685 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:08:28.302 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:08:28.303 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:08:28.303 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:08:28.848 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 62971) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: N8ZnHbPFJH | To tag: NO | Via: 1 hops
+2025-10-30 20:08:28.848 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:62971 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:08:28.849 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:62971 <- SIP/2.0 200 OK (bindings=0)
+2025-10-30 20:08:42.632 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56895) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 4ULH4fDE4e | To tag: NO | Via: 1 hops
+2025-10-30 20:08:42.633 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56895 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:08:42.633 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56895 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:08:42.663 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56895) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 4ULH4fDE4e | To tag: NO | Via: 1 hops
+2025-10-30 20:08:42.664 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56895 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:08:42.664 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56895 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:08:42.701 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56895) -> PUBLISH sip:1006@192.168.8.126 SIP/2.0 | Call-ID: NoTzSuUoNs | To tag: NO | Via: 1 hops
+2025-10-30 20:08:42.701 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56895 -> PUBLISH sip:1006@192.168.8.126 SIP/2.0
+2025-10-30 20:08:42.701 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56895 <- SIP/2.0 405 Method Not Allowed
+2025-10-30 20:08:45.028 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 56895) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: 4ULH4fDE4e | To tag: NO | Via: 1 hops
+2025-10-30 20:08:45.029 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:56895 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:08:45.030 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:56895 <- SIP/2.0 200 OK (bindings=0)
+2025-10-30 20:08:56.799 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1006@192.168.8.126 (no bindings left)
+2025-10-30 20:09:22.416 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:09:22.417 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:09:22.417 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:09:34.899 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:09:34.899 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:09:34.900 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:10:16.575 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:10:16.577 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:10:16.577 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:10:56.058 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:10:56.058 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:10:56.059 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:11:10.745 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:11:10.746 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:11:10.746 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:12:04.874 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:12:04.875 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:12:04.875 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:12:17.125 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:12:17.126 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:12:17.126 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:12:58.997 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:12:58.998 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:12:58.998 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:13:38.201 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:13:38.201 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:13:38.202 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:13:53.125 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:13:53.126 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:13:53.127 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:14:19.667 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 8148) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: YnyDmx4Bqlw8CsTzrKNv8A.. | To tag: NO | Via: 1 hops
+2025-10-30 20:14:19.667 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:8148 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:14:19.667 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:8148 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:14:53.618 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:14:53.618 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:14:53.619 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:14:59.296 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:14:59.296 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:14:59.296 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:15:54.589 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:15:54.592 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:15:54.592 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:16:20.439 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:16:20.440 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:16:20.441 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:16:48.749 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:16:48.749 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:16:48.750 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:17:41.609 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:17:41.611 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:17:41.611 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:17:56.815 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 20:17:56.816 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 20:17:56.816 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 4
+2025-10-30 20:17:57.683 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:17:57.683 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:17:57.684 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:18:59.602 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:18:59.603 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:18:59.604 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:19:02.721 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:19:02.721 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:19:02.722 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:19:26.820 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1007@192.168.8.126
+2025-10-30 20:19:26.821 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1007@192.168.8.126 (no bindings left)
+2025-10-30 20:19:26.821 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 4
+2025-10-30 20:19:57.645 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:19:57.646 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:19:57.647 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:20:23.783 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:20:23.784 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:20:23.785 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:20:56.738 [WARNING ] [logger.py:warning:241] [TIMER-DIALOG] Cleaned up stale dialog: 3TQ0knKCLu-8IWJbaiZerA.. (age: 60.0min)
+2025-10-30 20:20:56.740 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Dialogs: 0, Cleaned: 1
+2025-10-30 20:20:59.899 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:20:59.900 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:20:59.900 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:21:00.322 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:21:00.322 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:21:00.323 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:21:44.944 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:21:44.945 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:21:44.946 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:22:04.639 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:22:04.639 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:22:04.640 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:23:06.005 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:23:06.007 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:23:06.007 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:23:06.663 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:23:06.663 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:23:06.664 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:24:07.588 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:24:07.589 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:24:07.589 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:24:27.144 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:24:27.145 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:24:27.145 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:25:09.653 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:25:09.653 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:25:09.654 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:25:48.211 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:25:48.212 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:25:48.212 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:26:11.644 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:26:11.644 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:26:11.645 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:27:09.414 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:27:09.415 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:27:09.416 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:27:13.671 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:27:13.671 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:27:13.671 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:28:09.698 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:28:09.698 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:28:09.699 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:28:30.720 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:28:30.721 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:28:30.721 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:29:04.108 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:29:04.108 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:29:04.109 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:29:51.931 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.129', 5960) -> REGISTER sip:192.168.8.126 SIP/2.0 | Call-ID: CfThhGyJoZgOeirM6xS9IA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:29:51.932 [INFO    ] [logger.py:info:237] [RX] 192.168.8.129:5960 -> REGISTER sip:192.168.8.126 SIP/2.0
+2025-10-30 20:29:51.932 [INFO    ] [logger.py:info:237] [TX] 192.168.8.129:5960 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:29:59.197 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: ghVAWJ4Stzg5hAsbvlK1kw.. | To tag: NO | Via: 1 hops
+2025-10-30 20:29:59.197 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:29:59.198 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:39:41.965 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1004@192.168.8.126
+2025-10-30 20:39:41.966 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1004@192.168.8.126 (no bindings left)
+2025-10-30 20:39:41.966 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 20:39:41.966 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 20:39:41.966 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 2, Active AORs: 2
+2025-10-30 20:39:53.630 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: V7q1LDMBrPFufpBTiOtDow.. | To tag: NO | Via: 1 hops
+2025-10-30 20:39:53.631 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:39:53.631 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:39:53.858 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: V7q1LDMBrPFufpBTiOtDow.. | To tag: NO | Via: 1 hops
+2025-10-30 20:39:53.858 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:39:53.859 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:40:48.110 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: V7q1LDMBrPFufpBTiOtDow.. | To tag: NO | Via: 1 hops
+2025-10-30 20:40:48.110 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:40:48.111 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:43:01.830 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: dgWhxSmY3hmoKtI6Vw6I8A.. | To tag: NO | Via: 1 hops
+2025-10-30 20:43:01.831 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:43:01.831 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:43:01.956 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: dgWhxSmY3hmoKtI6Vw6I8A.. | To tag: NO | Via: 1 hops
+2025-10-30 20:43:01.956 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:43:01.956 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:52:27.957 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: _P32LdsLG1vBGlkMdijCdA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:52:27.957 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:52:27.957 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:52:28.096 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: _P32LdsLG1vBGlkMdijCdA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:52:28.096 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:52:28.097 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:53:22.305 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: _P32LdsLG1vBGlkMdijCdA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:53:22.305 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:53:22.306 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:54:16.481 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: _P32LdsLG1vBGlkMdijCdA.. | To tag: NO | Via: 1 hops
+2025-10-30 20:54:16.481 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:54:16.482 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 20:56:02.149 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 5cyL_asaBG0-aklO9ptjRg.. | To tag: NO | Via: 1 hops
+2025-10-30 20:56:02.149 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:56:02.150 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 20:56:02.274 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 5cyL_asaBG0-aklO9ptjRg.. | To tag: NO | Via: 1 hops
+2025-10-30 20:56:02.274 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 20:56:02.274 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 21:13:07.443 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: HI99z5JnIYpovloF9FnMlQ.. | To tag: NO | Via: 1 hops
+2025-10-30 21:13:07.444 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:13:07.445 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 21:13:07.677 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: HI99z5JnIYpovloF9FnMlQ.. | To tag: NO | Via: 1 hops
+2025-10-30 21:13:07.678 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:13:07.678 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 21:13:11.165 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 2 expired binding(s) for sip:1001@192.168.8.126
+2025-10-30 21:13:11.166 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1001@192.168.8.126 (no bindings left)
+2025-10-30 21:13:11.167 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1005@192.168.8.126
+2025-10-30 21:13:11.167 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1005@192.168.8.126 (no bindings left)
+2025-10-30 21:13:11.167 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 3, Active AORs: 1
+2025-10-30 21:19:14.022 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 4dfsl50AiQF3Q-PumQ82rg.. | To tag: NO | Via: 1 hops
+2025-10-30 21:19:14.023 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:19:14.023 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 21:19:14.330 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: 4dfsl50AiQF3Q-PumQ82rg.. | To tag: NO | Via: 1 hops
+2025-10-30 21:19:14.330 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:19:14.331 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 21:35:04.433 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: -u7u0VtLFkQhGwzTbobhUg.. | To tag: NO | Via: 1 hops
+2025-10-30 21:35:04.433 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:35:04.434 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 21:35:04.561 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: -u7u0VtLFkQhGwzTbobhUg.. | To tag: NO | Via: 1 hops
+2025-10-30 21:35:04.561 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:35:04.562 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 21:51:48.688 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 21:51:48.795 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 21:51:48.795 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 21:52:09.011 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: pag_FBdsugfSUdmyGR_CZQ.. | To tag: NO | Via: 1 hops
+2025-10-30 21:52:09.011 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:52:09.011 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 21:52:09.318 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: pag_FBdsugfSUdmyGR_CZQ.. | To tag: NO | Via: 1 hops
+2025-10-30 21:52:09.318 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 21:52:09.319 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 22:08:35.371 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: RLhghtbSkLyXwHjSY9pE_Q.. | To tag: NO | Via: 1 hops
+2025-10-30 22:08:35.372 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:08:35.372 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 22:08:35.508 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: RLhghtbSkLyXwHjSY9pE_Q.. | To tag: NO | Via: 1 hops
+2025-10-30 22:08:35.509 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:08:35.509 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 22:24:46.946 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 22:24:46.946 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 22:24:46.946 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 22:24:55.557 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: -i76BUqmLOimwahke0cXcQ.. | To tag: NO | Via: 1 hops
+2025-10-30 22:24:55.557 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:24:55.558 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 22:24:55.683 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: -i76BUqmLOimwahke0cXcQ.. | To tag: NO | Via: 1 hops
+2025-10-30 22:24:55.683 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:24:55.683 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 22:30:19.138 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: H_OSxobhBmlxAB85aga4OA.. | To tag: NO | Via: 1 hops
+2025-10-30 22:30:19.138 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:30:19.139 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 22:30:19.982 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 22:30:19.983 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 22:30:19.983 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 22:30:20.610 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: H_OSxobhBmlxAB85aga4OA.. | To tag: NO | Via: 1 hops
+2025-10-30 22:30:20.610 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:30:20.611 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 22:30:20.613 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: H_OSxobhBmlxAB85aga4OA.. | To tag: NO | Via: 1 hops
+2025-10-30 22:30:20.613 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:30:20.614 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 22:47:23.903 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 22:47:23.904 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 22:47:23.904 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 22:47:29.042 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: XAT5bO23AU1XGisgYb8Q7w.. | To tag: NO | Via: 1 hops
+2025-10-30 22:47:29.043 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:47:29.043 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 22:47:29.390 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: XAT5bO23AU1XGisgYb8Q7w.. | To tag: NO | Via: 1 hops
+2025-10-30 22:47:29.391 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 22:47:29.391 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:03:37.849 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: yi6JTjm4Yd3veHqglx6KGg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:03:37.849 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:03:37.849 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 23:03:38.021 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: yi6JTjm4Yd3veHqglx6KGg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:03:38.094 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:03:38.095 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:20:20.465 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Nywqqaf0NRcLF_BuXmnS9Q.. | To tag: NO | Via: 1 hops
+2025-10-30 23:20:20.465 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:20:20.465 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 23:20:20.685 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: Nywqqaf0NRcLF_BuXmnS9Q.. | To tag: NO | Via: 1 hops
+2025-10-30 23:20:20.685 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:20:20.686 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:31:23.025 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 23:31:23.026 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 23:31:23.026 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 23:31:47.231 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: vXwtESh4uy_6EGaoUuYPEg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:31:47.231 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:31:47.231 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 23:31:47.537 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: vXwtESh4uy_6EGaoUuYPEg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:31:47.538 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:31:47.538 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:47:30.271 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: dHAE7lqXi7ur4C0yAwnnCQ.. | To tag: NO | Via: 1 hops
+2025-10-30 23:47:30.271 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:47:30.271 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 23:47:30.404 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: dHAE7lqXi7ur4C0yAwnnCQ.. | To tag: NO | Via: 1 hops
+2025-10-30 23:47:30.404 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:47:30.405 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:04:50.297 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 23:04:50.297 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 23:04:50.297 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0
+2025-10-30 23:05:05.207 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qJf1jx2VhbTxjAAGYED8xg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:05:05.207 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:05:05.208 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 401 Unauthorized (Auth failed)
+2025-10-30 23:05:05.337 [INFO    ] [logger.py:info:237] [RX] ('192.168.8.120', 48494) -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0 | Call-ID: qJf1jx2VhbTxjAAGYED8xg.. | To tag: NO | Via: 1 hops
+2025-10-30 23:05:05.338 [INFO    ] [logger.py:info:237] [RX] 192.168.8.120:48494 -> REGISTER sip:192.168.8.126;transport=UDP SIP/2.0
+2025-10-30 23:05:05.338 [INFO    ] [logger.py:info:237] [TX] 192.168.8.120:48494 <- SIP/2.0 200 OK (bindings=1)
+2025-10-30 23:23:09.046 [INFO    ] [logger.py:info:237] [TIMER-REG] Cleaned up 1 expired binding(s) for sip:1002@192.168.8.126
+2025-10-30 23:23:09.046 [DEBUG   ] [logger.py:debug:233] [TIMER-REG] Removed AOR sip:1002@192.168.8.126 (no bindings left)
+2025-10-30 23:23:09.046 [INFO    ] [logger.py:info:237] [TIMER-CLEANUP] Total expired registrations: 1, Active AORs: 0

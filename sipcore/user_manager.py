@@ -21,6 +21,7 @@ class UserManager:
         self.data_file = data_file
         self.users = {}  # {username: user_info}
         self.lock = threading.Lock()
+        self._file_mtime = 0  # 文件最后修改时间
         self._load_users()
     
     def _load_users(self):
@@ -30,12 +31,24 @@ class UserManager:
             os.makedirs(os.path.dirname(self.data_file), exist_ok=True)
             
             if os.path.exists(self.data_file):
-                with open(self.data_file, 'r', encoding='utf-8') as f:
-                    self.users = json.load(f)
-                print(f"[USER] 已加载 {len(self.users)} 个用户")
+                # 检查文件修改时间
+                current_mtime = os.path.getmtime(self.data_file)
+                # 如果文件被修改（或者首次加载），重新加载
+                is_initial_load = (self._file_mtime == 0)
+                if current_mtime > self._file_mtime or is_initial_load:
+                    old_count = len(self.users)
+                    with open(self.data_file, 'r', encoding='utf-8') as f:
+                        self.users = json.load(f)
+                    new_count = len(self.users)
+                    self._file_mtime = current_mtime
+                    # 只在初始化时或用户数量变化时打印日志
+                    if is_initial_load or old_count != new_count:
+                        print(f"[USER] 已加载 {len(self.users)} 个用户")
             else:
                 # 创建默认用户
                 self._create_default_users()
+                if os.path.exists(self.data_file):
+                    self._file_mtime = os.path.getmtime(self.data_file)
         except Exception as e:
             print(f"[USER] 加载用户数据失败: {e}")
             self.users = {}
@@ -143,6 +156,26 @@ class UserManager:
     def get_all_users(self, status: Optional[str] = None) -> List[Dict]:
         """查询所有用户"""
         with self.lock:
+            # 每次调用时检查文件修改时间，如果文件被修改，重新加载
+            # 这对于高并发测试场景很重要，因为测试脚本会动态添加用户
+            try:
+                if os.path.exists(self.data_file):
+                    current_mtime = os.path.getmtime(self.data_file)
+                    # 如果文件被修改（时间增加），重新加载
+                    # 注意：即使时间相同，也可能是文件被修改了（由于文件系统精度），所以每次都检查
+                    if current_mtime >= self._file_mtime:
+                        old_count = len(self.users)
+                        # 读取文件内容并检查是否真的变化了
+                        with open(self.data_file, 'r', encoding='utf-8') as f:
+                            new_users = json.load(f)
+                        # 如果用户数据有变化，更新
+                        if new_users != self.users or current_mtime > self._file_mtime:
+                            self.users = new_users
+                            self._file_mtime = current_mtime
+            except Exception as e:
+                # 如果重新加载失败，使用现有数据
+                pass
+            
             users = list(self.users.values())
             
             if status:
@@ -158,6 +191,15 @@ class UserManager:
     def authenticate(self, username: str, password: str) -> bool:
         """验证用户凭证"""
         user = self.get_user(username)
+        if not user:
+            # 如果找不到用户，尝试重新加载文件（可能文件被外部修改）
+            # 这样可以支持动态添加用户（如高并发测试场景）
+            try:
+                self._load_users()
+                user = self.get_user(username)
+            except:
+                pass
+        
         if not user:
             return False
         

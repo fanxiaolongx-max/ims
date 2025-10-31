@@ -870,7 +870,12 @@ def _forward_response(resp: SIPMessage, addr, transport):
 
     # 检查顶层Via是否是我们
     top = vias[0]
+    status_code = resp.start_line.split()[1] if len(resp.start_line.split()) > 1 else ""
+    call_id_resp = resp.get("call-id")
+    
     if f"{SERVER_IP}:{SERVER_PORT}" not in top:
+        # 调试：记录为什么不转发
+        log.debug(f"[RESP-SKIP] Response {status_code} not forwarded: top Via '{top}' does not contain '{SERVER_IP}:{SERVER_PORT}' | Call-ID: {call_id_resp}")
         return
     
     # 如果是错误响应（如 482 Loop Detected），不应该继续转发

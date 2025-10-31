@@ -263,19 +263,43 @@ DSP LOG RECENT LINES=100
 
 ## 测试建议
 
+### 自动化测试（推荐）⭐
+
+使用提供的自动化测试脚本，无需手动配置客户端：
+
+```bash
+# 快速测试（推荐新手）
+./quick_test.sh
+
+# 运行所有 10 个测试场景
+python3 test_sip_scenarios.py
+
+# 运行单个场景
+python3 test_sip_scenarios.py 6  # 注册注销（最简单）
+python3 test_sip_scenarios.py 5  # 即时消息
+python3 test_sip_scenarios.py 1  # 正常呼叫
+```
+
+**测试场景包括**：
+1. 正常呼叫（接听并挂断）
+2. 被叫忙（486 Busy）
+3. 振铃时取消（CANCEL）
+4. 被叫未注册（480）
+5. 即时消息（MESSAGE）
+6. 注册注销（REGISTER）
+7. 错误密码（认证失败）
+8. 并发呼叫
+9. 长时间通话
+10. 重复注册
+
+详细说明：[TEST_GUIDE.md](TEST_GUIDE.md)
+
+### 使用 SIP 客户端测试
+
 **推荐客户端**：
 - Linphone (https://www.linphone.org/)
 - Zoiper (https://www.zoiper.com/)
 - MicroSIP (https://www.microsip.org/)
-
-**测试场景**：
-- 单用户注册/注销
-- 点对点呼叫
-- 呼叫取消
-- 呼叫拒绝
-- 即时消息
-- re-INVITE（媒体切换）
-- NAT 穿越
 
 ## 常见问题
 
