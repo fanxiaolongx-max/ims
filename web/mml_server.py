@@ -13,6 +13,7 @@ import threading
 import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
+from typing import List
 import os
 import sys
 import queue
@@ -121,6 +122,18 @@ class MMLCommandTree:
                     "清理日志": "CLR LOG BEFORE={date} CONFIRM=YES"
                 }
             },
+            "外呼管理": {
+                "icon": "📢",
+                "commands": {
+                    "查询外呼服务状态": "DSP DIALSVC",
+                    "启动外呼服务": "STR DIALSVC",
+                    "停止外呼服务": "STP DIALSVC",
+                    "发起单次外呼": "STR CALL SINGLE",
+                    "批量外呼": "STR CALL BATCH",
+                    "查询外呼统计": "DSP CALL STAT",
+                    "查询外呼配置": "DSP DIALSVC CFG"
+                }
+            },
             "帮助信息": {
                 "icon": "❓",
                 "commands": {
@@ -146,6 +159,8 @@ class MMLCommandExecutor:
             "SET": self._handle_set,
             "CLR": self._handle_clear,
             "RST": self._handle_reset,
+            "STR": self._handle_start,
+            "STP": self._handle_stop,
             "EXP": self._handle_export,
             "SAVE": self._handle_save,
             "HELP": self._handle_help,
@@ -238,6 +253,12 @@ class MMLCommandExecutor:
             return self._display_logs(params)
         elif obj == "SRVSTAT":
             return self._display_service_status(self.server_globals)
+        elif obj == "DIALSVC":
+            # 特殊处理：DSP DIALSVC CFG -> DSP DIALSVC SUBTYPE=CFG
+            if len(parts) > 2 and parts[2].upper() == 'CFG':
+                parts = parts[:2] + [f"SUBTYPE=CFG"] + parts[3:]
+            params = self._parse_params(parts[2:])
+            return self._display_dialsvc(params)
         else:
             return self._error_response(f"未知对象: {obj}")
     
@@ -578,6 +599,158 @@ class MMLCommandExecutor:
         
         return self._success_response("\n".join(output))
     
+    def _display_dialsvc(self, params):
+        """显示外呼服务状态和配置"""
+        subtype = params.get('SUBTYPE', '').upper()
+        
+        # 获取外呼管理器
+        dialer_mgr = self.server_globals.get('AUTO_DIALER_MANAGER')
+        if not dialer_mgr:
+            return self._error_response("外呼管理器未初始化")
+        
+        if subtype == 'CFG':
+            # 显示配置
+            config = dialer_mgr.get_config()
+            output = [
+                "=" * 80,
+                "外呼服务配置",
+                "=" * 80,
+                "",
+                f"服务器 IP      : {config.get('server_ip', 'N/A')}",
+                f"服务器端口     : {config.get('server_port', 'N/A')}",
+                f"用户名         : {config.get('username', 'N/A')}",
+                f"本地 IP        : {config.get('local_ip', 'N/A')}",
+                f"本地端口       : {config.get('local_port', 'N/A')}",
+                f"媒体目录       : {config.get('media_dir', 'N/A')}",
+                f"默认媒体文件   : {config.get('media_file', 'N/A')}",
+                "",
+                "=" * 80,
+            ]
+        else:
+            # 显示状态
+            status = dialer_mgr.get_status()
+            stats = status.get('stats', {})
+            uptime = status.get('uptime', 0)
+            
+            # 格式化运行时间
+            if uptime:
+                hours = uptime // 3600
+                minutes = (uptime % 3600) // 60
+                seconds = uptime % 60
+                uptime_str = f"{hours}小时{minutes}分钟{seconds}秒"
+            else:
+                uptime_str = "N/A"
+            
+            output = [
+                "=" * 80,
+                "外呼服务状态",
+                "=" * 80,
+                "",
+                f"运行状态       : {'运行中' if status.get('running') else '已停止'}",
+                f"注册状态       : {'已注册' if status.get('registered') else '未注册'}",
+                f"启动时间       : {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(status.get('start_time'))) if status.get('start_time') else 'N/A'}",
+                f"运行时长       : {uptime_str}",
+                "",
+                "【统计信息】",
+                "-" * 80,
+                f"总呼叫数       : {stats.get('total_calls', 0)}",
+                f"成功呼叫数     : {stats.get('successful_calls', 0)}",
+                f"失败呼叫数     : {stats.get('failed_calls', 0)}",
+                "",
+                "=" * 80,
+            ]
+        
+        return self._success_response("\n".join(output))
+    
+    def _start_dialsvc(self):
+        """启动外呼服务"""
+        # 获取外呼管理器
+        dialer_mgr = self.server_globals.get('AUTO_DIALER_MANAGER')
+        if not dialer_mgr:
+            return self._error_response("外呼管理器未初始化")
+        
+        success, message = dialer_mgr.start()
+        
+        if success:
+            return self._success_response(message)
+        else:
+            return self._error_response(message)
+    
+    def _stop_dialsvc(self):
+        """停止外呼服务"""
+        # 获取外呼管理器
+        dialer_mgr = self.server_globals.get('AUTO_DIALER_MANAGER')
+        if not dialer_mgr:
+            return self._error_response("外呼管理器未初始化")
+        
+        success, message = dialer_mgr.stop()
+        
+        if success:
+            return self._success_response(message)
+        else:
+            return self._error_response(message)
+    
+    def _start_call(self, params):
+        """发起外呼（单次或批量）"""
+        # 获取外呼管理器
+        dialer_mgr = self.server_globals.get('AUTO_DIALER_MANAGER')
+        if not dialer_mgr:
+            return self._error_response("外呼管理器未初始化")
+        
+        # 检查是单次还是批量（通过 SUBTYPE 参数判断）
+        subtype = params.get('SUBTYPE', '').upper()
+        numbers = params.get('NUMBERS', '')
+        
+        if subtype == 'BATCH' or numbers:
+            # 批量呼叫
+            if not numbers:
+                return self._error_response("批量外呼需要指定 NUMBERS 参数（用逗号分隔或范围，如 1006,1007 或 1000-1005）")
+            
+            # 解析号码列表（支持逗号分隔和范围）
+            callees = self._parse_number_list(numbers)
+            if not callees:
+                return self._error_response("被叫号码列表为空")
+            
+            media_file = params.get('MEDIA_FILE', None)
+            duration = float(params.get('DURATION', 0))
+            
+            success, message, results = dialer_mgr.dial_batch(callees, media_file, duration)
+            
+            if success:
+                # 格式化结果（批量外呼现在是异步执行，立即返回）
+                output = [
+                    "=" * 80,
+                    "批量外呼请求",
+                    "=" * 80,
+                    "",
+                    message,
+                    "",
+                    "提示:",
+                    "  批量外呼已在后台执行，不会阻塞 MML 界面",
+                    "  可以通过 'DSP CALL STAT' 查看外呼统计信息",
+                    "",
+                    "=" * 80,
+                ]
+                
+                return self._success_response("\n".join(output))
+            else:
+                return self._error_response(message)
+        else:
+            # 单次呼叫
+            callee = params.get('CALLEE', '')
+            if not callee:
+                return self._error_response("单次外呼需要指定 CALLEE 参数")
+            
+            media_file = params.get('MEDIA_FILE', None)
+            duration = float(params.get('DURATION', 0))
+            
+            success, message = dialer_mgr.dial(callee, media_file, duration)
+            
+            if success:
+                return self._success_response(message)
+            else:
+                return self._error_response(message)
+    
     def _display_cdr(self, params):
         """显示 CDR"""
         import os
@@ -751,6 +924,60 @@ class MMLCommandExecutor:
         output.append("=" * 80)
         
         return self._success_response("\n".join(output))
+    
+    def _parse_number_list(self, numbers_str: str) -> List[str]:
+        """
+        解析号码列表，支持逗号分隔和范围
+        
+        示例:
+            "1006,1007" -> ["1006", "1007"]
+            "1000-1005" -> ["1000", "1001", "1002", "1003", "1004", "1005"]
+            "1000,1001,1005-1008" -> ["1000", "1001", "1005", "1006", "1007", "1008"]
+        """
+        callees = []
+        
+        # 按逗号分割
+        parts = [p.strip() for p in numbers_str.split(',') if p.strip()]
+        
+        for part in parts:
+            # 检查是否是范围格式（如 1000-1005）
+            if '-' in part:
+                try:
+                    range_parts = part.split('-', 1)
+                    if len(range_parts) == 2:
+                        start = int(range_parts[0].strip())
+                        end = int(range_parts[1].strip())
+                        
+                        # 确保范围有效
+                        if start > end:
+                            start, end = end, start
+                        
+                        # 限制范围大小（防止过大范围导致性能问题）
+                        if end - start > 1000:
+                            continue  # 跳过过大的范围
+                        
+                        # 生成范围内的所有号码
+                        for num in range(start, end + 1):
+                            callees.append(str(num))
+                    else:
+                        # 无效的范围格式，作为单个号码处理
+                        callees.append(part)
+                except ValueError:
+                    # 无法解析为数字范围，作为单个号码处理
+                    callees.append(part)
+            else:
+                # 单个号码
+                callees.append(part)
+        
+        # 去重并保持顺序
+        seen = set()
+        unique_callees = []
+        for callee in callees:
+            if callee not in seen:
+                seen.add(callee)
+                unique_callees.append(callee)
+        
+        return unique_callees
     
     def _format_uri(self, uri):
         """格式化 URI 显示（提取号码部分）"""
@@ -1960,6 +2187,42 @@ class MMLCommandExecutor:
         """处理 RST 命令"""
         return self._error_response("RST 命令暂未实现")
     
+    def _handle_start(self, parts):
+        """处理 STR (Start) 命令"""
+        if len(parts) < 2:
+            return self._error_response("STR 命令需要指定对象")
+        
+        obj = parts[1].upper()
+        
+        # 特殊处理：STR CALL SINGLE -> STR CALL SUBTYPE=SINGLE
+        # 特殊处理：STR CALL BATCH -> STR CALL SUBTYPE=BATCH
+        if obj == "CALL" and len(parts) > 2:
+            subtype = parts[2].upper()
+            if subtype in ['SINGLE', 'BATCH']:
+                parts = parts[:2] + [f"SUBTYPE={subtype}"] + parts[3:]
+        
+        params = self._parse_params(parts[2:])
+        
+        if obj == "DIALSVC":
+            return self._start_dialsvc()
+        elif obj == "CALL":
+            return self._start_call(params)
+        else:
+            return self._error_response(f"不支持的对象类型: {obj}")
+    
+    def _handle_stop(self, parts):
+        """处理 STP (Stop) 命令"""
+        if len(parts) < 2:
+            return self._error_response("STP 命令需要指定对象")
+        
+        obj = parts[1].upper()
+        params = self._parse_params(parts[2:])
+        
+        if obj == "DIALSVC":
+            return self._stop_dialsvc()
+        else:
+            return self._error_response(f"不支持的对象类型: {obj}")
+    
     def _handle_export(self, parts):
         """处理 EXP 命令"""
         if len(parts) < 2:
@@ -2005,6 +2268,8 @@ class MMLCommandExecutor:
             "  SET  - 设置",
             "  CLR  - 清除",
             "  RST  - 重置",
+            "  STR  - 启动",
+            "  STP  - 停止",
             "  EXP  - 导出",
             "  SAVE - 保存",
             "",
@@ -2036,8 +2301,7 @@ class MMLCommandExecutor:
             "output": f"ERROR: {message}",
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
         }
-
-
+    
 class MMLHTTPHandler(BaseHTTPRequestHandler):
     """MML HTTP 请求处理器"""
     

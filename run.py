@@ -1,5 +1,6 @@
 # run.py
 import asyncio, time, re, socket
+
 from sipcore.transport_udp import UDPServer
 from sipcore.parser import parse
 from sipcore.message import SIPMessage
@@ -25,7 +26,7 @@ cdr = init_cdr(base_dir="CDR")
 user_mgr = init_user_manager(data_file="data/users.json")
 
 # ====== 配置区 ======
-SERVER_IP = "192.168.8.126"
+SERVER_IP = "192.168.100.8"
 SERVER_PORT = 5060
 SERVER_URI = f"sip:{SERVER_IP}:{SERVER_PORT};lr"   # 用于Record-Route
 ALLOW = "INVITE, ACK, CANCEL, BYE, OPTIONS, PRACK, UPDATE, REFER, NOTIFY, SUBSCRIBE, MESSAGE, REGISTER"
@@ -57,6 +58,10 @@ DIALOGS: dict[str, tuple[tuple[str, int], tuple[str, int]]] = {}
 # 事务追踪：Call-ID -> 服务器添加的 Via branch（用于 CANCEL 匹配）
 # INVITE 事务的 branch 需要被 CANCEL 复用，以满足某些非标准客户端（如 Zoiper 2.x）的要求
 INVITE_BRANCHES: dict[str, str] = {}
+
+# 最后响应状态追踪：Call-ID -> 最后响应状态码（用于区分 2xx 和非 2xx ACK）
+# 当收到 INVITE 的最终响应时，记录状态码，用于后续 ACK 类型判断
+LAST_RESPONSE_STATUS: dict[str, str] = {}
 
 # ====== 工具函数 ======
 def _aor_from_from(from_val: str | None) -> str:
@@ -197,14 +202,79 @@ def _add_top_via(msg: SIPMessage, branch: str):
     old = msg.headers.get("via", [])
     msg.headers["via"] = [via] + old
 
+def _split_via_header(via_str: str) -> list[str]:
+    """
+    分割逗号分隔的 Via 头（RFC 3261 允许在同一行用逗号分隔多个 Via）
+    
+    注意：必须正确处理 Via 头中的参数，逗号可能出现在参数值中
+    分割规则：在 sent-by 之后的分号或空格后面的逗号处分割
+    """
+    if not via_str:
+        return []
+    
+    # Via 头格式：SIP/2.0/TRANSPORT sent-by;param1=value1;param2=value2, SIP/2.0/...
+    # 不能简单按逗号分割，因为参数值中可能有逗号
+    # 正确方法：找到每个 "SIP/2.0" 的位置，在这些位置分割
+    
+    parts = []
+    current = via_str.strip()
+    
+    # 如果当前字符串中没有逗号，直接返回
+    if "," not in current:
+        return [current] if current else []
+    
+    # 查找所有 "SIP/2.0" 的位置（这些是新的 Via 头的开始）
+    import re
+    sip_pattern = re.compile(r'\bSIP/2\.0', re.I)
+    matches = list(sip_pattern.finditer(current))
+    
+    if len(matches) <= 1:
+        # 只有一个 SIP/2.0，说明这是单个 Via 头（可能有参数值包含逗号）
+        return [current] if current else []
+    
+    # 在多个 SIP/2.0 位置之间分割
+    for i in range(len(matches)):
+        start_pos = matches[i].start()
+        end_pos = matches[i + 1].start() if i + 1 < len(matches) else len(current)
+        
+        # 提取当前 Via 头（去掉末尾的逗号和空格）
+        part = current[start_pos:end_pos].rstrip(", \t")
+        if part:
+            parts.append(part)
+    
+    # 如果没有成功分割，返回原始值
+    if not parts:
+        return [current] if current else []
+    
+    return parts
+
 def _pop_top_via(resp: SIPMessage):
+    """弹出顶层的 Via 头，正确处理逗号分隔的多个 Via"""
     vias = resp.headers.get("via", [])
-    if vias:
-        vias.pop(0)
-    if vias:
-        resp.headers["via"] = vias
+    if not vias:
+        return
+    
+    # 处理第一个 Via 头（可能包含逗号分隔的多个）
+    first_via = vias[0]
+    split_first = _split_via_header(first_via)
+    
+    if len(split_first) > 1:
+        # 第一个元素包含多个 Via，弹出第一个，保留剩余的
+        new_first = ",".join(split_first[1:]) if len(split_first) > 1 else ""
+        vias[0] = new_first
+        # 移除空字符串
+        vias = [v for v in vias if v]
+        if vias:
+            resp.headers["via"] = vias
+        else:
+            resp.headers.pop("via", None)
     else:
-        resp.headers.pop("via", None)
+        # 第一个元素是单个 Via，正常弹出
+        vias.pop(0)
+        if vias:
+            resp.headers["via"] = vias
+        else:
+            resp.headers.pop("via", None)
 
 def _is_request(start_line: str) -> bool:
     return not start_line.startswith("SIP/2.0")
@@ -480,19 +550,37 @@ def _forward_request(msg: SIPMessage, addr, transport):
         # 3. 检查 DIALOGS：Call-ID 在 DIALOGS 说明是已建立的对话
         to_tag = "tag=" in (msg.get("to") or "")
         
-        # 使用原始 Route 信息（删除服务器 Route 之前的状态）
-        # 2xx ACK：有原始 Route 头或 Call-ID 在 DIALOGS
-        if (has_route_before_strip and to_tag) or (to_tag and call_id and call_id in DIALOGS):
-            # 2xx ACK：使用 Route 头路由
+        # 改进的 ACK 类型判断：优先使用最后响应状态
+        # 1. 如果有最后响应状态记录，直接使用（最准确）
+        # 2. 否则，使用 Route 头和有 To tag 的判断（兼容旧逻辑）
+        last_status = LAST_RESPONSE_STATUS.get(call_id) if call_id else None
+        
+        # 详细日志：记录 ACK 类型判断的完整过程
+        log.info(f"[ACK-TYPE-CHECK] Call-ID: {call_id} | Last status: {last_status} | To tag: {to_tag} | Has Route: {has_route_before_strip} | In DIALOGS: {call_id in DIALOGS if call_id else False}")
+        
+        if last_status:
+            # 有响应状态记录：根据状态码判断
+            if last_status.startswith("2"):
+                # 2xx 响应：2xx ACK
+                is_2xx_ack = True
+                log.info(f"[ACK-TYPE] Determined as 2xx ACK: Last response status={last_status} (from LAST_RESPONSE_STATUS)")
+            else:
+                # 非 2xx 响应：非 2xx ACK
+                is_2xx_ack = False
+                log.info(f"[ACK-TYPE] Determined as non-2xx ACK: Last response status={last_status} (from LAST_RESPONSE_STATUS)")
+        elif (has_route_before_strip and to_tag) or (to_tag and call_id and call_id in DIALOGS):
+            # 没有响应状态记录：使用旧逻辑判断
+            # 2xx ACK：有原始 Route 头或 Call-ID 在 DIALOGS
             is_2xx_ack = True
-            log.debug(f"ACK (2xx): Original Route={has_route_before_strip}, To tag=YES, Dialog={call_id in DIALOGS if call_id else False}")
+            log.info(f"[ACK-TYPE] Determined as 2xx ACK (fallback): Original Route={has_route_before_strip}, To tag=YES, Dialog={call_id in DIALOGS if call_id else False}")
+            log.warning(f"[ACK-TYPE-WARNING] Using fallback logic for Call-ID {call_id}: No LAST_RESPONSE_STATUS record! This may be incorrect if it's a non-2xx ACK.")
             # ACK 成功转发后，可以清理 DIALOGS（会话已确认建立）
             if call_id and call_id in DIALOGS:
                 log.debug(f"[ACK-RECEIVED] ACK for Call-ID {call_id}, dialog confirmed")
         else:
             # 非 2xx ACK：透传，不修改任何头域
             is_2xx_ack = False
-            log.debug(f"ACK (non-2xx): Original Route={has_route_before_strip}, To tag={to_tag}")
+            log.info(f"[ACK-TYPE] Determined as non-2xx ACK (fallback): Original Route={has_route_before_strip}, To tag={to_tag}")
 
     # 初始 INVITE/MESSAGE/其他初始请求：查位置，改 R-URI
     if method in ("INVITE", "MESSAGE") and _is_initial_request(msg):
@@ -561,13 +649,19 @@ def _forward_request(msg: SIPMessage, addr, transport):
     # RFC 3261: 
     # - INVITE: 有状态代理，添加服务器 Via，并保存 branch（用于 CANCEL 复用）
     # - CANCEL: 有状态代理，复用对应 INVITE 的 branch（兼容非标准客户端如 Zoiper 2.x）
-    # - ACK (非2xx): 无状态转发，不添加 Via，保持与原始 INVITE 的 Via branch 一致
+    # - ACK (非2xx): 有状态代理，复用对应 INVITE 的 branch，添加服务器 Via（确保 Via 栈与 INVITE 一致）
+    # - ACK (2xx): 无状态转发，不添加 Via（正常对话建立后的 ACK）
     # - 其他请求: 有状态代理，添加服务器 Via
     # 
     # RFC 3261 Section 9.1 关于 CANCEL:
     # "The CANCEL request uses the same Via headers as the request being cancelled"
     # 标准理解：客户端的 Via 头相同（branch 参数相同），代理可以添加不同的 Via branch
     # 但 Zoiper 2.x 要求整个 Via 栈都匹配，因此需要复用 INVITE 的 branch
+    # 
+    # RFC 3261 Section 17.2.3 关于非 2xx ACK:
+    # "The ACK MUST have the same Via branch identifier and Call-ID as the INVITE
+    #  to which it refers, but only the methods differ."
+    # 作为有状态代理，为了匹配原始 INVITE 的 Via 栈，需要复用 INVITE 的 branch
     if method != "ACK":
         # 获取 Call-ID
         call_id = msg.get("call-id")
@@ -579,7 +673,7 @@ def _forward_request(msg: SIPMessage, addr, transport):
         else:
             # 其他请求生成新的 branch
             branch = f"z9hG4bK-{gen_tag(10)}"
-            # 如果是 INVITE，保存 branch 供后续 CANCEL 使用
+            # 如果是 INVITE，保存 branch 供后续 CANCEL 和 ACK 使用
             if method == "INVITE" and call_id:
                 INVITE_BRANCHES[call_id] = branch
                 log.debug(f"[INVITE] Saved branch: {branch} for Call-ID: {call_id}")
@@ -593,8 +687,24 @@ def _forward_request(msg: SIPMessage, addr, transport):
         _ensure_header(msg, "call-id", msg.get("call-id") or gen_tag() + "@localhost")
         _ensure_header(msg, "via", f"SIP/2.0/UDP {SERVER_IP}:{SERVER_PORT};branch={branch};rport")
     else:
-        # ACK 请求：无状态转发，不修改 Via 和其他头域
-        log.debug(f"[ACK-STATELESS] Forwarding ACK without adding Via (stateless proxy mode)")
+        # ACK 请求：根据 ACK 类型处理 Via
+        # 注意：此时 is_2xx_ack 已经在上面判断过了
+        call_id = msg.get("call-id")
+        if not is_2xx_ack:
+            # 非 2xx ACK：检查是否有 INVITE_BRANCHES
+            if call_id and call_id in INVITE_BRANCHES:
+                # 有状态代理，复用 INVITE 的 branch，添加服务器 Via
+                # 确保被叫收到的 ACK 的 Via 栈与原始 INVITE 一致：[服务器Via, 主叫Via]
+                branch = INVITE_BRANCHES[call_id]
+                _add_top_via(msg, branch)
+                log.info(f"[ACK-STATE] Non-2xx ACK: Reusing INVITE branch {branch} and adding server Via (stateful proxy mode)")
+            else:
+                # 非 2xx ACK 但没有 INVITE_BRANCHES（可能已被清理或 INVITE 未保存）
+                log.warning(f"[ACK-WARNING] Non-2xx ACK for Call-ID {call_id} but INVITE_BRANCHES not found! Cannot add server Via. This may cause the callee to not recognize the ACK.")
+                log.debug(f"[ACK-STATELESS] Non-2xx ACK: Forwarding without adding Via (INVITE_BRANCHES missing)")
+        else:
+            # 2xx ACK：无状态转发，不修改 Via（正常对话建立后的 ACK，不需要匹配原始 INVITE）
+            log.debug(f"[ACK-STATELESS] 2xx ACK: Forwarding without adding Via (stateless proxy mode)")
 
     # 确定下一跳：优先 Route，否则用 Request-URI
     next_hop = None
@@ -637,42 +747,55 @@ def _forward_request(msg: SIPMessage, addr, transport):
     # 注意：ACK 请求的 R-URI 可能是 sip:user@127.0.0.1，会被误判为环路
     # 所以需要检查是否是真正的环路（明确指定了端口 5060）
     if (host == SERVER_IP and port == SERVER_PORT):
-        # 如果是已知对话的请求且目标指向服务器，尝试使用注册表中的地址
-        if is_in_dialog:
-            try:
-                to_aor = _aor_from_to(msg.get("to")) or msg.start_line.split()[1]
-                targets = REG_BINDINGS.get(to_aor, [])
-                if targets:
-                    b_uri = targets[0]["contact"]
-                    real_host, real_port = _host_port_from_sip_uri(b_uri)
-                    if real_host and real_port and (real_host != SERVER_IP or real_port != SERVER_PORT):
-                        host, port = real_host, real_port
-                        log.debug(f"[IN-DIALOG] Using contact address from REG_BINDINGS: {host}:{port}")
-                    else:
-                        log.drop(f"[IN-DIALOG] Loop detected and no valid contact, skipping: {host}:{port}")
-                        return
-                else:
-                    log.drop(f"[IN-DIALOG] Loop detected and no bindings for AOR {to_aor}, skipping: {host}:{port}")
-                    return
-            except Exception as e:
-                log.warning(f"[IN-DIALOG] Loop check failed: {e}")
-                log.drop(f"Loop detected: skipping self-forward to {host}:{port}")
-                return
-        # 如果是 ACK，处理取决于 ACK 类型
-        elif method == "ACK":
-            # 非 2xx ACK：使用 DIALOGS 找到被叫地址
+        # ACK 请求优先使用 ACK 专用处理逻辑（无论是 2xx 还是非 2xx）
+        if method == "ACK":
+            # 非 2xx ACK：使用 DIALOGS 或 REG_BINDINGS 找到被叫地址
             # RFC 3261: 非 2xx ACK 的 R-URI 必须和原始 INVITE 相同，不能修改
             # 但服务器需要知道转发给谁（被叫）
             if not is_2xx_ack:
-                log.debug(f"[ACK-NON2XX] Non-2xx ACK detected, using DIALOGS to find target")
-                # 从 DIALOGS 获取被叫地址
+                log.info(f"[ACK-NON2XX] Non-2xx ACK detected (Call-ID: {call_id}), finding target")
+                # 优先从 DIALOGS 获取被叫地址
                 if call_id and call_id in DIALOGS:
                     caller_addr, callee_addr = DIALOGS[call_id]
                     host, port = callee_addr
-                    log.debug(f"[ACK-NON2XX] Routing to callee: {host}:{port}")
+                    log.info(f"[ACK-NON2XX] ✓ Routing to callee from DIALOGS: {host}:{port}")
                 else:
-                    log.warning(f"[ACK-NON2XX] Call-ID {call_id} not in DIALOGS, cannot route")
-                    return
+                    # DIALOGS 已被清理（可能因为 487 响应），使用 REG_BINDINGS 查找被叫地址
+                    # 从 To 头获取被叫 AOR，然后查找注册的 contact 地址
+                    log.info(f"[ACK-NON2XX] Call-ID {call_id} not in DIALOGS, trying REG_BINDINGS")
+                    try:
+                        to_header = msg.get("to") or ""
+                        log.info(f"[ACK-NON2XX] To header: {to_header}")
+                        to_aor = _aor_from_to(to_header)
+                        log.info(f"[ACK-NON2XX] Extracted AOR: {to_aor}")
+                        if to_aor:
+                            targets = REG_BINDINGS.get(to_aor, [])
+                            log.info(f"[ACK-NON2XX] Found {len(targets)} bindings for AOR {to_aor}")
+                            now = int(time.time())
+                            targets = [t for t in targets if t["expires"] > now]
+                            log.info(f"[ACK-NON2XX] {len(targets)} valid (not expired) bindings")
+                            if targets:
+                                b_uri = targets[0]["contact"]
+                                log.info(f"[ACK-NON2XX] Using contact: {b_uri}")
+                                real_host, real_port = _host_port_from_sip_uri(b_uri)
+                                if real_host and real_port:
+                                    host, port = real_host, real_port
+                                    log.info(f"[ACK-NON2XX] ✓ Routing to callee from REG_BINDINGS: {host}:{port} (AOR: {to_aor})")
+                                else:
+                                    log.error(f"[ACK-NON2XX] ✗ Invalid contact address for AOR {to_aor}: {b_uri}, cannot route ACK")
+                                    return
+                            else:
+                                log.error(f"[ACK-NON2XX] ✗ No valid bindings for AOR {to_aor}, cannot route ACK")
+                                log.info(f"[ACK-NON2XX] All bindings: {REG_BINDINGS.get(to_aor, [])}")
+                                return
+                        else:
+                            log.error(f"[ACK-NON2XX] ✗ Cannot extract AOR from To header: {to_header}, cannot route ACK")
+                            return
+                    except Exception as e:
+                        log.error(f"[ACK-NON2XX] ✗ Failed to find callee address: {e}, cannot route ACK")
+                        import traceback
+                        log.error(f"[ACK-NON2XX] Traceback: {traceback.format_exc()}")
+                        return
             else:
                 # 2xx ACK：尝试使用注册表中的 contact 地址
                 try:
@@ -699,9 +822,30 @@ def _forward_request(msg: SIPMessage, addr, transport):
                     log.warning(f"ACK (2xx) loop check failed: {e}")
                     log.drop(f"Loop detected: skipping self-forward to {host}:{port}")
                     return
+        # 如果是已知对话的请求且目标指向服务器，尝试使用注册表中的地址（非 ACK）
+        elif is_in_dialog:
+            try:
+                to_aor = _aor_from_to(msg.get("to")) or msg.start_line.split()[1]
+                targets = REG_BINDINGS.get(to_aor, [])
+                if targets:
+                    b_uri = targets[0]["contact"]
+                    real_host, real_port = _host_port_from_sip_uri(b_uri)
+                    if real_host and real_port and (real_host != SERVER_IP or real_port != SERVER_PORT):
+                        host, port = real_host, real_port
+                        log.debug(f"[IN-DIALOG] Using contact address from REG_BINDINGS: {host}:{port}")
+                    else:
+                        log.drop(f"[IN-DIALOG] Loop detected and no valid contact, skipping: {host}:{port}")
+                        return
+                else:
+                    log.drop(f"[IN-DIALOG] Loop detected and no bindings for AOR {to_aor}, skipping: {host}:{port}")
+                    return
+            except Exception as e:
+                log.warning(f"[IN-DIALOG] Loop check failed: {e}")
+                log.drop(f"Loop detected: skipping self-forward to {host}:{port}")
+                return
         else:
             log.drop(f"Loop detected: skipping self-forward to {host}:{port}")
-        return
+            return
 
     # --- NAT/私网修正: 如果 Contact 或 R-URI 的 host 不可达，强制使用我们已知的绑定地址 ---
     # 从 REG_BINDINGS 查找被叫实际的 contact IP
@@ -818,6 +962,20 @@ def _forward_request(msg: SIPMessage, addr, transport):
         # ACK 也需要记录地址（虽然不需要响应，但保留追踪）
         elif call_id and method == "ACK":
             PENDING_REQUESTS[call_id] = addr  # 记录请求发送者地址
+            # RFC 3261: 转发非 2xx ACK 后，清理 DIALOGS、INVITE_BRANCHES 和最后响应状态
+            # 因为 ACK 确认了收到最终响应，可以安全清理对话信息
+            if not is_2xx_ack:
+                if call_id in DIALOGS:
+                    del DIALOGS[call_id]
+                    log.debug(f"[DIALOG-CLEANUP] Cleaned up DIALOGS after forwarding non-2xx ACK for Call-ID: {call_id}")
+                # 清理 INVITE branch（非 2xx ACK 转发完成后不再需要）
+                if call_id in INVITE_BRANCHES:
+                    del INVITE_BRANCHES[call_id]
+                    log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE_BRANCHES after forwarding non-2xx ACK for Call-ID: {call_id}")
+            # 清理最后响应状态
+            if call_id in LAST_RESPONSE_STATUS:
+                del LAST_RESPONSE_STATUS[call_id]
+                log.debug(f"[LAST-RESP-STATUS] Cleaned up last response status for Call-ID: {call_id}")
             
     except OSError as e:
         # 网络错误：目标主机不可达
@@ -868,14 +1026,30 @@ def _forward_response(resp: SIPMessage, addr, transport):
     if not vias:
         return
 
+    # 处理逗号分隔的 Via 头（RFC 3261 允许在同一行用逗号分隔多个 Via）
+    # 将每个逗号分隔的 Via 头分割成独立元素
+    split_vias = []
+    for via_str in vias:
+        # 分割逗号分隔的 Via 头（但要小心，逗号可能在参数值中）
+        # RFC 3261: Via 头的逗号分隔必须正确处理
+        parts = _split_via_header(via_str)
+        split_vias.extend(parts)
+    
+    # 如果没有分割出多个，使用原始值
+    if not split_vias:
+        split_vias = vias
+    
     # 检查顶层Via是否是我们
-    top = vias[0]
+    top = split_vias[0] if split_vias else ""
     status_code = resp.start_line.split()[1] if len(resp.start_line.split()) > 1 else ""
     call_id_resp = resp.get("call-id")
     
-    if f"{SERVER_IP}:{SERVER_PORT}" not in top:
+    # 增强日志：记录完整的 Via 头内容
+    log.debug(f"[RESP-VIA] Response {status_code} (Call-ID: {call_id_resp}) | Via count: {len(split_vias)} | Top Via: {top[:100]}")
+    
+    if not top or f"{SERVER_IP}:{SERVER_PORT}" not in top:
         # 调试：记录为什么不转发
-        log.debug(f"[RESP-SKIP] Response {status_code} not forwarded: top Via '{top}' does not contain '{SERVER_IP}:{SERVER_PORT}' | Call-ID: {call_id_resp}")
+        log.debug(f"[RESP-SKIP] Response {status_code} not forwarded: top Via '{top[:100] if top else 'EMPTY'}' does not contain '{SERVER_IP}:{SERVER_PORT}' | Call-ID: {call_id_resp}")
         return
     
     # 如果是错误响应（如 482 Loop Detected），不应该继续转发
@@ -918,14 +1092,40 @@ def _forward_response(resp: SIPMessage, addr, transport):
 
     # 弹出我们的 Via
     _pop_top_via(resp)
+    
+    # 重新获取 Via 头（可能已分割）
     vias2 = resp.headers.get("via", [])
     if not vias2:
-        return  # 无上层Via，无法继续转发
-
-    # 从新的顶层Via中取目标
-    nhost, nport = _host_port_from_via(vias2[0])
-    log.debug(f"[RESP-ROUTE] Via头数量: {len(vias2)}, Via[0]: {vias2[0]}")
-    log.debug(f"[RESP-ROUTE] Via解析结果 -> target: {nhost}:{nport}")
+        # 如果没有 Via 头了，尝试使用 PENDING_REQUESTS 中的原始发送者地址
+        call_id = resp.get("call-id")
+        original_sender_addr = PENDING_REQUESTS.get(call_id) if call_id else None
+        if original_sender_addr:
+            log.debug(f"[RESP-ROUTE] No Via left, using PENDING_REQUESTS: {original_sender_addr}")
+            nhost, nport = original_sender_addr
+        else:
+            log.warning(f"[RESP-ROUTE] No Via left and no PENDING_REQUESTS for Call-ID: {call_id}, cannot forward response {status_code}")
+            return  # 无上层Via，无法继续转发
+    else:
+        # 处理可能的逗号分隔的 Via 头
+        first_via_str = vias2[0]
+        first_via_parts = _split_via_header(first_via_str)
+        
+        if not first_via_parts:
+            # 无法解析，使用兜底方案
+            call_id = resp.get("call-id")
+            original_sender_addr = PENDING_REQUESTS.get(call_id) if call_id else None
+            if original_sender_addr:
+                nhost, nport = original_sender_addr
+                log.debug(f"[RESP-ROUTE] Failed to parse Via, using PENDING_REQUESTS: {original_sender_addr}")
+            else:
+                log.warning(f"[RESP-ROUTE] Failed to parse Via and no PENDING_REQUESTS for Call-ID: {call_id}")
+                return
+        else:
+            # 使用第一个 Via 头
+            first_via = first_via_parts[0]
+            nhost, nport = _host_port_from_via(first_via)
+            log.debug(f"[RESP-ROUTE] Via头数量: {len(vias2)}, Via[0] (split): {len(first_via_parts)} parts, First Via: {first_via[:80]}")
+            log.debug(f"[RESP-ROUTE] Via解析结果 -> target: {nhost}:{nport}")
 
     # 获取Call-ID，用于查找原始请求发送者地址
     call_id = resp.get("call-id")
@@ -1001,22 +1201,31 @@ def _forward_response(resp: SIPMessage, addr, transport):
         log.fwd(f"RESP {resp.start_line}", (nhost, nport))
         
         # 清理追踪记录
-        # 注意：2xx 响应(200)不立即清理 DIALOGS，因为还需要等 ACK
-        # 只清理失败响应(486, 487等)
-        # CDR: 只在第一次清理时记录（避免重传导致重复记录）
+        # RFC 3261: 对于 INVITE 的非 2xx 最终响应（如 487），需要等待 ACK
+        # - 2xx 响应(200)：保留 DIALOGS，等待 ACK
+        # - 非 2xx 响应(486, 487等)：保留 DIALOGS，等待 ACK（ACK 转发后才清理）
+        # CDR: 只在第一次收到响应时记录（避免重传导致重复记录）
         need_cleanup = False
         if status_code in ("486", "487", "488", "600", "603", "604"):
             if call_id in DIALOGS:
-                need_cleanup = True  # 第一次收到最终响应
+                need_cleanup = True  # 第一次收到最终响应（用于 CDR 记录）
+            # 清理 PENDING_REQUESTS（不再需要追踪）
             if call_id in PENDING_REQUESTS:
                 del PENDING_REQUESTS[call_id]
-            if call_id in DIALOGS:
-                del DIALOGS[call_id]
-                log.debug(f"[DIALOG-CLEANUP] Cleaned up failed call: {call_id}")
-            # 清理 INVITE branch 追踪
-            if call_id in INVITE_BRANCHES:
-                del INVITE_BRANCHES[call_id]
-                log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE branch: {call_id}")
+            # ⚠️ 注意：不立即清理 INVITE_BRANCHES，需要等待 ACK
+            # INVITE_BRANCHES 将在收到并转发 ACK 后清理（在 _forward_request 的 ACK 处理中）
+            # 因为非 2xx ACK 需要复用 INVITE 的 branch 来匹配原始 Via 栈
+            log.debug(f"[BRANCH-WAIT-ACK] Keeping INVITE_BRANCHES for Call-ID {call_id}, waiting for ACK for non-2xx response {status_code}")
+            # ⚠️ 注意：不立即清理 DIALOGS，需要等待 ACK
+            # DIALOGS 将在收到并转发 ACK 后清理（在 _forward_request 的 ACK 处理中）
+            log.debug(f"[DIALOG-WAIT-ACK] Keeping DIALOGS for Call-ID {call_id}, waiting for ACK for non-2xx response {status_code}")
+        
+        # 记录最后响应状态（用于 ACK 类型判断）
+        if is_invite_response and call_id:
+            # 只记录最终响应（非 1xx）
+            if status_code and not status_code.startswith("1"):
+                LAST_RESPONSE_STATUS[call_id] = status_code
+                log.debug(f"[LAST-RESP-STATUS] Recorded last response status {status_code} for Call-ID {call_id}")
         
         # CDR: 记录呼叫应答和呼叫失败（只在第一次收到响应时记录，避免重传导致重复）
         if is_invite_response:
@@ -1082,6 +1291,7 @@ def _forward_response(resp: SIPMessage, addr, transport):
             # 200 OK：需要区分不同场景
             # - INVITE 200 OK：已在上面处理（保留 DIALOGS 等待 ACK）
             # - BYE 200 OK：应该清理 DIALOGS（呼叫已结束）
+            # - CANCEL 200 OK：不应该清理 INVITE_BRANCHES（还需要等待 ACK 匹配原始 INVITE）
             # - 其他方法 200 OK：与 DIALOGS 无关
             if "BYE" in cseq_header and call_id in DIALOGS:
                 # BYE 200 OK：清理 dialog
@@ -1090,9 +1300,15 @@ def _forward_response(resp: SIPMessage, addr, transport):
             # 清理其他追踪数据
             if call_id in PENDING_REQUESTS:
                 del PENDING_REQUESTS[call_id]
-            if call_id in INVITE_BRANCHES:
+            # ⚠️ 注意：CANCEL 的 200 OK 不应该清理 INVITE_BRANCHES
+            # 因为后续的 487 响应的 ACK 需要复用 INVITE 的 branch
+            # 只有 BYE 200 OK 才清理 INVITE_BRANCHES（呼叫已完全结束）
+            if "BYE" in cseq_header and call_id in INVITE_BRANCHES:
                 del INVITE_BRANCHES[call_id]
-                log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE branch after 200 OK: {call_id}")
+                log.debug(f"[BRANCH-CLEANUP] Cleaned up INVITE branch after BYE 200 OK: {call_id}")
+            elif "CANCEL" in cseq_header:
+                # CANCEL 200 OK：保留 INVITE_BRANCHES，等待 487 响应的 ACK
+                log.debug(f"[BRANCH-KEEP] Keeping INVITE_BRANCHES for Call-ID {call_id} after CANCEL 200 OK (waiting for 487 ACK)")
     except OSError as e:
         # UDP发送错误 - 尝试备用地址
         log.error(f"UDP send failed to ({nhost}:{nport}): {e}")
@@ -1163,24 +1379,37 @@ def on_datagram(data: bytes, addr, transport):
         log.error(f"parse/send failed: {e}")
 
 async def main():
+    # 准备服务器全局状态
+    server_globals = {
+        'SERVER_IP': SERVER_IP,
+        'SERVER_PORT': SERVER_PORT,
+        'FORCE_LOCAL_ADDR': FORCE_LOCAL_ADDR,
+        'REGISTRATIONS': REG_BINDINGS,  # 实际变量名是 REG_BINDINGS
+        'DIALOGS': DIALOGS,
+        'PENDING_REQUESTS': PENDING_REQUESTS,
+        'INVITE_BRANCHES': INVITE_BRANCHES,
+    }
+    
+    # 初始化外呼管理器
+    try:
+        from autodialer_manager import AutoDialerManager
+        # 添加 REG_BINDINGS 到 server_globals（用于清理残留注册）
+        server_globals['REG_BINDINGS'] = REG_BINDINGS
+        dialer_mgr = AutoDialerManager(config_file="sip_client_config.json", server_globals=server_globals)
+        server_globals['AUTO_DIALER_MANAGER'] = dialer_mgr
+        log.info("外呼管理器已初始化")
+    except Exception as e:
+        log.warning(f"外呼管理器初始化失败: {e}")
+        server_globals['AUTO_DIALER_MANAGER'] = None
+    
     # 启动 MML 管理界面
     try:
         from web.mml_server import init_mml_interface
-        # 传递服务器全局状态给 MML 界面
-        server_globals = {
-            'SERVER_IP': SERVER_IP,
-            'SERVER_PORT': SERVER_PORT,
-            'FORCE_LOCAL_ADDR': FORCE_LOCAL_ADDR,
-            'REGISTRATIONS': REG_BINDINGS,  # 实际变量名是 REG_BINDINGS
-            'DIALOGS': DIALOGS,
-            'PENDING_REQUESTS': PENDING_REQUESTS,
-            'INVITE_BRANCHES': INVITE_BRANCHES,
-        }
         init_mml_interface(port=8888, server_globals=server_globals)
     except Exception as e:
         log.warning(f"MML interface failed to start: {e}")
     
-    # 创建 UDP 服务器
+    # 创建并启动 UDP 服务器
     udp = UDPServer((SERVER_IP, SERVER_PORT), on_datagram)
     await udp.start()
     # UDP server listening 日志已在 transport_udp.py 中输出，此处不再重复

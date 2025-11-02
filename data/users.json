@@ -115,5 +115,16 @@
     "update_time": "2025-10-30T14:14:57.408822",
     "role": "USER",
     "mml_access": false
+  },
+  "0000": {
+    "username": "0000",
+    "password": "0000",
+    "display_name": "用户0000",
+    "phone": "",
+    "email": "",
+    "status": "ACTIVE",
+    "service_type": "BASIC",
+    "create_time": "2025-10-31T15:52:22.438680",
+    "update_time": "2025-10-31T15:52:22.438697"
   }
 }

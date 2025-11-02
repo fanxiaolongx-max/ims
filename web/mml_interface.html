@@ -1704,6 +1704,29 @@
             ],
             'RMV USR': [
                 { name: 'USERNAME', label: '用户名', required: true, placeholder: '要删除的用户名' }
+            ],
+            // 外呼管理命令（查询外呼命令不需要参数表单）
+            'DSP DIALSVC': [
+                // 无需参数表单
+            ],
+            'STR DIALSVC': [
+                // 无需参数
+            ],
+            'STP DIALSVC': [
+                // 无需参数
+            ],
+            'STR CALL SINGLE': [
+                { name: 'CALLEE', label: '被叫号码', required: true, placeholder: '如: 1006' },
+                { name: 'MEDIA_FILE', label: '媒体文件', required: false, placeholder: '留空使用默认媒体文件' },
+                { name: 'DURATION', label: '播放时长（秒）', required: false, placeholder: '0 表示播放完整文件，>0 表示限制播放时长' }
+            ],
+            'STR CALL BATCH': [
+                { name: 'NUMBERS', label: '被叫号码（号码范围）', required: true, placeholder: '如: 1000-1005，支持范围或逗号分隔，如 1000-1005 或 1006,1007,1008' },
+                { name: 'MEDIA_FILE', label: '媒体文件', required: false, placeholder: '留空使用默认媒体文件' },
+                { name: 'DURATION', label: '播放时长（秒）', required: false, placeholder: '0 表示播放完整文件，>0 表示限制播放时长' }
+            ],
+            'DSP CALL': [
+                // 查询外呼统计不需要参数表单（STAT 直接在命令中）
             ]
         };
         
@@ -1738,14 +1761,14 @@
                 }
             }
             
-            if (matchedConfig) {
-                // 显示参数表单
+            if (matchedConfig && matchedConfig.config && matchedConfig.config.length > 0) {
+                // 显示参数表单（只有配置不为空才显示）
                 showParamForm(matchedConfig.pattern, matchedConfig.config);
                 
                 // 从命令文本解析已有参数
                 parseCommandToForm(command, matchedConfig.pattern);
             } else {
-                // 没有匹配的命令，隐藏参数表单
+                // 没有匹配的命令或配置为空，隐藏参数表单
                 paramForm.style.display = 'none';
             }
         }
@@ -1757,10 +1780,27 @@
             // 清空现有字段
             paramFields.innerHTML = '';
             
+            // 过滤重复的字段名（同一个字段名可能因为条件显示而出现多次）
+            const seenFields = new Set();
+            
             // 生成参数输入字段
             config.forEach(field => {
+                // 跳过重复的字段名（保留第一个）
+                if (seenFields.has(field.name)) {
+                    return;
+                }
+                seenFields.add(field.name);
+                
                 const fieldDiv = document.createElement('div');
                 fieldDiv.className = 'param-field';
+                fieldDiv.dataset.fieldName = field.name;
+                
+                // 保存条件显示配置
+                if (field.showIf) {
+                    fieldDiv.dataset.showIfField = field.showIf.field;
+                    fieldDiv.dataset.showIfValue = field.showIf.value;
+                    fieldDiv.style.display = 'none'; // 默认隐藏条件字段
+                }
                 
                 const label = document.createElement('label');
                 label.textContent = field.label;
@@ -1794,20 +1834,70 @@
                 inputElement.dataset.paramName = field.name;
                 inputElement.dataset.required = field.required;
                 
-                // 监听参数输入变化，更新命令文本
+                // 监听参数输入变化，更新命令文本和条件字段显示
                 inputElement.addEventListener('input', () => {
                     updateCommandFromForm(cmdPattern);
+                    updateConditionalFields(); // 更新条件字段显示
                 });
+                
+                // 对于 select，也需要监听 change 事件
+                if (field.type === 'select') {
+                    inputElement.addEventListener('change', () => {
+                        updateCommandFromForm(cmdPattern);
+                        updateConditionalFields(); // 更新条件字段显示
+                    });
+                }
                 
                 fieldDiv.appendChild(label);
                 fieldDiv.appendChild(inputElement);
                 paramFields.appendChild(fieldDiv);
             });
             
+            // 初始化条件字段显示
+            updateConditionalFields();
+            
             paramForm.style.display = 'flex';
             
             // 参数表单现在使用 flex: 1 自动填充 input-area 剩余空间
             // 不再需要手动设置高度，overflow-y: auto 会自动显示滚动条
+        }
+        
+        // 更新条件字段的显示/隐藏
+        function updateConditionalFields() {
+            const paramFields = document.getElementById('param-form-fields');
+            const allFields = paramFields.querySelectorAll('.param-field');
+            const inputs = paramFields.querySelectorAll('input, select');
+            
+            // 获取所有字段的当前值
+            const fieldValues = {};
+            inputs.forEach(input => {
+                const fieldName = input.dataset.paramName;
+                fieldValues[fieldName] = input.value.trim();
+            });
+            
+            // 更新每个条件字段的显示状态
+            allFields.forEach(fieldDiv => {
+                const showIfField = fieldDiv.dataset.showIfField;
+                const showIfValue = fieldDiv.dataset.showIfValue;
+                
+                if (showIfField && showIfValue) {
+                    // 检查条件是否满足
+                    const conditionValue = fieldValues[showIfField] || '';
+                    if (conditionValue === showIfValue) {
+                        fieldDiv.style.display = 'flex'; // 显示
+                    } else {
+                        fieldDiv.style.display = 'none'; // 隐藏
+                        // 清除隐藏字段的值
+                        const input = fieldDiv.querySelector('input, select');
+                        if (input) {
+                            input.value = '';
+                        }
+                    }
+                } else {
+                    // 无条件字段，默认显示
+                    fieldDiv.style.display = 'flex';
+                }
+            });
         }
         
         function parseCommandToForm(command, cmdPattern) {
@@ -1823,6 +1913,8 @@
                 params[match[1]] = match[2];
             }
             
+            // 特殊处理 STR CALL SINGLE 和 STR CALL BATCH：已拆分为独立命令，无需特殊处理
+            
             // 更新表单字段
             inputs.forEach(input => {
                 const paramName = input.dataset.paramName;
@@ -1830,6 +1922,9 @@
                     input.value = params[paramName];
                 }
             });
+            
+            // 更新条件字段显示
+            updateConditionalFields();
         }
         
         function updateCommandFromForm(cmdPattern) {
@@ -1837,13 +1932,16 @@
             const inputs = paramFields.querySelectorAll('input, select');
             const commandInput = document.getElementById('command-input');
             
-            // 收集参数
+            // 收集参数（只收集可见字段的值）
             const params = [];
             inputs.forEach(input => {
                 const paramName = input.dataset.paramName;
                 const value = input.value.trim();
                 
-                if (value) {
+                // 检查字段是否可见
+                const fieldDiv = input.closest('.param-field');
+                if (fieldDiv && fieldDiv.style.display !== 'none' && value) {
+                    // 所有字段直接输出到命令中
                     params.push(`${paramName}=${value}`);
                 }
             });

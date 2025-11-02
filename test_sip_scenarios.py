@@ -14,9 +14,9 @@ from dataclasses import dataclass
 import threading
 
 # ====== 配置 ======
-SERVER_IP = "192.168.8.126"
+SERVER_IP = "192.168.100.8"
 SERVER_PORT = 5060
-LOCAL_IP = "192.168.8.126"  # 测试客户端 IP（与服务器同一台机器）
+LOCAL_IP = "192.168.100.8"  # 测试客户端 IP（与服务器同一台机器）
 
 # 测试用户
 USERS = {
