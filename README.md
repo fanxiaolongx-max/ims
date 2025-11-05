@@ -1,14 +1,16 @@
 # IMS SIP Server
 
-基于 RFC 3261 标准实现的 SIP 代理服务器，提供用户注册、呼叫控制、CDR 话单和 Web 管理功能。
+基于 RFC 3261 标准实现的 SIP 代理服务器，提供用户注册、呼叫控制、CDR 话单、外呼服务和 Web 管理功能。
 
 ## 快速开始
 
 ### 环境要求
-- Python 3.7+
-- 可选：websockets、psutil（MML 管理界面）
+- Python 3.11+
+- 可选依赖：websockets、psutil（MML 管理界面）
 
 ### 安装和启动
+
+#### 方式 1：直接运行
 
 ```bash
 # 1. 克隆项目
@@ -22,33 +24,96 @@ pip install -r requirements.txt
 python run.py
 ```
 
-启动后服务监听：
-- SIP: UDP 5060
+#### 方式 2：Docker 部署（推荐）
+
+**Linux（host 网络，推荐生产环境）：**
+
+```bash
+# 构建镜像
+docker build -t ims:latest .
+
+# 运行（指定服务器 IP）
+docker run -d --name ims --network host \
+  -e SERVER_IP=192.168.1.100 \
+  -e LOCAL_NETWORK_CIDR=192.168.0.0/16 \
+  ims:latest
+
+# 或进入容器手动配置
+docker run -d --name ims --network host \
+  --entrypoint /bin/sh \
+  ims:latest \
+  -c "tail -f /dev/null"
+docker exec -it ims /bin/bash
+cd /app
+export SERVER_IP=192.168.1.100
+python run.py
+```
+
+**macOS/Windows（端口映射，仅用于调试）：**
+
+```bash
+docker run -d --name ims \
+  -p 8888:8888/tcp \
+  -p 8889:8889/tcp \
+  -p 5060:5060/udp \
+  -p 10000-10100:10000-10100/udp \
+  -e SERVER_IP=192.168.100.8 \
+  ims:latest
+```
+
+**注意**：WebSocket 端口（8889）用于实时日志推送，如果使用 host 网络模式则不需要映射。
+
+### 配置说明
+
+#### 环境变量
+
+- `SERVER_IP` - 服务器 IP 地址（默认自动检测）
+- `LOCAL_NETWORK_CIDR` - 局域网网段（默认 `192.168.0.0/16`）
+
+#### 启动后服务监听
+- SIP: UDP 5060（绑定到 `0.0.0.0`，对外宣告使用 `SERVER_IP`）
 - MML 管理界面: HTTP 8888
 
 ### 访问管理界面
 
-浏览器打开 http://localhost:8888
+浏览器打开：http://localhost:8888 或 http://<服务器IP>:8888
 
 ## 核心功能
 
 ### SIP 协议支持
 
-| 方法 | 功能 | 状态 |
-|------|------|------|
-| REGISTER | 用户注册/注销 | ✓ |
-| INVITE | 呼叫建立 | ✓ |
-| ACK | 呼叫确认 | ✓ |
-| BYE | 呼叫释放 | ✓ |
-| CANCEL | 呼叫取消 | ✓ |
-| OPTIONS | 能力查询 | ✓ |
-| MESSAGE | 即时消息 | ✓ |
+| 方法 | 功能 | 状态 | RFC 3261 合规性 |
+|------|------|------|----------------|
+| REGISTER | 用户注册/注销 | ✓ | ✓ |
+| INVITE | 呼叫建立 | ✓ | ✓ |
+| ACK | 呼叫确认（2xx/非2xx） | ✓ | ✓ |
+| BYE | 呼叫释放 | ✓ | ✓ |
+| CANCEL | 呼叫取消 | ✓ | ✓ |
+| OPTIONS | 能力查询 | ✓ | ✓ |
+| MESSAGE | 即时消息 | ✓ | ✓ |
+
+### 外呼服务（Auto Dialer）
+
+- **单次外呼**：发起单个号码的外呼，支持媒体文件播放
+- **批量外呼**：支持号码列表和号码范围（如 `1000-1005`），并发执行
+- **自动注册**：外呼终端自动注册到服务器
+- **资源管理**：自动清理残留注册，释放端口资源
+
+**MML 命令：**
+```
+STR CALL SINGLE CALLEE=1009 MEDIA_FILE=media/default.wav DURATION=10
+STR CALL BATCH NUMBERS=1000-1005 MEDIA_FILE=media/default.wav DURATION=10
+STP CALL                              # 停止外呼服务
+DSP DIALSVC                           # 查询外呼服务状态
+DSP CALL STAT                         # 查询呼叫统计
+DSP DIALSVC CFG                       # 查询外呼配置
+```
 
 ### CDR 话单系统
 
 - 自动记录所有呼叫、注册、消息
 - 按日期分文件夹归档（`CDR/YYYY-MM-DD/`）
-- CSV 格式，包含主被叫、时长、状态等字段
+- CSV 格式，包含主被叫、时长、状态、媒体类型、编解码等字段
 - 支持通过 MML 查询、导出、清理
 
 ### 用户管理
@@ -63,13 +128,14 @@ python run.py
 基于 WebSocket 的实时管理界面，支持：
 
 **命令管理**
-- 用户管理：DSP USER, ADD USER, MOD USER, RMV USER
-- 注册管理：DSP REG, RMV REG, CLR REG
-- 呼叫管理：DSP CALL, RMV CALL, CLR CALL
-- CDR 管理：DSP CDR, EXP CDR, CLR CDR
-- 配置管理：DSP CFG, SET CFG, EXP CFG
-- 性能监控：DSP PERF (CPU/MEM/NET/MSG)
-- 日志管理：DSP LOG, SET LOG
+- 用户管理：`DSP USER`, `ADD USER`, `MOD USER`, `RMV USER`
+- 注册管理：`DSP REG`, `RMV REG`, `CLR REG`
+- 呼叫管理：`DSP CALL`, `RMV CALL`, `CLR CALL`
+- CDR 管理：`DSP CDR`, `EXP CDR`, `CLR CDR`
+- 配置管理：`DSP CFG`, `SET CFG`, `EXP CFG`
+- 外呼管理：`STR CALL SINGLE`, `STR CALL BATCH`, `STP CALL`, `DSP DIALSVC`
+- 性能监控：`DSP PERF` (CPU/MEM/NET/MSG)
+- 日志管理：`DSP LOG`, `SET LOG`
 
 **实时监控**
 - 活跃呼叫数、注册用户数
@@ -77,19 +143,142 @@ python run.py
 - 系统性能指标（CPU、内存、网络）
 - 命令历史记录
 
+## 目录结构
+
+```
+ims/
+├── run.py                  # 主程序入口
+├── requirements.txt        # 依赖列表
+├── Dockerfile             # Docker 镜像构建文件
+├── README.md              # 本文档
+│
+├── sipcore/               # SIP 协议核心
+│   ├── parser.py         # 消息解析
+│   ├── transport_udp.py  # UDP 传输
+│   ├── auth.py           # Digest 认证
+│   ├── cdr.py            # CDR 记录
+│   ├── user_manager.py   # 用户管理
+│   ├── logger.py         # 日志系统
+│   ├── sdp_parser.py      # SDP 解析
+│   └── timers.py         # RFC 3261 定时器
+│
+├── web/                   # MML 管理界面
+│   ├── mml_server.py     # MML 后端服务
+│   └── mml_interface.html # Web 前端
+│
+├── config/               # 配置管理
+│   ├── config_manager.py # 配置管理器
+│   └── config.json       # 配置文件
+│
+├── data/                 # 数据文件
+│   └── users.json        # 用户数据
+│
+├── tests/                # 测试代码
+│   ├── test_sip_scenarios.py  # SIP 场景测试
+│   ├── test_cdr.py            # CDR 测试
+│   ├── test_cdr_merged.py     # CDR 合并模式测试
+│   └── quick_test.sh           # 快速测试脚本
+│
+├── tools/                # 工具脚本
+│   └── cdr_viewer.py     # CDR 查看器
+│
+├── autodialer_manager.py # 外呼服务管理器
+├── sip_client_standalone.py # 独立 SIP 客户端（用于外呼）
+├── sip_client_config.json  # 外呼客户端配置
+│
+├── CDR/                  # 话单数据（按日期）
+│   └── YYYY-MM-DD/
+│       └── cdr_YYYY-MM-DD.csv
+│
+├── logs/                 # 日志文件（按日期）
+│   └── YYYY-MM-DD/
+│       └── ims-sip-server.log
+│
+├── media/                # 媒体文件（用于外呼播放）
+│   └── default.wav
+│
+└── docs/                 # 文档
+    ├── archive/          # 归档文档
+    ├── QUICK_START.md    # 快速开始指南
+    ├── MML_GUIDE.md      # MML 使用指南
+    └── ...
+```
+
+## 典型场景
+
+### 呼叫流程
+
+```
+成功呼叫:
+INVITE -> 100 Trying -> 180 Ringing -> 200 OK -> ACK -> [通话] -> BYE -> 200 OK
+
+取消呼叫:
+INVITE -> 100 Trying -> 180 Ringing -> CANCEL -> 200 OK -> 487 Request Terminated -> ACK
+
+拒绝呼叫:
+INVITE -> 100 Trying -> 486 Busy Here -> ACK
+```
+
+### 外呼使用示例
+
+**单次外呼：**
+```
+STR CALL SINGLE CALLEE=1009 MEDIA_FILE=media/default.wav DURATION=30
+```
+
+**批量外呼（号码范围）：**
+```
+STR CALL BATCH NUMBERS=1000-1005 MEDIA_FILE=media/default.wav DURATION=30
+```
+
+**批量外呼（逗号分隔）：**
+```
+STR CALL BATCH NUMBERS=1001,1002,1003,1004 MEDIA_FILE=media/default.wav DURATION=30
+```
+
+### CDR 查询
+
+通过 MML 界面：
+
+```
+DSP CDR                           # 查询今天的 CDR
+DSP CDR DATE=2025-11-01           # 查询指定日期
+DSP CDR TYPE=CALL LIMIT=50        # 查询呼叫类型，限制 50 条
+EXP CDR DATE=2025-11-01 TYPE=CALL # 导出到 CSV
+```
+
+### 用户管理
+
+```
+DSP USER                                  # 查询所有用户
+DSP USER USERNAME=1001                    # 查询指定用户
+ADD USER USERNAME=1004 PASSWORD=1004      # 添加用户
+MOD USER USERNAME=1004 STATUS=INACTIVE     # 修改用户状态
+RMV USER USERNAME=1004 CONFIRM=YES        # 删除用户
+```
+
 ## 配置说明
 
 ### 服务器配置
 
-编辑 `run.py`：
+**方式 1：环境变量（推荐）**
 
-```python
-SERVER_IP = "192.168.8.126"  # 服务器 IP
-SERVER_PORT = 5060           # SIP 端口
-FORCE_LOCAL_ADDR = False     # NAT 模式
+```bash
+# 指定服务器 IP
+export SERVER_IP=192.168.1.100
+
+# 指定局域网网段
+export LOCAL_NETWORK_CIDR=192.168.0.0/16
+
+# 启动服务
+python run.py
 ```
 
-或通过 MML 命令动态查询/修改：
+**方式 2：自动检测（默认）**
+
+如果不设置环境变量，程序会自动检测本机 IP 地址。
+
+**方式 3：通过 MML 命令动态查询/修改**
 
 ```
 DSP CFG                    # 查询所有配置
@@ -114,77 +303,72 @@ Transport: UDP
 - 1002/1002
 - 1003/1003
 
-## 目录结构
+## RFC 3261 合规性
 
-```
-ims/
-├── run.py                  # 主程序入口
-├── requirements.txt        # 依赖列表
-├── README.md              # 本文档
-│
-├── sipcore/               # SIP 协议核心
-│   ├── parser.py         # 消息解析
-│   ├── transport_udp.py  # UDP 传输
-│   ├── auth.py           # Digest 认证
-│   ├── cdr.py            # CDR 记录
-│   ├── user_manager.py   # 用户管理
-│   ├── logger.py         # 日志系统
-│   └── sdp_parser.py     # SDP 解析
-│
-├── web/                   # MML 管理界面
-│   ├── mml_server.py     # MML 后端服务
-│   └── mml_interface.html # Web 前端
-│
-├── config/                # 配置管理
-│   ├── config_manager.py # 配置管理器
-│   └── config.json       # 配置文件
-│
-├── data/                  # 数据文件
-│   └── users.json        # 用户数据
-│
-├── CDR/                   # 话单数据（按日期）
-│   └── YYYY-MM-DD/
-│       └── cdr_YYYY-MM-DD.csv
-│
-└── logs/                  # 日志文件（按日期）
-    └── YYYY-MM-DD/
-        └── ims-sip-server.log
+本实现严格遵循 RFC 3261 标准：
+
+- ✓ **Record-Route 处理**：初始 INVITE 自动添加 Record-Route
+- ✓ **Via 头管理**：正确处理逗号分隔的 Via 头，支持多跳代理
+- ✓ **ACK 路由**：正确区分 2xx 和非 2xx ACK，非 2xx ACK 复用 INVITE branch
+- ✓ **NAT 检测和修正**：自动修正 Contact 和 Via 头中的 NAT 地址
+- ✓ **Digest 认证**：支持 MD5 和 SHA256 算法
+- ✓ **呼叫状态机**：完整的 INVITE 事务状态管理
+- ✓ **re-INVITE 支持**：支持媒体切换（hold/resume/add video）
+- ✓ **CANCEL 处理**：复用 INVITE branch，确保兼容性
+- ✓ **资源清理**：按协议标准延迟清理 DIALOGS，等待 ACK 确认
+
+## Docker 部署
+
+### 构建镜像
+
+```bash
+docker build -t ims:latest .
 ```
 
-## 典型场景
+### 运行（Linux host 网络）
 
-### 呼叫流程
+```bash
+# 指定 IP 地址
+docker run -d --name ims --network host \
+  -e SERVER_IP=192.168.1.100 \
+  -e LOCAL_NETWORK_CIDR=192.168.0.0/16 \
+  ims:latest
 
-```
-成功呼叫:
-INVITE -> 100 Trying -> 180 Ringing -> 200 OK -> ACK -> [通话] -> BYE -> 200 OK
-
-取消呼叫:
-INVITE -> 100 Trying -> 180 Ringing -> CANCEL -> 200 OK -> 487 Request Terminated -> ACK
-
-拒绝呼叫:
-INVITE -> 100 Trying -> 486 Busy Here -> ACK
-```
-
-### CDR 查询
-
-通过 MML 界面：
-
-```
-DSP CDR                           # 查询今天的 CDR
-DSP CDR DATE=2025-10-30           # 查询指定日期
-DSP CDR TYPE=CALL LIMIT=50        # 查询呼叫类型，限制 50 条
-EXP CDR DATE=2025-10-30 TYPE=CALL # 导出到 CSV
+# 自动检测 IP（不传 SERVER_IP）
+docker run -d --name ims --network host \
+  ims:latest
 ```
 
-### 用户管理
+### 运行（macOS/Windows 端口映射）
 
+```bash
+docker run -d --name ims \
+  -p 8888:8888/tcp \
+  -p 8889:8889/tcp \
+  -p 5060:5060/udp \
+  -p 10000-10100:10000-10100/udp \
+  -e SERVER_IP=192.168.100.8 \
+  ims:latest
 ```
-DSP USER                                  # 查询所有用户
-DSP USER USERNAME=1001                    # 查询指定用户
-ADD USER USERNAME=1004 PASSWORD=1004      # 添加用户
-MOD USER USERNAME=1004 STATUS=INACTIVE    # 修改用户状态
-RMV USER USERNAME=1004 CONFIRM=YES        # 删除用户
+
+**注意**：WebSocket 端口（8889）用于实时日志推送，必须映射才能使用该功能。
+
+### 进入容器手动配置
+
+```bash
+# 1. 启动容器（保持运行）
+docker run -d --name ims --network host \
+  --entrypoint /bin/sh \
+  ims:latest \
+  -c "tail -f /dev/null"
+
+# 2. 进入容器
+docker exec -it ims /bin/bash
+
+# 3. 设置环境变量并运行
+export SERVER_IP=192.168.1.100
+cd /app
+python run.py
 ```
 
 ## 日志管理
@@ -208,22 +392,14 @@ SET CFG KEY=LOG.LEVEL VALUE=DEBUG
 }
 ```
 
-### 日志格式
-
-```
-2025-10-30 12:34:56.789 [INFO    ] [run.py:handle_register:285] [RX] 192.168.8.120:5060 -> REGISTER
-```
-
-包含：时间戳（毫秒）、日志级别、源文件:函数:行号、消息内容
-
 ### 日志查看
 
 ```bash
 # 实时查看
-tail -f logs/2025-10-30/ims-sip-server.log
+tail -f logs/2025-11-01/ims-sip-server.log
 
 # 查看错误
-grep ERROR logs/2025-10-30/ims-sip-server.log
+grep ERROR logs/2025-11-01/ims-sip-server.log
 
 # MML 查询
 DSP LOG RECENT LINES=100
@@ -236,6 +412,7 @@ DSP LOG RECENT LINES=100
 - 内存占用：~50MB (空闲)
 - 日志限制：1000 条/页面 (MML)
 - CDR 自动归档：按日期分文件夹
+- 外呼并发：支持批量并发外呼（可配置）
 
 ## 安全说明
 
@@ -251,48 +428,24 @@ DSP LOG RECENT LINES=100
 - 使用防火墙限制访问
 - 定期备份数据
 
-## RFC 3261 合规性
+## 测试
 
-- ✓ Record-Route 处理
-- ✓ Via 头管理
-- ✓ ACK 路由（2xx 和非 2xx）
-- ✓ NAT 检测和修正
-- ✓ Digest 认证
-- ✓ 呼叫状态机
-- ✓ re-INVITE 支持（媒体切换）
+### 自动化测试
 
-## 测试建议
-
-### 自动化测试（推荐）⭐
-
-使用提供的自动化测试脚本，无需手动配置客户端：
+测试文件位于 `tests/` 目录：
 
 ```bash
 # 快速测试（推荐新手）
-./quick_test.sh
+./tests/quick_test.sh
 
-# 运行所有 10 个测试场景
-python3 test_sip_scenarios.py
+# 运行所有测试场景
+python3 tests/test_sip_scenarios.py
 
 # 运行单个场景
-python3 test_sip_scenarios.py 6  # 注册注销（最简单）
-python3 test_sip_scenarios.py 5  # 即时消息
-python3 test_sip_scenarios.py 1  # 正常呼叫
+python3 tests/test_sip_scenarios.py 6  # 注册注销（最简单）
+python3 tests/test_sip_scenarios.py 5  # 即时消息
+python3 tests/test_sip_scenarios.py 1  # 正常呼叫
 ```
-
-**测试场景包括**：
-1. 正常呼叫（接听并挂断）
-2. 被叫忙（486 Busy）
-3. 振铃时取消（CANCEL）
-4. 被叫未注册（480）
-5. 即时消息（MESSAGE）
-6. 注册注销（REGISTER）
-7. 错误密码（认证失败）
-8. 并发呼叫
-9. 长时间通话
-10. 重复注册
-
-详细说明：[TEST_GUIDE.md](TEST_GUIDE.md)
 
 ### 使用 SIP 客户端测试
 
@@ -311,33 +464,41 @@ SERVER_PORT = 5061
 
 **Q: CDR 文件在哪里？**
 ```
-CDR/2025-10-30/cdr_2025-10-30.csv
+CDR/2025-11-01/cdr_2025-11-01.csv
 ```
 
 **Q: 如何清理旧日志？**
 ```bash
-rm -rf logs/2025-09-*
+rm -rf logs/2025-10-*
 ```
 或通过 MML：
 ```
-CLR CDR BEFORE=2025-09-30 CONFIRM=YES
+CLR CDR BEFORE=2025-10-30 CONFIRM=YES
 ```
 
-**Q: 服务启动失败？**
-检查端口占用：
-```bash
-lsof -i :5060
-netstat -tulpn | grep 5060
-```
+**Q: Docker 部署后无法连接？**
+- Linux：确保使用 `--network host` 模式
+- macOS/Windows：确保端口映射正确，`SERVER_IP` 设置为宿主机可达 IP
+- 检查防火墙是否放行 5060/udp、8888/tcp 和 8889/tcp（WebSocket 实时日志）
+
+**Q: WebSocket 连接失败？**
+- 确保 WebSocket 端口（HTTP 端口 + 1，默认 8889）已正确映射
+- 使用 host 网络模式时不需要额外配置
+- 检查浏览器控制台是否有连接错误信息
+
+**Q: 外呼服务无法启动？**
+- 检查 `sip_client_config.json` 配置是否正确
+- 确保外呼终端用户名已存在于 `data/users.json`
+- 查看日志：`grep "外呼" logs/*/ims-sip-server.log`
 
 ## 开发路线图
 
 **P0 - 阻塞性问题**（商用前必须）：
+- [x] 容器化部署（Docker）
 - [ ] 密码加密存储（bcrypt + HA1）
 - [ ] MML 界面认证
 - [ ] NAT 穿越增强（STUN/TURN）
 - [ ] 基础监控（健康检查、Prometheus）
-- [ ] 容器化部署（Docker）
 
 **P1 - 高优先级**（商用建议）：
 - [ ] SIP 事务层完善
@@ -353,7 +514,7 @@ netstat -tulpn | grep 5060
 - [ ] 计费系统
 - [ ] 多租户支持
 
-详见：商用化分析报告（咨询开发团队）
+详见：`docs/IMS_ROADMAP.md`
 
 ## 许可证
 
@@ -361,6 +522,7 @@ MIT License
 
 ## 版本历史
 
+- v0.4 (2025-11-04): 支持 Docker 部署、环境变量配置、外呼服务增强
 - v0.3 (2025-10-30): 完善 MML 管理功能、性能监控、配置管理
 - v0.2 (2025-10-29): CDR 增强、re-INVITE 支持、日志优化
 - v0.1 (2025-10-27): 初始版本，基础 SIP 功能
@@ -376,4 +538,4 @@ MIT License
 
 **项目状态**: 开发测试中  
 **RFC 3261 合规性**: 基础合规  
-**更新时间**: 2025-10-30
+**更新时间**: 2025-11-04

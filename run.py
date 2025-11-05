@@ -1,5 +1,6 @@
 # run.py
 import asyncio, time, re, socket
+import os
 
 from sipcore.transport_udp import UDPServer
 from sipcore.parser import parse
@@ -26,8 +27,35 @@ cdr = init_cdr(base_dir="CDR")
 user_mgr = init_user_manager(data_file="data/users.json")
 
 # ====== 配置区 ======
-SERVER_IP = "192.168.100.8"
+# SERVER_IP: 从环境变量读取，如果没有则自动获取本机IP，最后回退到默认值
+def get_server_ip():
+    """获取服务器IP地址，优先级：环境变量 > 自动检测 > 默认值"""
+    # 1. 优先从环境变量读取
+    server_ip = os.getenv("SERVER_IP")
+    if server_ip:
+        log.info(f"[CONFIG] SERVER_IP from environment: {server_ip}")
+        return server_ip
+    
+    # 2. 自动获取本机IP（连接到外部地址，获取本地IP）
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        server_ip = s.getsockname()[0]
+        s.close()
+        log.info(f"[CONFIG] SERVER_IP auto-detected: {server_ip}")
+        return server_ip
+    except Exception as e:
+        log.warning(f"[CONFIG] Failed to auto-detect IP: {e}, using default")
+    
+    # 3. 回退到默认值
+    default_ip = "192.168.100.8"
+    log.warning(f"[CONFIG] SERVER_IP using default: {default_ip}")
+    return default_ip
+
+SERVER_IP = get_server_ip()
 SERVER_PORT = 5060
+# UDP 绑定地址：始终使用 0.0.0.0（监听所有接口），但对外宣告使用 SERVER_IP
+UDP_BIND_IP = "0.0.0.0"
 SERVER_URI = f"sip:{SERVER_IP}:{SERVER_PORT};lr"   # 用于Record-Route
 ALLOW = "INVITE, ACK, CANCEL, BYE, OPTIONS, PRACK, UPDATE, REFER, NOTIFY, SUBSCRIBE, MESSAGE, REGISTER"
 
@@ -37,10 +65,12 @@ ALLOW = "INVITE, ACK, CANCEL, BYE, OPTIONS, PRACK, UPDATE, REFER, NOTIFY, SUBSCR
 LOCAL_NETWORKS = [
     "127.0.0.1",          # 本机
     "localhost",          # 本机别名
-    SERVER_IP,            # 服务器地址
+    SERVER_IP,            # 服务器地址（动态获取）
 ]
 # 如果需要支持局域网，可以添加：
-LOCAL_NETWORKS.extend(["192.168.8.0/16"])
+# 从环境变量读取局域网网段，如果没有则使用默认值
+LOCAL_NETWORK_CIDR = os.getenv("LOCAL_NETWORK_CIDR", "192.168.0.0/16")
+LOCAL_NETWORKS.extend([LOCAL_NETWORK_CIDR])
 
 # FORCE_LOCAL_ADDR: 强制使用本地地址（仅用于单机测试）
 # 设置为 False 时，支持真实的多机网络环境
@@ -483,7 +513,8 @@ def _forward_request(msg: SIPMessage, addr, transport):
         try:
             ruri = msg.start_line.split()[1]
             # 如果 R-URI 指向服务器地址，需要修正为实际被叫地址
-            if f"{SERVER_IP}" in ruri or "127.0.0.1" in ruri or "@192.168.137.1" in ruri:
+            # 检查 R-URI 是否指向服务器地址或本地地址
+            if f"{SERVER_IP}" in ruri or "127.0.0.1" in ruri:
                 # 提取被叫 AOR（从 To 头）
                 aor = _aor_from_to(msg.get("to"))
                 if not aor:
@@ -1393,8 +1424,9 @@ async def main():
     # 初始化外呼管理器
     try:
         from autodialer_manager import AutoDialerManager
-        # 添加 REG_BINDINGS 到 server_globals（用于清理残留注册）
+        # 添加 REG_BINDINGS 和 SERVER_IP 到 server_globals（用于清理残留注册和传递 IP）
         server_globals['REG_BINDINGS'] = REG_BINDINGS
+        server_globals['SERVER_IP'] = SERVER_IP  # 传递服务器 IP 给外呼管理器
         dialer_mgr = AutoDialerManager(config_file="sip_client_config.json", server_globals=server_globals)
         server_globals['AUTO_DIALER_MANAGER'] = dialer_mgr
         log.info("外呼管理器已初始化")
@@ -1410,7 +1442,9 @@ async def main():
         log.warning(f"MML interface failed to start: {e}")
     
     # 创建并启动 UDP 服务器
-    udp = UDPServer((SERVER_IP, SERVER_PORT), on_datagram)
+    # 绑定地址使用 0.0.0.0（监听所有接口），但对外宣告使用 SERVER_IP
+    log.info(f"[CONFIG] UDP server binding to {UDP_BIND_IP}:{SERVER_PORT}, public IP: {SERVER_IP}")
+    udp = UDPServer((UDP_BIND_IP, SERVER_PORT), on_datagram)
     await udp.start()
     # UDP server listening 日志已在 transport_udp.py 中输出，此处不再重复
     

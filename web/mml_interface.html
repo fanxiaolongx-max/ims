@@ -1440,7 +1440,16 @@
         // WebSocket 连接（实时日志）
         function connectWebSocket() {
             try {
-                ws = new WebSocket('ws://localhost:8889');
+                // 动态获取 WebSocket 地址：使用当前页面的主机和端口+1
+                const wsHost = window.location.hostname;
+                // 获取当前 HTTP 端口，如果为空或无效则使用默认值 8888
+                const httpPort = window.location.port ? parseInt(window.location.port) : 
+                                 (window.location.protocol === 'https:' ? 443 : 80);
+                // WebSocket 端口 = HTTP 端口 + 1（如果 HTTP 端口是 80，则使用 8889）
+                const wsPort = (httpPort === 80 || httpPort === 443) ? 8889 : (httpPort + 1);
+                const wsUrl = `ws://${wsHost}:${wsPort}`;
+                console.log(`[WebSocket] 连接到: ${wsUrl}`);
+                ws = new WebSocket(wsUrl);
 
                 ws.onopen = () => {
                     appendLog('WebSocket 连接已建立', 'INFO');

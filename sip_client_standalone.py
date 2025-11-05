@@ -21,16 +21,26 @@ from pathlib import Path
 
 
 # ====== 配置 ======
-DEFAULT_CONFIG = {
-    "server_ip": "192.168.100.8",
-    "server_port": 5060,
-    "username": "0000",
-    "password": "0000",
-    "local_ip": "192.168.100.8",  # 与服务器同一台机器
-    "local_port": 10000,
-    "media_dir": "media",
-    "media_file": "media/default.wav",
-}
+import os
+
+def get_default_config():
+    """获取默认配置，支持从环境变量读取"""
+    # 从环境变量读取 SERVER_IP，如果没有则使用默认值
+    server_ip = os.getenv("SERVER_IP", "192.168.100.8")
+    local_ip = os.getenv("SERVER_IP", server_ip)  # local_ip 默认与 server_ip 相同
+    
+    return {
+        "server_ip": server_ip,
+        "server_port": 5060,
+        "username": "0000",
+        "password": "0000",
+        "local_ip": local_ip,  # 与服务器同一台机器
+        "local_port": 10000,
+        "media_dir": "media",
+        "media_file": "media/default.wav",
+    }
+
+DEFAULT_CONFIG = get_default_config()
 
 
 # ====== 数据结构 ======
@@ -1824,6 +1834,12 @@ class AutoDialerClient:
                     user_config = json.load(f)
                 config = DEFAULT_CONFIG.copy()
                 config.update(user_config)
+                # 如果配置文件中没有 server_ip 或为默认值，从环境变量读取
+                if not config.get("server_ip") or config.get("server_ip") == "192.168.100.8":
+                    env_server_ip = os.getenv("SERVER_IP")
+                    if env_server_ip:
+                        config["server_ip"] = env_server_ip
+                        config["local_ip"] = env_server_ip  # local_ip 也更新为相同的值
                 return config
             except Exception as e:
                 print(f"[WARNING] 无法加载配置文件 {config_file}: {e}")

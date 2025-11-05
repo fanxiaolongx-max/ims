@@ -1,0 +1,52 @@
+# 测试文件
+tests/
+test_*.py
+quick_test.sh
+
+# 文档（归档）
+docs/archive/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 日志和数据文件
+logs/
+CDR/
+export/
+*.log
+
+# 开发环境
+.venv/
+venv/
+env/
+.env
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 版本控制
+.git/
+.gitignore
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+*.tar.gz
+ims_project.tar.gz
+
+# macOS
+.DS_Store
+
+# 其他
+*.md
+!README.md
+

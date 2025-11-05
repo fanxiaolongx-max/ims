@@ -1112,12 +1112,12 @@ class MMLCommandExecutor:
                 "note": "修改需重启服务"
             },
             "MML.WEBSOCKET_PORT": {
-                "value": "8889",
-                "description": "MML WebSocket 端口（日志推送）",
-                "type": "int",
+                "value": "自动（HTTP端口+1）",
+                "description": "MML WebSocket 端口（日志推送，自动设置为 HTTP 端口 + 1）",
+                "type": "str",
                 "editable": False,
                 "category": "MML",
-                "note": "修改需重启服务"
+                "note": "自动配置，无需手动设置"
             },
             "MML.MAX_HISTORY": {
                 "value": "100",
